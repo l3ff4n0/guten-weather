@@ -1,0 +1,43 @@
+{
+	"apiVersion": 2,
+	"name": "guten-weather/guten-weather",
+	"version": "0.1.0",
+	"title": "Guten weather",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "This is a guten weather block to display weather and forecast",
+	"supports": {
+		"html": false,
+		"multiple": false
+	},
+	"attributes":{
+		"city": {
+			"type": "string",
+			"default": "select your city"
+		},
+		"weatherType": {
+			"type": "string",
+			"default": "current"
+		},
+		"numberDays": {
+			"type": "string",
+			"default": "1"
+		},
+		"airQuality": {
+			"type": "string",
+			"default": "no"
+		},
+		"weatherAlert": {
+			"type": "string",
+			"default": "no"
+		},
+		"languageData": {
+			"type": "string",
+			"default": "'select your language"
+		}
+	},
+	"textdomain": "guten-weather",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
