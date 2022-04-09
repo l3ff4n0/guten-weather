@@ -169,7 +169,7 @@ export default function Edit(props) {
 						{ __( 'Number of days of weather forecast', 'guten-weather' ) }
 					</legend>
 					<SelectControl
-						label=" Select the number of days of weather forecast"
+						label=" Select the number of days"
 						value={ numberDays }
 						options={
 							[
@@ -222,7 +222,7 @@ export default function Edit(props) {
 						{ __( 'Language data', 'guten-weather' ) }
 					</legend>
 					<SelectControl
-						label="Choose the language you want to translatable the data"
+						label="Choose the language"
 						value={ languageData }
 						options={
 							[

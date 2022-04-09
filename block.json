@@ -4,7 +4,7 @@
 	"version": "0.1.0",
 	"title": "Guten weather",
 	"category": "widgets",
-	"icon": "smiley",
+	"icon": "cloud",
 	"description": "This is a guten weather block to display weather and forecast",
 	"supports": {
 		"html": false,

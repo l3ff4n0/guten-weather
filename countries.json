@@ -72,12 +72,6 @@
     "Country": "Bulgaria"
   },
   {
-    "Country": "Burkina Faso"
-  },
-  {
-    "Country": "Burundi"
-  },
-  {
     "Country": "Cambodia"
   },
   {
@@ -87,13 +81,7 @@
     "Country": "Canada"
   },
   {
-    "Country": "Cape Verde"
-  },
-  {
-    "Country": "Central African Republic"
-  },
-  {
-    "Country": "Chad"
+    "Country": "Cayman Islands"
   },
   {
     "Country": "Chile"
@@ -105,16 +93,10 @@
     "Country": "Colombia"
   },
   {
-    "Country": "Comoros"
-  },
-  {
     "Country": "Congo"
   },
   {
     "Country": "Costa Rica"
-  },
-  {
-    "Country": "Cote d'Ivoire"
   },
   {
     "Country": "Croatia"
@@ -132,12 +114,6 @@
     "Country": "Denmark"
   },
   {
-    "Country": "Djibouti"
-  },
-  {
-    "Country": "Dominica"
-  },
-  {
     "Country": "Dominican Republic"
   },
   {
@@ -150,19 +126,10 @@
     "Country": "El Salvador"
   },
   {
-    "Country": "Equatorial Guinea"
-  },
-  {
-    "Country": "Eritrea"
-  },
-  {
     "Country": "Estonia"
   },
   {
-    "Country": "Ethiopia"
-  },
-  {
-    "Country": "Fiji"
+    "Country": "Faroe Islands"
   },
   {
     "Country": "Finland"
@@ -171,10 +138,10 @@
     "Country": "France"
   },
   {
-    "Country": "Gabon"
+    "Country": "French Polynesia"
   },
   {
-    "Country": "Gambia"
+    "Country": "Gabon"
   },
   {
     "Country": "Georgia"
@@ -189,7 +156,13 @@
     "Country": "Greece"
   },
   {
-    "Country": "Grenada"
+    "Country" : "Greenland"
+  },
+  {
+    "Country": "Guadeloupe"
+  },
+  {
+    "Country": "Guam"
   }, 
   {
     "Country": "Guatemala"
@@ -198,16 +171,16 @@
     "Country": "Guinea"
   }, 
   {
-    "Country": "Guinea-Bissau"
-  }, 
-  {
-    "Country": "Guyana"
-  }, 
-  {
     "Country": "Haiti"
+  },
+  {
+    "Country": "Hashemite Kingdom of Jordan"
   }, 
   {
     "Country": "Honduras"
+  },
+  {
+    "Country" : "Hong Kong"
   }, 
   {
     "Country": "Hungary"
@@ -234,6 +207,9 @@
     "Country": "Isle of Man"
   },
   {
+    "Country": "Israel"
+  },
+  {
     "Country": "Italy"
   },
   {
@@ -255,31 +231,16 @@
     "Country": "Kuwait"
   },
   {
-    "Country": "Kyrgyzstan"
-  },
-  {
-    "Country": "Laos"
-  },
-  {
     "Country": "Latvia"
   },
   {
     "Country": "Lebanon"
   },
   {
-    "Country": "Lesotho"
-  },
-  {
-    "Country": "Liberia"
-  },
-  {
     "Country": "Libya"
   },
   {
     "Country": "Liechtenstein"
-  },
-  {
-    "Country": "Lithuania"
   },
   {
     "Country": "Luxembourg"
@@ -291,34 +252,22 @@
     "Country": "Madagascar"
   },
   {
-    "Country": "Malawi"
-  },
-  {
     "Country": "Malaysia"
-  },
-  {
-    "Country": "Maldives"
-  },
-  {
-    "Country": "Mali"
   },
   {
     "Country": "Malta"
   },
   {
-    "Country": "Mauritania"
+    "Country": "Martinique"
   },
   {
     "Country": "Mauritius"
   },
   {
+    "Country": "Mayotte"
+  },
+  {
     "Country": "Mexico"
-  },
-  {
-    "Country": "Moldova"
-  },
-  {
-    "Country": "Monaco"
   },
   {
     "Country": "Mongolia"
@@ -327,13 +276,10 @@
     "Country": "Montenegro"
   },
   {
-    "Country": "Morocco"
-  },
-  {
     "Country": "Mozambique"
   },
   {
-    "Country": "Myanmar"
+    "Country": "Myanmar [Burma]"
   },
   {
     "Country": "Namibia"
@@ -345,16 +291,13 @@
     "Country": "Netherlands"
   },
   {
+    "Country": "New Caledonia"
+  },
+  {
     "Country": "New Zealand"
   },
   {
     "Country": "Nicaragua"
-  },
-  {
-    "Country": "Niger"
-  },
-  {
-    "Country": "Nigeria"
   },
   {
     "Country": "Norway"
@@ -364,6 +307,9 @@
   },
   {
     "Country": "Pakistan"
+  },
+  {
+    "Country": "Palestine"
   },
   {
     "Country": "Panama"
@@ -387,7 +333,16 @@
     "Country": "Portugal"
   },
   {
-    "Country": "Qatar"
+    "Country": "Puerto Rico"
+  },
+  {
+    "Country": "Republic of Korea"
+  },
+  {
+    "Country": "Republic of Lithuania"
+  },
+  {
+    "Country": "Republic of Moldova"
   },
   {
     "Country": "Romania"
@@ -396,25 +351,10 @@
     "Country": "Russia"
   },
   {
-    "Country": "Rwanda"
-  },
-  {
-    "Country": "Saint Kitts and Nevis"
-  },
-  {
     "Country": "Saint Lucia"
   },
   {
-    "Country": "Saint Vincent and the Grenadines"
-  },
-  {
-    "Country": "Samoa"
-  },
-  {
     "Country": "San Marino"
-  },
-  {
-    "Country": "Sao Tome and Principe"
   },
   {
     "Country": "Saudi Arabia"
@@ -426,12 +366,6 @@
     "Country": "Serbia"
   },
   {
-    "Country": "Seychelles"
-  },
-  {
-    "Country": "Sierra Leone"
-  },
-  {
     "Country": "Singapore"
   },
   {
@@ -439,12 +373,6 @@
   },
   {
     "Country": "Slovenia"
-  },
-  {
-    "Country": "Solomon Islands"
-  },
-  {
-    "Country": "Somalia"
   },
   {
     "Country": "South Africa"
@@ -471,25 +399,13 @@
     "Country": "Switzerland"
   },
   {
-    "Country": "Syria"
-  },
-  {
     "Country": "Taiwan"
-  },
-  {
-    "Country": "Tajikistan"
   },
   {
     "Country": "Tanzania"
   },
   {
     "Country": "Thailand"
-  },
-  {
-    "Country": "Togo"
-  },
-  {
-    "Country": "Tonga"
   },
   {
     "Country": "Trinidad and Tobago"
@@ -501,13 +417,7 @@
     "Country": "Turkey"
   },
   {
-    "Country": "Turkmenistan"
-  },
-  {
-    "Country": "Tuvalu"
-  },
-  {
-    "Country": "Uganda"
+    "Country": "U.S. Virgin Islands"
   },
   {
     "Country": "Ukraine"
@@ -538,9 +448,6 @@
   },
   {
     "Country": "Vietnam"
-  },
-  {
-    "Country": "Yemen"
   },
   {
     "Country": "Zambia"

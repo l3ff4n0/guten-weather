@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Guten weather
  * Description:       This is a guten weather block to display weather and forecast
- * Requires at least: 5.8
+ * Requires at least: 5.9
  * Requires PHP:      7.0
  * Version:           0.1.0
  * Author:            Stefano Frasson Pianizzola
@@ -24,8 +24,6 @@ function guten_weather_guten_weather_block_init() {
 	register_block_type( __DIR__ );
 }
 add_action( 'init', 'guten_weather_guten_weather_block_init' );
-
-
 
 /**
  * Register Options page for plugins
@@ -72,6 +70,7 @@ function guten_weather_print_scripts() {
         var all_countries_options = [{label: 'Select your country' , value: 'select your country'}];
         var all_cities = [];
         var all_cities_options = [{label: 'Select your city' , value: 'select your city'}];
+
         fetch(world_countries)
             .then(function(response) {
                 return response.json();
