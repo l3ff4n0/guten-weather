@@ -65,7 +65,8 @@ function Edit(props) {
       numberDays,
       airQuality,
       weatherAlert,
-      languageData
+      languageData,
+      WeatherTpl
     },
     setAttributes
   } = props;
@@ -154,19 +155,29 @@ function Edit(props) {
     weather_api = "http://api.weatherapi.com/v1/current.json?" + apiKey + cityName + airQualityData + language;
   }
 
-  function getWeather() {
+  if (weather_api_key != '' && city !== 'select your city') {
     fetch(weather_api).then(response => response.json()).then(data => {
-      if (document.getElementsByClassName('widget-weather-container')[0]) {
-        var tpl = '<div class="condition"><div class="text">' + data.current.condition.text + '</div><img src="' + data.current.condition.icon + '"></div><div class="temp">' + data.current.temp_c + '&deg;</div><div class="feels-like">Feels like ' + data.current.feelslike_c + '&deg;</div><div class="wind">Wind ' + data.current.wind_kph + ' km/h</div><div class="humidity">Humidity ' + data.current.humidity + '%</div><div class="visibility">Visibility ' + data.current.vis_km + ' km</div><div class="pressure">Pressure ' + data.current.pressure_mb + ' mb</div><div class="precipitation">Precipitation ' + data.current.precip_mm + ' mm</div><div class="clouds">Clouds ' + data.current.cloud + '%</div><div class="last-update">Last update ' + data.current.last_updated + '</div>' + '<div class="location">' + data.location.name + '</div>';
-        document.getElementsByClassName('widget-weather-container')[0].innerHTML = tpl;
+      let weather_current_code, weather_current_icon, weather_current_text, weather_current_location_name, weather_current_location_country, weather_current_location_region;
+
+      if (weatherType === 'forecast') {
+        WeatherTpl = data.forecast.forecastday;
+      } else {
+        weather_current_icon = data.current.condition.icon;
+        weather_current_text = data.current.condition.text;
+        weather_current_location_name = data.location.name;
+        weather_current_location_country = data.location.country;
+        weather_current_location_region = data.location.region;
+        props.attributes.WeatherTpl = '<div><img src="' + weather_current_icon + '" alt="' + weather_current_text + '" /></div><div class="weather-current-text">' + weather_current_text + '</div><div>' + weather_current_location_name + '</div>';
       }
     }).catch(error => {
       console.log('My Errorrrr', error);
     });
   }
 
-  if (weather_api_key != '' && city !== 'select your city') {
-    getWeather();
+  function createWeatherContent() {
+    return {
+      __html: props.attributes.WeatherTpl
+    };
   }
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
@@ -394,7 +405,8 @@ function Edit(props) {
     }],
     onChange: onChangeLanguageData
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "widget-weather-container"
+    class: "widget-weather-container",
+    dangerouslySetInnerHTML: createWeatherContent()
   })));
 }
 
@@ -440,6 +452,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('guten-weather/guten-weather', {
+  title: 'Guten Weather',
+
   /**
    * @see ./edit.js
    */
@@ -503,17 +517,22 @@ function save(props) {
       weatherType,
       numberDays,
       airQuality,
-      weatherAlert
+      weatherAlert,
+      languageData,
+      WeatherTpl
     },
     setAttributes
   } = props;
 
-  if (document.getElementsByClassName('widget-weather-container')[0]) {
-    document.getElementsByClassName('widget-weather-container')[0].innerHTML = props.attributes.country;
+  function createWeatherContent() {
+    return {
+      __html: props.attributes.WeatherTpl
+    };
   }
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "widget-weather-container"
+    class: "widget-weather-container",
+    dangerouslySetInnerHTML: createWeatherContent()
   }));
 }
 

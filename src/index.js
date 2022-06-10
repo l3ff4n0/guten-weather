@@ -26,6 +26,7 @@ import save from './save';
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 registerBlockType( 'guten-weather/guten-weather', {
+	title: 'Guten Weather',
 	/**
 	 * @see ./edit.js
 	 */

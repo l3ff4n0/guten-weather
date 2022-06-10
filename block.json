@@ -34,10 +34,16 @@
 		"languageData": {
 			"type": "string",
 			"default": "'select your language"
+		},
+		"WeatherTpl": {
+			"type": "string",
+			"source": "html",
+			"default": "Plase configure Weather block settings",
+			"selector": ".widget-weather-container"
 		}
 	},
 	"textdomain": "guten-weather",
-	"editorScript": "file:./build/index.js",
+	"script": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
 }
