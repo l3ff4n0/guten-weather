@@ -101,20 +101,13 @@ export default function Edit(props) {
 	}
 
 	function getWeather() {
-		jQuery.ajax( {
-			url: weather_api,
-			type: 'GET',
-			crossDomain: true,
-			dataType: 'json',
-			success: function( response ) {
-				console.log('Response',response);
-				if(jQuery('.widget-weather-container').length > 0){
-					jQuery('.widget-weather-container').html(response.current.condition.icon);
-				}
-			},
-			error : function(error) {
-				console.log('Error',error);
-			},  
+		fetch(weather_api).then(response => response.json()).then(data => {
+			if(document.getElementsByClassName('widget-weather-container')[0]){
+				var tpl = '<div class="condition"><div class="text">'+ data.current.condition.text +'</div><img src="'+ data.current.condition.icon +'"></div><div class="temp">'+ data.current.temp_c +'&deg;</div><div class="feels-like">Feels like '+ data.current.feelslike_c +'&deg;</div><div class="wind">Wind '+ data.current.wind_kph +' km/h</div><div class="humidity">Humidity '+ data.current.humidity +'%</div><div class="visibility">Visibility '+ data.current.vis_km +' km</div><div class="pressure">Pressure '+ data.current.pressure_mb +' mb</div><div class="precipitation">Precipitation '+ data.current.precip_mm +' mm</div><div class="clouds">Clouds '+ data.current.cloud +'%</div><div class="last-update">Last update '+ data.current.last_updated +'</div>' + '<div class="location">'+ data.location.name +'</div>';
+				document.getElementsByClassName('widget-weather-container')[0].innerHTML = tpl;
+			}
+		}).catch(error => {
+			console.log('My Errorrrr',error);
 		});
 	}
 

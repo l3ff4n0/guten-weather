@@ -23,8 +23,11 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save(props) {
-	const { attributes: { city, weatherType, numberDays, airQuality, weatherAlert }, setAttributes } = props;
-	jQuery('.widget-weather-container').html(props.attributes.city);
+	const { attributes: { country,city, weatherType, numberDays, airQuality, weatherAlert}, setAttributes } = props;
+	if(document.getElementsByClassName('widget-weather-container')[0]) {
+		document.getElementsByClassName('widget-weather-container')[0].innerHTML = props.attributes.country;
+	}
+	
 	return (
 		<div { ...useBlockProps.save() }>
 			<div class="widget-weather-container"></div>
