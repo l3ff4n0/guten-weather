@@ -60,31 +60,10 @@ function guten_weather_options_page(){ ?>
 
 add_action( 'admin_menu', 'guten_weather_menu' );
 
-function guten_weather_print_scripts() {
-    $countries = plugins_url('countries.json', __FILE__ );
-    $cities = plugins_url('countries-cities.json', __FILE__ ); ?>
+function guten_weather_print_scripts() { ?>
 	<script type="text/javascript">
 		var weather_api_key = <?php echo json_encode(esc_attr( get_option('weather_api_key') )); ?>;
-        var world_countries = "<?php echo esc_attr($countries); ?>";
-        var world_cities = "<?php echo esc_attr($cities); ?>";
-        var all_countries_options = [{label: 'Select your country' , value: 'select your country'}];
-        var all_cities = [];
-        var all_cities_options = [{label: 'Select your city' , value: 'select your city'}];
-
-        fetch(world_countries)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                for(var i = 0; i < data.length; i++) {
-                    var country = data[i];
-                    var country_name = country.Country;
-                    all_countries_options.push({label: country_name, value: country_name});
-                }
-            });
 	</script>
-	
 	<?php
-	
 }
 add_action('wp_print_scripts', 'guten_weather_print_scripts');

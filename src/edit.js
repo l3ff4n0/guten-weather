@@ -22,6 +22,10 @@ import { useState } from '@wordpress/element';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+import { all_cities } from './countries-cities';
+
+
+
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,22 +35,10 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
+
 export default function Edit(props) {
 
-	const { attributes: { country, city, weatherType, numberDays, airQuality, weatherAlert, languageData, WeatherTpl }, setAttributes } = props;
-
-	const onChangeCountry = ( newCountryName ) => {
-		setAttributes( { country: newCountryName } );
-		fetch(world_cities).then(response => response.json()).then(data => {
-			all_cities = data[newCountryName];
-			if(newCountryName != 'select your country') {
-				all_cities_options.length = 1;
-				for (let index = 0; index < all_cities.length; index++) {
-					all_cities_options.push({label: all_cities[index], value: all_cities[index]} );
-				};
-			}
-		});
-	};
+	const { attributes: { city, weatherType, numberDays, airQuality, weatherAlert, languageData, WeatherTpl }, setAttributes } = props;
 
 	const onChangeCity = ( newCityName ) => {
 		setAttributes( { city: newCityName } );
@@ -101,50 +93,52 @@ export default function Edit(props) {
 	}
 
 	if(weather_api_key != '' && city !== 'select your city'){
-		fetch(weather_api).then(response => response.json()).then(data => {
-			let weather_current_code,
-			weather_current_icon,
-			weather_current_text,
-			weather_current_location_name,
-			weather_current_location_country,
-			weather_current_location_region;
-			
-			if(weatherType === 'forecast'){
-				WeatherTpl = data.forecast.forecastday;
-			} else{
-				weather_current_icon = data.current.condition.icon;
-				weather_current_text = data.current.condition.text;
-				weather_current_location_name = data.location.name;
-				weather_current_location_country = data.location.country;
-				weather_current_location_region = data.location.region;
-				
-				props.attributes.WeatherTpl = '<div><img src="'+ weather_current_icon +'" alt="'+ weather_current_text +'" /></div><div class="weather-current-text">'+ weather_current_text +'</div><div>'+ weather_current_location_name +'</div>';
+		fetch(weather_api,{
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
 			}
-		}).catch(error => {
-			console.log('My Errorrrr',error);
+		}).then(response => response.json()).then(data => {
+			console.log('data >>>',data);
+			let weather_code,
+			weather_icon,
+	 		weather_text,
+	 		weather_loc_name,
+			weather_loc_coordinates,
+			weather_loc_localtime;
+
+			if(weatherType === 'forecast'){
+				props.attributes.WeatherTpl = data.forecast.forecastday;
+			} else {
+				weather_code = data.current.condition.code;
+	 			weather_icon = data.current.condition.icon;
+	 			weather_text = data.current.condition.text;
+	 			weather_loc_name = data.location.name;
+	 			weather_loc_coordinates = data.location.lat + "," + data.location.lon;
+				weather_loc_localtime = data.location.localtime;
+
+				props.attributes.WeatherTpl = '<div class="weather-icon icon-'+ weather_code +
+	 											'"><img src="'+ weather_icon +'" alt="'+ weather_text +
+	 											'" /></div><div class="weather-text">'+ weather_text +
+	 											'</div><div class="weather-loc-name">'+ weather_loc_name +
+	 											'</div><div class="weahter-loc-coords">'+ weather_loc_coordinates +
+	 											'</div><div class="weather-loc-timezone">'+ weather_loc_localtime +'</div>';
+			}
+			//setAttributes( { weatherData: weather_data } );
+		}
+		).catch(error => {
+			console.log('error >>>',error);
 		});
 	}
 
 	function createWeatherContent() {
 		return {__html: props.attributes.WeatherTpl};
 	}
-	  
 	
 	return (
 		<div{ ...useBlockProps() }>
 		<InspectorControls key="setting">
-			<PanelBody title={ __( 'Guten weather settings', 'guten-weather' ) }>
-			<fieldset>
-				<legend className="blocks-base-control__label">
-					{ __( 'Country', 'guten-weather' ) }
-				</legend>
-				<SelectControl
-					label="Select your country"
-					value={ country }
-					options = {all_countries_options}
-					onChange={ onChangeCountry }
-				/>
-			</fieldset>	
+			<PanelBody title={ __( 'Guten weather settings', 'guten-weather' ) }>	
 			<fieldset>
 					<legend className="blocks-base-control__label">
 						{ __( 'City', 'guten-weather' ) }
@@ -152,7 +146,7 @@ export default function Edit(props) {
 					<SelectControl
 						label="Select your city"
             			value={ city }
-						options = {all_cities_options}
+						options = {all_cities}
 						onChange={ onChangeCity }
 					/>
 				</fieldset>
