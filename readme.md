@@ -23,6 +23,11 @@ This is a gutenberg custom block to display the weather and forecast.
 - [x] Armenia
 - [x] Aruba
 - [x] Australia
+- [x] Azerbaijan
+- [x] Bahamas
+- [x] Bahrain
+- [x] Bangladesh
+- [x] Barbados
 - [x] Uruguay
 - [x] Venezuela
 - [x] Vietnam

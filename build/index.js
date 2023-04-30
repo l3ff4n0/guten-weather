@@ -7645,6 +7645,288 @@ let all_cities = [{
   label: 'Australia - Yackandandah',
   value: '-36.3000,146.9000'
 }, {
+  label: 'Azerbaijan - Baku',
+  value: '40.3952778,49.8822222'
+}, {
+  label: 'Azerbaijan - Nakhchivan',
+  value: '39.2027778,45.4147222'
+}, {
+  label: 'Azerbaijan - Quba',
+  value: '41.3777778,48.5025000'
+}, {
+  label: 'Azerbaijan - Qusar',
+  value: '41.4319444,48.4058333'
+}, {
+  label: 'Azerbaijan - Sulutapa',
+  value: '40.9361111,47.7350000'
+}, {
+  label: 'Azerbaijan - Sumqayit',
+  value: '40.5894444,49.6613889'
+}, {
+  label: 'Azerbaijan - Xirdalan',
+  value: '40.4630556,49.8586111'
+}, {
+  label: 'Azerbaijan - Zurges',
+  value: '40.5333333,48.6000000'
+}, {
+  label: 'Bahamas - Andros Town',
+  value: '24.695900,-77.791100'
+}, {
+  label: 'Bahamas - Dunmore Town',
+  value: '25.527500,-76.682500'
+}, {
+  label: 'Bahamas - Freeport',
+  value: '26.539800,-78.698000'
+}, {
+  label: 'Bahamas - Marsh Harbour',
+  value: '26.541800,-77.063200'
+}, {
+  label: 'Bahamas - Nassau',
+  value: '25.058300,-77.343700'
+}, {
+  label: 'Bahamas - Palmetto Point',
+  value: '25.717400,-78.010800'
+}, {
+  label: 'Bahamas - Spanish Wells',
+  value: '25.334500,-76.331400'
+}, {
+  label: 'Bahrain - Al Budayyi',
+  value: '26.1445,50.5354'
+}, {
+  label: 'Bahrain - Al Hadd',
+  value: '26.2183,50.6333'
+}, {
+  label: 'Bahrain - Al Hamalah',
+  value: '26.1783,50.5667'
+}, {
+  label: 'Bahrain - Al Janabiyah',
+  value: '26.1567,50.5483'
+}, {
+  label: 'Bahrain - Al Markh',
+  value: '26.1833,50.5833'
+}, {
+  label: 'Bahrain - Al Muharraq',
+  value: '26.2333,50.6167'
+}, {
+  label: 'Bahrain - Bani Jamrah',
+  value: '26.1333,50.5333'
+}, {
+  label: 'Bahrain - Barbar',
+  value: '26.2583,50.6500'
+}, {
+  label: 'Bahrain - Jurdab',
+  value: '26.1667,50.5500'
+}, {
+  label: 'Bahrain - Madinat `Isa',
+  value: '26.1167,50.5167'
+}, {
+  label: 'Bahrain - Madinat Hamad',
+  value: '26.0917,50.4917'
+}, {
+  label: 'Bahrain - Manama',
+  value: '26.2285,50.5860'
+}, {
+  label: 'Bahrain - Oil City',
+  value: '26.2417,50.6333'
+}, {
+  label: 'Bahrain - Sanabis',
+  value: '26.2083,50.5917'
+}, {
+  label: 'Bahrain - Sanad',
+  value: '26.1250,50.5333'
+}, {
+  label: 'Bahrain - Sitrah',
+  value: '26.0750,50.4833'
+}, {
+  label: 'Bahrain - Tubli',
+  value: '26.1917,50.5750'
+}, {
+  label: 'Bangladesh - Agrabad',
+  value: '23.814097,90.412518'
+}, {
+  label: 'Bangladesh - Bangla',
+  value: '24.893379,91.872239'
+}, {
+  label: 'Bangladesh - Barisal',
+  value: '22.700279,90.356323'
+}, {
+  label: 'Bangladesh - Bazar',
+  value: '24.013611,90.234167'
+}, {
+  label: 'Bangladesh - Chittagong',
+  value: '22.356844,91.783217'
+}, {
+  label: 'Bangladesh - Comilla',
+  value: '23.468007,91.176025'
+}, {
+  label: 'Bangladesh - Delta',
+  value: '23.814097,90.412518'
+}, {
+  label: 'Bangladesh - Dhaka',
+  value: '23.810332,90.412518'
+}, {
+  label: 'Bangladesh - Hossain',
+  value: '23.814097,90.412518'
+}, {
+  label: 'Bangladesh - Jessore',
+  value: '23.164531,89.212326'
+}, {
+  label: 'Bangladesh - Kabi',
+  value: '23.814097,90.412518'
+}, {
+  label: 'Bangladesh - Kazipur',
+  value: '24.363564,88.624329'
+}, {
+  label: 'Bangladesh - Mymensingh',
+  value: '24.748307,90.412518'
+}, {
+  label: 'Bangladesh - Narayanganj',
+  value: '23.623959,90.500824'
+}, {
+  label: 'Bangladesh - Rajshahi',
+  value: '24.374573,88.606513'
+}, {
+  label: 'Bangladesh - Tejgaon',
+  value: '23.774828,90.385437'
+}, {
+  label: 'Bangladesh - Uttara',
+  value: '23.895042,90.395813'
+}, {
+  label: 'Barbados - Atlantic Shores',
+  value: '13.07845,-59.52737'
+}, {
+  label: 'Barbados - Bagatelle',
+  value: '13.09717,-59.61902'
+}, {
+  label: 'Barbados - Bloomsbury',
+  value: '13.08722,-59.58862'
+}, {
+  label: 'Barbados - Bridgetown',
+  value: '13.10674,-59.61690'
+}, {
+  label: 'Barbados - Bruce Vale',
+  value: '13.12053,-59.60894'
+}, {
+  label: 'Barbados - Cave Hill',
+  value: '13.14061,-59.63320'
+}, {
+  label: 'Barbados - Clapham',
+  value: '13.06850,-59.55982'
+}, {
+  label: 'Barbados - Hastings',
+  value: '13.11400,-59.56000'
+}, {
+  label: 'Barbados - Holetown',
+  value: '13.18500,-59.65000'
+}, {
+  label: 'Barbados - Husbands',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Jackmans',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Oistins',
+  value: '13.07917,-59.53167'
+}, {
+  label: 'Barbados - Pine Housing Estate',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Porters',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Rendezvous',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Rockley',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - The Garden',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Wanstead',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Warners',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Warrens',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - White Hill',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Wildey',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Barbados - Worthing',
+  value: '13.09867,-59.54991'
+}, {
+  label: 'Belarus - Baranovichi',
+  value: '53.1333,26.0167'
+}, {
+  label: 'Belarus - Borisov',
+  value: '54.5333,28.6167'
+}, {
+  label: 'Belarus - Brest',
+  value: '52.0975,23.6844'
+}, {
+  label: 'Belarus - Dzyarzhynsk',
+  value: '54.0333,27.5667'
+}, {
+  label: 'Belarus - Horki',
+  value: '54.3167,30.4'
+}, {
+  label: 'Belarus - Hrodna',
+  value: '53.6667,23.8167'
+}, {
+  label: 'Belarus - Lahoysk',
+  value: '54.3333,28.45'
+}, {
+  label: 'Belarus - Lida',
+  value: '53.8833,25.2833'
+}, {
+  label: 'Belarus - Lyakhovichi',
+  value: '53.0833,26.7167'
+}, {
+  label: 'Belarus - Lyaskavichy',
+  value: '53.9,29.35'
+}, {
+  label: 'Belarus - Mazyr',
+  value: '52.05,29.2667'
+}, {
+  label: 'Belarus - Minsk',
+  value: '53.9,27.5667'
+}, {
+  label: 'Belarus - Mogilev',
+  value: '53.9167,30.3333'
+}, {
+  label: 'Belarus - Navapolatsk',
+  value: '55.5333,28.6'
+}, {
+  label: 'Belarus - Orsha',
+  value: '54.5167,30.4167'
+}, {
+  label: 'Belarus - Pinsk',
+  value: '52.1222,26.0694'
+}, {
+  label: 'Belarus - Polatsk',
+  value: '55.4833,28.8'
+}, {
+  label: 'Belarus - Radoshkovichi',
+  value: '53.2,27.7167'
+}, {
+  label: 'Belarus - Shklow',
+  value: '54.1667,30.7667'
+}, {
+  label: 'Belarus - Vitebsk',
+  value: '55.1833,30.1667'
+}, {
+  label: 'Belarus - Zaslawye',
+  value: '54.1167,27.7'
+}, {
+  label: 'Belarus - Zhodzina',
+  value: '54.0333,28.55'
+}, {
   label: 'Uruguay - Barra de Carrasco',
   value: '-34.845,-56.039'
 }, {
