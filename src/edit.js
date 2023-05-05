@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { Panel, PanelBody, SelectControl } from '@wordpress/components';
+import { Panel, PanelBody, SelectControl,TextControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 /**
@@ -22,10 +22,6 @@ import { useState } from '@wordpress/element';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import { all_cities } from './countries-cities';
-
-
-
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -140,139 +136,138 @@ export default function Edit(props) {
 		<InspectorControls key="setting">
 			<PanelBody title={ __( 'Guten weather settings', 'guten-weather' ) }>	
 			<fieldset>
-					<legend className="blocks-base-control__label">
-						{ __( 'City', 'guten-weather' ) }
-					</legend>
-					<SelectControl
-						label="Select your city"
-            			value={ city }
-						options = {all_cities}
-						onChange={ onChangeCity }
-					/>
-				</fieldset>
-				<fieldset>
-					<legend className="blocks-base-control__label">
-						{ __( 'Weather type', 'guten-weather' ) }
-					</legend>
-					<SelectControl
-						label="Select the weather type"
-						value={ weatherType }
-						options={
-							[
-								{ label: 'Current', value: 'current' },
-								{ label: 'Forecast', value: 'forecast' },
-							] }
-						onChange={ onChangeWeatherType }
+				<legend className="blocks-base-control__label">
+					{ __( 'City', 'guten-weather' ) }
+				</legend>
+				<TextControl
+					label="Write the name of your city"
+					value={ city }
+					onChange={ onChangeCity }
+				/>
+			</fieldset>
+			<fieldset>
+				<legend className="blocks-base-control__label">
+					{ __( 'Weather type', 'guten-weather' ) }
+				</legend>
+				<SelectControl
+					label="Select the weather type"
+					value={ weatherType }
+					options={
+						[
+							{ label: 'Current', value: 'current' },
+							{ label: 'Forecast', value: 'forecast' },
+						] }
+					onChange={ onChangeWeatherType }
 
-        			/>
-				</fieldset>
-				<fieldset>
-					<legend className="blocks-base-control__label">
-						{ __( 'Number of days of weather forecast', 'guten-weather' ) }
-					</legend>
-					<SelectControl
-						label=" Select the number of days"
-						value={ numberDays }
-						options={
-							[
-								{ label: '1', value: '1' },
-								{ label: '2', value: '2' },
-								{ label: '3', value: '3' },
-								{ label: '4', value: '4' },
-								{ label: '5', value: '5' },
-								{ label: '6', value: '6' },
-								{ label: '7', value: '7' },
-								{ label: '8', value: '8' },
-								{ label: '9', value: '9' },
-								{ label: '10', value: '10' },
-							] }
-						onChange={ onChangeNumberDays }
-					/>
-				</fieldset>
-				<fieldset>
-					<legend className="blocks-base-control__label">
-						{ __( 'Air quality data', 'guten-weather' ) }
-					</legend>
-					<SelectControl
-						label="Enable the air quality data"
-						value={ airQuality }
-						options={
-							[
-								{ label: 'No', value: 'no' },
-								{ label: 'Yes', value: 'yes' },
-							] }
-						onChange={ onChangeAirQuality }
-					/>
-				</fieldset>
-				<fieldset>
-					<legend className="blocks-base-control__label">
-						{ __( 'Weather alert data', 'guten-weather' ) }
-					</legend>
-					<SelectControl
-						label="Enable the weather alert data"
-						value={ weatherAlert }
-						options={
-							[
-								{ label: 'No', value: 'no' },
-								{ label: 'Yes', value: 'yes' },
-							] }
-						onChange={ onChangeWeatherAlert }
-					/>
-				</fieldset>
-				<fieldset>
-					<legend className="blocks-base-control__label">
-						{ __( 'Language data', 'guten-weather' ) }
-					</legend>
-					<SelectControl
-						label="Choose the language"
-						value={ languageData }
-						options={
-							[
-								{ label: 'Select your language', value: 'select your language' },
-								{ label: 'Arabic', value: 'ar' },
-								{ label: 'Bengali', value: 'bn' },
-								{ label: 'Bulgarian', value: 'bg' },
-								{ label: 'Chinese Simplified', value: 'zh' },
-								{ label: 'Chinese Traditional', value: 'zh_tw' },
-								{ label: 'Czech', value: 'cs' },
-								{ label: 'Danish', value: 'da' },
-								{ label: 'Dutch', value: 'nl' },
-								{ label: 'Finnish', value: 'fi' },
-								{ label: 'French', value: 'fr' },
-								{ label: 'German', value: 'de' },
-								{ label: 'Greek', value: 'el' },
-								{ label: 'Hindi', value: 'hi' },
-								{ label: 'Hungarian', value: 'hu' },
-								{ label: 'Italian', value: 'it' },
-								{ label: 'Japanese', value: 'ja' },
-								{ label: 'Javanese', value: 'jv' },
-								{ label: 'Korean', value: 'ko' },
-								{ label: 'Mandarin', value: 'zh_cmn' },
-								{ label: 'Marathi', value: 'mr' },
-								{ label: 'Polish', value: 'pl' },
-								{ label: 'Portuguese', value: 'pt' },
-								{ label: 'Punjabi', value: 'pa' },
-								{ label: 'Romanian', value: 'ro' },
-								{ label: 'Russian', value: 'ru' },
-								{ label: 'Serbian', value: 'sr' },
-								{ label: 'Sinhalese', value: 'si' },
-								{ label: 'Slovak', value: 'sk' },
-								{ label: 'Spanish', value: 'es' },
-								{ label: 'Swedish', value: 'sv' },
-								{ label: 'Tamil', value: 'ta' },
-								{ label: 'Telugu', value: 'te' },
-								{ label: 'Turkish', value: 'tr' },
-								{ label: 'Ukrainian', value: 'uk' },
-								{ label: 'Urdu', value: 'ur' },
-								{ label: 'Vietnamese', value: 'vi' },
-								{ label: 'Wu (Shanghainese)', value: 'zh_wuu' },
-								{ label: 'Xiang', value: 'zh_hsn' },
-								{ label: 'Yue (Cantonese)', value: 'zh_yue' },
-								{ label: 'Zulu', value: 'zu' },
-							] }
-						onChange={ onChangeLanguageData }
-					/>
-				</fieldset>
+				/>
+			</fieldset>
+			<fieldset>
+				<legend className="blocks-base-control__label">
+					{ __( 'Number of days of weather forecast', 'guten-weather' ) }
+				</legend>
+				<SelectControl
+					label=" Select the number of days"
+					value={ numberDays }
+					options={
+						[
+							{ label: '1', value: '1' },
+							{ label: '2', value: '2' },
+							{ label: '3', value: '3' },
+							{ label: '4', value: '4' },
+							{ label: '5', value: '5' },
+							{ label: '6', value: '6' },
+							{ label: '7', value: '7' },
+							{ label: '8', value: '8' },
+							{ label: '9', value: '9' },
+							{ label: '10', value: '10' },
+						] }
+					onChange={ onChangeNumberDays }
+				/>
+			</fieldset>
+			<fieldset>
+				<legend className="blocks-base-control__label">
+					{ __( 'Air quality data', 'guten-weather' ) }
+				</legend>
+				<SelectControl
+					label="Enable the air quality data"
+					value={ airQuality }
+					options={
+						[
+							{ label: 'No', value: 'no' },
+							{ label: 'Yes', value: 'yes' },
+						] }
+					onChange={ onChangeAirQuality }
+				/>
+			</fieldset>
+			<fieldset>
+				<legend className="blocks-base-control__label">
+					{ __( 'Weather alert data', 'guten-weather' ) }
+				</legend>
+				<SelectControl
+					label="Enable the weather alert data"
+					value={ weatherAlert }
+					options={
+						[
+							{ label: 'No', value: 'no' },
+							{ label: 'Yes', value: 'yes' },
+						] }
+					onChange={ onChangeWeatherAlert }
+				/>
+			</fieldset>
+			<fieldset>
+				<legend className="blocks-base-control__label">
+					{ __( 'Language data', 'guten-weather' ) }
+				</legend>
+				<SelectControl
+					label="Choose the language"
+					value={ languageData }
+					options={
+						[
+							{ label: 'Select your language', value: 'select your language' },
+							{ label: 'Arabic', value: 'ar' },
+							{ label: 'Bengali', value: 'bn' },
+							{ label: 'Bulgarian', value: 'bg' },
+							{ label: 'Chinese Simplified', value: 'zh' },
+							{ label: 'Chinese Traditional', value: 'zh_tw' },
+							{ label: 'Czech', value: 'cs' },
+							{ label: 'Danish', value: 'da' },
+							{ label: 'Dutch', value: 'nl' },
+							{ label: 'Finnish', value: 'fi' },
+							{ label: 'French', value: 'fr' },
+							{ label: 'German', value: 'de' },
+							{ label: 'Greek', value: 'el' },
+							{ label: 'Hindi', value: 'hi' },
+							{ label: 'Hungarian', value: 'hu' },
+							{ label: 'Italian', value: 'it' },
+							{ label: 'Japanese', value: 'ja' },
+							{ label: 'Javanese', value: 'jv' },
+							{ label: 'Korean', value: 'ko' },
+							{ label: 'Mandarin', value: 'zh_cmn' },
+							{ label: 'Marathi', value: 'mr' },
+							{ label: 'Polish', value: 'pl' },
+							{ label: 'Portuguese', value: 'pt' },
+							{ label: 'Punjabi', value: 'pa' },
+							{ label: 'Romanian', value: 'ro' },
+							{ label: 'Russian', value: 'ru' },
+							{ label: 'Serbian', value: 'sr' },
+							{ label: 'Sinhalese', value: 'si' },
+							{ label: 'Slovak', value: 'sk' },
+							{ label: 'Spanish', value: 'es' },
+							{ label: 'Swedish', value: 'sv' },
+							{ label: 'Tamil', value: 'ta' },
+							{ label: 'Telugu', value: 'te' },
+							{ label: 'Turkish', value: 'tr' },
+							{ label: 'Ukrainian', value: 'uk' },
+							{ label: 'Urdu', value: 'ur' },
+							{ label: 'Vietnamese', value: 'vi' },
+							{ label: 'Wu (Shanghainese)', value: 'zh_wuu' },
+							{ label: 'Xiang', value: 'zh_hsn' },
+							{ label: 'Yue (Cantonese)', value: 'zh_yue' },
+							{ label: 'Zulu', value: 'zu' },
+						] }
+					onChange={ onChangeLanguageData }
+				/>
+			</fieldset>
    			</PanelBody>
 		</InspectorControls>
 
