@@ -103,10 +103,7 @@ export default function Edit(props) {
 			weather_loc_coordinates,
 			weather_loc_localtime;
 
-			if(weatherType === 'forecast'){
-				props.attributes.WeatherTpl = data.forecast.forecastday;
-			} else {
-				weather_code = data.current.condition.code;
+			weather_code = data.current.condition.code;
 	 			weather_icon = data.current.condition.icon;
 	 			weather_text = data.current.condition.text;
 	 			weather_loc_name = data.location.name;
@@ -119,8 +116,60 @@ export default function Edit(props) {
 	 											'</div><div class="weather-loc-name">'+ weather_loc_name +
 	 											'</div><div class="weahter-loc-coords">'+ weather_loc_coordinates +
 	 											'</div><div class="weather-loc-timezone">'+ weather_loc_localtime +'</div>';
+
+			if(weatherType === 'forecast'){
+				const weather_forecast = data.forecast.forecastday;
+			
+				if(weather_forecast.length > 0){
+					props.attributes.WeatherTpl += '<div class="weather-forecast-container">';
+					weather_forecast.map(function(key, value){
+						const astro_data = key.astro,
+							day_data = key.day,
+							hour_data = key.hour;	
+						
+							props.attributes.WeatherTpl += '<div id="weather-forecast-day-'+ value +'" class="weather-forecast-container">';
+							props.attributes.WeatherTpl += '<div class="weather-astro-container">';
+							props.attributes.WeatherTpl += '<div class="astro-phase">' + astro_data.moon_phase + '</div>';
+							props.attributes.WeatherTpl += '<div class="astro-moonrise">' + astro_data.moonrise + '</div>';
+							props.attributes.WeatherTpl += '<div class="astro-moonset">' + astro_data.moonset + '</div>';
+							props.attributes.WeatherTpl += '<div class="astro-sunrise">' + astro_data.sunrise + '</div>';
+							props.attributes.WeatherTpl += '<div class="astro-sunset">' + astro_data.sunset + '</div>';
+							props.attributes.WeatherTpl += '</div>';
+							props.attributes.WeatherTpl += '<div class="weather-day-container">';
+							props.attributes.WeatherTpl += '<div class="weather-day-condition"><div weather-icon icon-'+ day_data.condition.code +'"><img src="'+ day_data.condition.icon +'" alt="'+ day_data.condition.text +
+							'" /><div class="weather-text">'+ day_data.condition.text +
+							'</div></div></div>';
+							props.attributes.WeatherTpl += '</div>';
+							props.attributes.WeatherTpl += '<div class="weather-hour-container">';
+							hour_data.map(function(hour_key, hour_value){
+								const hour_condition = hour_key.condition;
+								console.log('hour key >', hour_key);
+								console.log('hour value >', hour_value);
+								props.attributes.WeatherTpl += '<div id="weather-forecast-hour-'+ hour_value +'" class="weather-hour-content">';
+								props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-'+ hour_condition.code +'"><img src="'+ hour_condition.icon +'" alt="'+ hour_condition.text +
+							'" /><div class="weather-text">'+ hour_condition.text +
+							'</div></div></div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-depoint">'+ hour_key.dewpoint_f + '</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-humidity">'+ hour_key.humidity + '</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-precip_mm">'+ hour_key.precip_mm + '</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-temp_f">'+ hour_key.temp_f + '</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-time">'+ hour_key.time + '</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-wind-content">';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-wind-degree">'+ hour_key.wind_degree +'</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-wind-dir">'+ hour_key.wind_dir +'</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-wind-kph">'+ hour_key.wind_kph +'</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-wind-mph">'+ hour_key.wind_mph +'</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-windchill_c">'+ hour_key.windchill_c +'</div>';
+								props.attributes.WeatherTpl += '<div clss="weather-hour-windchill_f">'+ hour_key.windchill_f +'</div>';
+								props.attributes.WeatherTpl += '</div>';
+								props.attributes.WeatherTpl += '</div>';
+							});
+							props.attributes.WeatherTpl += '</div>';
+							props.attributes.WeatherTpl += '</div>';
+					});
+					props.attributes.WeatherTpl += '</div>';
+				}
 			}
-			//setAttributes( { weatherData: weather_data } );
 		}
 		).catch(error => {
 			console.log('error >>>',error);
