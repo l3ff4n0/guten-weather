@@ -91,7 +91,6 @@ export default function Edit(props) {
 
 	if(weather_api_key != '' && city !== 'select your city'){
 		fetch(weather_endpoint).then(response => response.json()).then(data => {
-			console.log('data >', data);
 			let weather_code,
 			weather_icon,
 			weather_text,
@@ -103,7 +102,9 @@ export default function Edit(props) {
 			weather_loc_feelslike,
 			weather_loc_humidity,
 			weather_loc_wind_direction,
-			weather_loc_wind_kph;
+			weather_loc_wind_kph,
+			weather_loc_pressure,
+			weather_loc_air_quality;
 
 			weather_code = data.current.condition.code;
 			weather_icon = data.current.condition.icon;
@@ -117,14 +118,83 @@ export default function Edit(props) {
 			weather_loc_humidity = data.current.humidity;
 			weather_loc_wind_direction = data.current.wind_dir;
 			weather_loc_wind_kph = data.current.wind_kph;
+			weather_loc_pressure = data.current.pressure_mb;
+			weather_loc_air_quality = data.current.air_quality;
 
-			props.attributes.WeatherTpl = '<div class="weather-icon icon-' + weather_code +
-											'"><div class="weather-temperature">' + weather_loc_temperature + '°' + '</div><img src="' + weather_icon + '" alt="' + weather_text +
-											'" /></div><div class="weather-text-content"><div class="weather-text">' + weather_text +
-											'</div><div class="weather-loc-name"><span class="weather-label">' + __( 'Location', 'guten-weather' ) + '</span>' + weather_loc_name + ' - ' + weather_loc_country +
-											'</div><div class="weahter-loc-coords"><span class="weather-label">' + __( 'Coordinates', 'guten-weather' ) + '</span>' + weather_loc_coordinates +
-											'</div><div class="weather-loc-humidity"><span class="weather-label">' + __( 'Humidity', 'guten-weather' ) + '</span>' + weather_loc_humidity + '%' + 
-											'</div><div class="weather-loc-wind"><span class="weather-label">' + __( 'Wind', 'guten-weather' ) + '</span>' + weather_loc_wind_kph + ' km/h' + ' - ' + weather_loc_wind_direction + '</div></div>';
+			props.attributes.WeatherTpl = '<div class="weather-icon icon-' + weather_code + '">';
+			props.attributes.WeatherTpl += '<div class="weather-temperature">' + weather_loc_temperature + '°' + '</div>';
+			props.attributes.WeatherTpl += '<img src="' + weather_icon + '" alt="' + weather_text + '" />';
+			props.attributes.WeatherTpl += '</div>';
+			props.attributes.WeatherTpl += '<div class="weather-text-content">';
+			props.attributes.WeatherTpl += '<div class="weather-text">' + weather_text +'</div>';
+			props.attributes.WeatherTpl += '<div class="weather-loc-name"><span class="weather-label">' + __( 'Location', 'guten-weather' ) + '</span>' + weather_loc_name + ' - ' + weather_loc_country +'</div>';
+			props.attributes.WeatherTpl += '<div class="weather-loc-coords"><span class="weather-label">' + __( 'Coordinates', 'guten-weather' ) + '</span>' + weather_loc_coordinates +'</div>';
+			props.attributes.WeatherTpl += '<div class="weather-loc-feelslike"><span class="weather-label">' + __( 'Feelslike', 'guten-weather' ) + '</span>'+ weather_loc_feelslike + '°' + '</div>';
+			props.attributes.WeatherTpl += '<div class="weather-loc-humidity"><span class="weather-label">' + __( 'Humidity', 'guten-weather' ) + '</span>' + weather_loc_humidity + '%' + '</div>';
+			props.attributes.WeatherTpl += '<div class="weather-loc-wind"><span class="weather-label">' + __( 'Wind', 'guten-weather' ) + '</span>' + weather_loc_wind_kph + ' km/h' + ' - ' + weather_loc_wind_direction + '</div>';
+			props.attributes.WeatherTpl += '<div class="weather-loc-pressure"><span class="weather-label">' + __( 'Pressure', 'guten-weather' ) + '</span>' + weather_loc_pressure + ' mbar' + '</div>';
+			props.attributes.WeatherTpl += '</div>';
+
+			if(typeof weather_loc_air_quality !== 'undefined'){
+				let us_epa_index = __( 'means Good', 'guten-weather' );
+
+				switch (weather_loc_air_quality['us-epa-index']) {
+				case 2:
+					us_epa_index = __( 'means Moderate', 'guten-weather' )
+					break;
+				case 3:
+					us_epa_index = __( 'means Unhealthy for sensitive group', 'guten-weather' );
+					break;
+				case 4:
+					us_epa_index = __( 'means Unhealthy', 'guten-weather' );
+					break;
+				case 5:
+					us_epa_index = __( 'means Very Unhealthy', 'guten-weather' );
+					break;
+				case 6:
+					us_epa_index = __( 'means Hazardous', 'guten-weather' );
+					break;		
+				default:
+					us_epa_index;
+				}
+
+				let gb_defra_index = __( 'Low', 'guten-weather' );
+
+				switch (weather_loc_air_quality['gb-defra-index	']) {
+				case 2:
+				case 3:
+					gb_defra_index;
+					break;
+				case 4:
+				case 5:
+				case 6:
+					gb_defra_index = __( 'Moderate', 'guten-weather' );
+					break;
+				case 7:
+				case 8:
+				case 9:
+					gb_defra_index = __( 'High', 'guten-weather' );
+					break;
+				case 10:
+					gb_defra_index = __( 'Very high', 'guten-weather' );
+					break;				
+				default:
+					gb_defra_index;
+				}
+
+
+				props.attributes.WeatherTpl += '<div class="weather-air-quality-container">';
+				props.attributes.WeatherTpl += '<div class="weather-air-quality-main-title">'+ __( 'Air quality', 'guten-weather' )+'</div>';
+				props.attributes.WeatherTpl += '<div class="weather-carbon-monoxide"><span class="weather-label">'+ __( 'Carbon monoxide', 'guten-weather' )+'</span>'+ weather_loc_air_quality.co + ' µg/m³' +'</div>';
+				props.attributes.WeatherTpl += '<div class="weather-uk-defra-index"><span class="weather-label">'+ __( 'UK Defra Index', 'guten-weather' )+'</span>'+ gb_defra_index +'</div>';
+				props.attributes.WeatherTpl += '<div class="weather-nitrogen-dioxide"><span class="weather-label">'+ __( 'Nitrogen dioxide', 'guten-weather' )+'</span>'+ weather_loc_air_quality.no2 + ' µg/m³' +'</div>';
+				props.attributes.WeatherTpl += '<div class="weather-ozone"><span class="weather-label">'+ __( 'Ozone', 'guten-weather' )+'</span>'+ weather_loc_air_quality.o3 + ' µg/m³' +'</div>';
+				props.attributes.WeatherTpl += '<div class="weather-pm2-5"><span class="weather-label">'+ __( 'PM2.5', 'guten-weather' )+'</span>'+ weather_loc_air_quality.pm2_5 + ' µg/m³' +'</div>';
+				props.attributes.WeatherTpl += '<div class="weather-pm10"><span class="weather-label">'+ __( 'PM10', 'guten-weather' )+'</span>'+ weather_loc_air_quality.pm10 + ' µg/m³' +'</div>';
+				props.attributes.WeatherTpl += '<div class="weather-sulphur-dioxide"><span class="weather-label">'+ __( 'Sulphur dioxide', 'guten-weather' )+'</span>'+ weather_loc_air_quality.so2 + ' µg/m³' +'</div>';
+				props.attributes.WeatherTpl += '<div class="weather-us-epa-index"><span class="weather-label">'+ __( 'US - EPA index', 'guten-weather' )+'</span>'+ us_epa_index +'</div>';
+				props.attributes.WeatherTpl += '</div>';
+			}								
 
 			if(weatherType === 'forecast'){
 				const weather_forecast = data.forecast.forecastday;
@@ -152,8 +222,6 @@ export default function Edit(props) {
 							props.attributes.WeatherTpl += '<div class="weather-hour-container">';
 							hour_data.map(function(hour_key, hour_value){
 								const hour_condition = hour_key.condition;
-								console.log('hour key >', hour_key);
-								console.log('hour value >', hour_value);
 								props.attributes.WeatherTpl += '<div id="weather-forecast-hour-'+ hour_value +'" class="weather-hour-content">';
 								props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-'+ hour_condition.code +'"><img src="'+ hour_condition.icon +'" alt="'+ hour_condition.text +
 							'" /><div class="weather-text">'+ hour_condition.text +
