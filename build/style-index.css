@@ -1,7 +1,7 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
-@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap);
 /*!*******************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss (1) ***!
   \*******************************************************************************************************************************************************************************************************************************************/
@@ -11,32 +11,74 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+:root {
+  --defaultFont: "Poppins", sans-serif;
+  --regularFont: 400;
+  --mediumFont: 500;
+  --semiBoldFont: 600;
+  --boldFont: 700;
+  --whiteBg: #ffffff;
+  --blackBg: #000;
+  --animatedBg: #8CB8EA;
+}
+
 .wp-block-guten-weather-guten-weather {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
-  color: #313131;
+  width: 100%;
+  font-family: var(--defaultFont);
+  font-weight: var(--regularFont);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
   padding: 10px;
   border-radius: 4px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--light {
+  background: var(--whiteBg);
+  color: var(--blackBg);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark {
+  background: var(--blackBg);
+  color: var(--whiteBg);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons {
+  background: var(--animatedBg);
 }
 .wp-block-guten-weather-guten-weather .weather-icon {
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
 }
-.wp-block-guten-weather-guten-weather .weather-text,
-.wp-block-guten-weather-guten-weather .weather-loc-name,
-.wp-block-guten-weather-guten-weather .weather-loc-coords,
-.wp-block-guten-weather-guten-weather .weather-loc-timezone {
-  font-family: "Open Sans", sans-serif;
+.wp-block-guten-weather-guten-weather .weather-temperature {
+  font-size: 4rem;
+  font-weight: var(--boldFont);
+}
+.wp-block-guten-weather-guten-weather .weather-text-content {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+.wp-block-guten-weather-guten-weather .weather-label {
+  font-weight: var(--mediumFont);
+}
+.wp-block-guten-weather-guten-weather .weather-label:after {
+  content: ":";
+  margin-right: 5px;
 }
 .wp-block-guten-weather-guten-weather .weather-text {
   font-size: 2.5rem;
-  font-weight: 500;
+  font-weight: var(--semiBoldFont);
   margin-bottom: 10px;
 }
 

@@ -65,6 +65,7 @@ function Edit(props) {
       airQuality,
       weatherAlert,
       languageData,
+      layoutModel,
       WeatherTpl
     },
     setAttributes
@@ -106,7 +107,14 @@ function Edit(props) {
     });
   };
 
-  let weather_api,
+  const onChangeLayoutModel = newLayoutModel => {
+    setAttributes({
+      layoutModel: newLayoutModel
+    });
+  };
+
+  const weather_api = 'http://api.weatherapi.com/v1/forecast.json?';
+  let weather_endpoint,
       apiKey,
       cityName = "&q=",
       airQualityData = "&aqi=" + airQuality,
@@ -126,28 +134,25 @@ function Edit(props) {
     language = "&lang=" + languageData;
   }
 
-  if (weatherType === 'forecast') {
-    weather_api = "http://api.weatherapi.com/v1/forecast.json?" + apiKey + cityName + days + airQualityData + WeatherAlertData + language;
-  } else {
-    weather_api = "http://api.weatherapi.com/v1/current.json?" + apiKey + cityName + airQualityData + language;
-  }
+  weatherType === 'forecast' ? weather_endpoint = weather_api + apiKey + cityName + days + airQualityData + WeatherAlertData + language : weather_endpoint = weather_api + apiKey + cityName + airQualityData + language;
 
   if (weather_api_key != '' && city !== 'select your city') {
-    fetch(weather_api, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(response => response.json()).then(data => {
-      console.log('data >>>', data);
-      let weather_code, weather_icon, weather_text, weather_loc_name, weather_loc_coordinates, weather_loc_localtime;
+    fetch(weather_endpoint).then(response => response.json()).then(data => {
+      console.log('data >', data);
+      let weather_code, weather_icon, weather_text, weather_loc_temperature, weather_loc_name, weather_loc_country, weather_loc_coordinates, weather_loc_localtime, weather_loc_feelslike, weather_loc_humidity, weather_loc_wind_direction, weather_loc_wind_kph;
       weather_code = data.current.condition.code;
       weather_icon = data.current.condition.icon;
       weather_text = data.current.condition.text;
+      weather_loc_temperature = data.current.temp_c;
       weather_loc_name = data.location.name;
+      weather_loc_country = data.location.country;
       weather_loc_coordinates = data.location.lat + "," + data.location.lon;
       weather_loc_localtime = data.location.localtime;
-      props.attributes.WeatherTpl = '<div class="weather-icon icon-' + weather_code + '"><img src="' + weather_icon + '" alt="' + weather_text + '" /></div><div class="weather-text">' + weather_text + '</div><div class="weather-loc-name">' + weather_loc_name + '</div><div class="weahter-loc-coords">' + weather_loc_coordinates + '</div><div class="weather-loc-timezone">' + weather_loc_localtime + '</div>';
+      weather_loc_feelslike = data.current.feelslike_c;
+      weather_loc_humidity = data.current.humidity;
+      weather_loc_wind_direction = data.current.wind_dir;
+      weather_loc_wind_kph = data.current.wind_kph;
+      props.attributes.WeatherTpl = '<div class="weather-icon icon-' + weather_code + '"><div class="weather-temperature">' + weather_loc_temperature + '°' + '</div><img src="' + weather_icon + '" alt="' + weather_text + '" /></div><div class="weather-text-content"><div class="weather-text">' + weather_text + '</div><div class="weather-loc-name"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Location', 'guten-weather') + '</span>' + weather_loc_name + ' - ' + weather_loc_country + '</div><div class="weahter-loc-coords"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Coordinates', 'guten-weather') + '</span>' + weather_loc_coordinates + '</div><div class="weather-loc-humidity"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather') + '</span>' + weather_loc_humidity + '%' + '</div><div class="weather-loc-wind"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind', 'guten-weather') + '</span>' + weather_loc_wind_kph + ' km/h' + ' - ' + weather_loc_wind_direction + '</div></div>';
 
       if (weatherType === 'forecast') {
         const weather_forecast = data.forecast.forecastday;
@@ -424,8 +429,27 @@ function Edit(props) {
       value: 'zu'
     }],
     onChange: onChangeLanguageData
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
+    className: "blocks-base-control__label"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout weather', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: "Choose your layout",
+    value: layoutModel,
+    options: [{
+      label: 'Select your layout',
+      value: 'select_your_layout'
+    }, {
+      label: 'Light',
+      value: 'light'
+    }, {
+      label: 'Dark',
+      value: 'dark'
+    }, {
+      label: 'Animated icons',
+      value: 'animated_icons'
+    }],
+    onChange: onChangeLayoutModel
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "widget-weather-container",
+    className: "widget-weather-container layout--" + layoutModel,
     dangerouslySetInnerHTML: createWeatherContent()
   })));
 }
@@ -538,6 +562,7 @@ function save(props) {
       airQuality,
       weatherAlert,
       languageData,
+      layoutModel,
       WeatherTpl
     },
     setAttributes
@@ -550,7 +575,7 @@ function save(props) {
   }
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "widget-weather-container",
+    className: "widget-weather-container layout--" + layoutModel,
     dangerouslySetInnerHTML: createWeatherContent()
   }));
 }

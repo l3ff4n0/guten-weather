@@ -7,8 +7,7 @@
 	"icon": "cloud",
 	"description": "This is a guten weather block to display weather and forecast",
 	"supports": {
-		"html": false,
-		"multiple": false
+		"html": false
 	},
 	"attributes":{
 		"city": {
@@ -34,6 +33,10 @@
 		"languageData": {
 			"type": "string",
 			"default": "'select your language"
+		},
+		"layoutModel": {
+			"type": "string",
+			"default": "'select your layout"
 		},
 		"WeatherTpl": {
 			"type": "string",
