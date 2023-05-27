@@ -263,9 +263,14 @@ function Edit(props) {
             props.attributes.WeatherTpl += '<div class="swiper-wrapper">';
             hour_data.map(function (hour_key, hour_value) {
               const hour_condition = hour_key.condition;
+              const date = new Date(hour_key.time_epoch * 1000);
+              var hours = date.getHours();
+              var minutes = "0" + date.getMinutes();
+              var seconds = "0" + date.getSeconds();
+              var formattedTime = hours + ':' + minutes.substring(-2);
               props.attributes.WeatherTpl += '<div id="weather-forecast-hour-' + hour_value + '" class="swiper-slide weather-hour-content">';
-              props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-' + hour_condition.code + '"><img src="' + hour_condition.icon + '" alt="' + hour_condition.text + '" /></div></div>'; // props.attributes.WeatherTpl += '<div clss="weather-hour-depoint">'+ hour_key.dewpoint_f + '</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-humidity">'+ hour_key.humidity + '</div>';
+              props.attributes.WeatherTpl += '<div clss="weather-hour-depoint">' + formattedTime + '</div>';
+              props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-' + hour_condition.code + '"><img src="' + hour_condition.icon + '" alt="' + hour_condition.text + '" /></div></div>'; // props.attributes.WeatherTpl += '<div clss="weather-hour-humidity">'+ hour_key.humidity + '</div>';
               // props.attributes.WeatherTpl += '<div clss="weather-hour-precip_mm">'+ hour_key.precip_mm + '</div>';
               // props.attributes.WeatherTpl += '<div clss="weather-hour-temp_f">'+ hour_key.temp_f + '</div>';
               // props.attributes.WeatherTpl += '<div clss="weather-hour-time">'+ hour_key.time + '</div>';
