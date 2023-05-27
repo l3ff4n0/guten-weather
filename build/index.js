@@ -264,10 +264,9 @@ function Edit(props) {
             hour_data.map(function (hour_key, hour_value) {
               const hour_condition = hour_key.condition;
               const date = new Date(hour_key.time_epoch * 1000);
-              var hours = date.getHours();
+              var hours = date.getHours() <= 9 ? "0" + date.getHours() : date.getHours();
               var minutes = "0" + date.getMinutes();
-              var seconds = "0" + date.getSeconds();
-              var formattedTime = hours + ':' + minutes.substring(-2);
+              var formattedTime = hours + ':' + minutes;
               props.attributes.WeatherTpl += '<div id="weather-forecast-hour-' + hour_value + '" class="swiper-slide weather-hour-content">';
               props.attributes.WeatherTpl += '<div clss="weather-hour-depoint">' + formattedTime + '</div>';
               props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-' + hour_condition.code + '"><img src="' + hour_condition.icon + '" alt="' + hour_condition.text + '" /></div></div>'; // props.attributes.WeatherTpl += '<div clss="weather-hour-humidity">'+ hour_key.humidity + '</div>';
