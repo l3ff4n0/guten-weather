@@ -27,9 +27,11 @@ export default function save(props) {
 	function createWeatherContent() {
 		return {__html: props.attributes.WeatherTpl};
 	}
+
 	return (
 		<div { ...useBlockProps.save() }>
 			<div className={"widget-weather-container layout--" + layoutModel} dangerouslySetInnerHTML={createWeatherContent()} />
 		</div>
 	);
 }
+
