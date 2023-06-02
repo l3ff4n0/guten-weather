@@ -62,8 +62,6 @@ function Edit(props) {
       city,
       weatherType,
       numberDays,
-      airQuality,
-      weatherAlert,
       languageData,
       layoutModel,
       WeatherTpl
@@ -89,18 +87,6 @@ function Edit(props) {
     });
   };
 
-  const onChangeAirQuality = newAirQuality => {
-    setAttributes({
-      airQuality: newAirQuality
-    });
-  };
-
-  const onChangeWeatherAlert = newWeatherAlert => {
-    setAttributes({
-      weatherAlert: newWeatherAlert
-    });
-  };
-
   const onChangeLanguageData = newLanguageData => {
     setAttributes({
       languageData: newLanguageData
@@ -117,8 +103,6 @@ function Edit(props) {
   let weather_endpoint,
       apiKey,
       cityName = "&q=",
-      airQualityData = "&aqi=" + airQuality,
-      WeatherAlertData = "&alerts=" + weatherAlert,
       days = "&days=" + numberDays,
       language;
 
@@ -134,11 +118,11 @@ function Edit(props) {
     language = "&lang=" + languageData;
   }
 
-  weatherType === 'forecast' ? weather_endpoint = weather_api + apiKey + cityName + days + airQualityData + WeatherAlertData + language : weather_endpoint = weather_api + apiKey + cityName + airQualityData + language;
+  weatherType === 'forecast' ? weather_endpoint = weather_api + apiKey + cityName + days + language : weather_endpoint = weather_api + apiKey + cityName + language;
 
   if (weather_api_key != '' && city !== 'select your city') {
     fetch(weather_endpoint).then(response => response.json()).then(data => {
-      let weather_code, weather_icon, weather_text, weather_loc_temperature, weather_loc_name, weather_loc_country, weather_loc_coordinates, weather_loc_localtime, weather_loc_feelslike, weather_loc_humidity, weather_loc_wind_direction, weather_loc_wind_kph, weather_loc_pressure, weather_loc_air_quality;
+      let weather_code, weather_icon, weather_text, weather_loc_temperature, weather_loc_name, weather_loc_country, weather_loc_coordinates, weather_loc_localtime, weather_loc_feelslike, weather_loc_humidity, weather_loc_wind_direction, weather_loc_wind_kph, weather_loc_pressure;
       weather_code = data.current.condition.code;
       weather_icon = data.current.condition.icon;
       weather_text = data.current.condition.text;
@@ -152,7 +136,6 @@ function Edit(props) {
       weather_loc_wind_direction = data.current.wind_dir;
       weather_loc_wind_kph = data.current.wind_kph;
       weather_loc_pressure = data.current.pressure_mb;
-      weather_loc_air_quality = data.current.air_quality;
       props.attributes.WeatherTpl = '<div class="weather-icon icon-' + weather_code + '">';
       props.attributes.WeatherTpl += '<div class="weather-temperature">' + weather_loc_temperature + '°' + '</div>';
       props.attributes.WeatherTpl += '<img src="' + weather_icon + '" alt="' + weather_text + '" />';
@@ -167,96 +150,29 @@ function Edit(props) {
       props.attributes.WeatherTpl += '<div class="weather-loc-pressure"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pressure', 'guten-weather') + '</span>' + weather_loc_pressure + ' mbar' + '</div>';
       props.attributes.WeatherTpl += '</div>';
 
-      if (typeof weather_loc_air_quality !== 'undefined') {
-        let us_epa_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('means Good', 'guten-weather');
-
-        switch (weather_loc_air_quality['us-epa-index']) {
-          case 2:
-            us_epa_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('means Moderate', 'guten-weather');
-            break;
-
-          case 3:
-            us_epa_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('means Unhealthy for sensitive group', 'guten-weather');
-            break;
-
-          case 4:
-            us_epa_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('means Unhealthy', 'guten-weather');
-            break;
-
-          case 5:
-            us_epa_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('means Very Unhealthy', 'guten-weather');
-            break;
-
-          case 6:
-            us_epa_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('means Hazardous', 'guten-weather');
-            break;
-
-          default:
-            us_epa_index;
-        }
-
-        let gb_defra_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Low', 'guten-weather');
-
-        switch (weather_loc_air_quality['gb-defra-index	']) {
-          case 2:
-          case 3:
-            gb_defra_index;
-            break;
-
-          case 4:
-          case 5:
-          case 6:
-            gb_defra_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Moderate', 'guten-weather');
-            break;
-
-          case 7:
-          case 8:
-          case 9:
-            gb_defra_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('High', 'guten-weather');
-            break;
-
-          case 10:
-            gb_defra_index = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Very high', 'guten-weather');
-            break;
-
-          default:
-            gb_defra_index;
-        }
-
-        props.attributes.WeatherTpl += '<div class="weather-air-quality-container">';
-        props.attributes.WeatherTpl += '<div class="weather-air-quality-main-title">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Air quality', 'guten-weather') + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-carbon-monoxide"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Carbon monoxide', 'guten-weather') + '</span>' + weather_loc_air_quality.co + ' µg/m³' + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-uk-defra-index"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('UK Defra Index', 'guten-weather') + '</span>' + gb_defra_index + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-nitrogen-dioxide"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Nitrogen dioxide', 'guten-weather') + '</span>' + weather_loc_air_quality.no2 + ' µg/m³' + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-ozone"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ozone', 'guten-weather') + '</span>' + weather_loc_air_quality.o3 + ' µg/m³' + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-pm2-5"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PM2.5', 'guten-weather') + '</span>' + weather_loc_air_quality.pm2_5 + ' µg/m³' + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-pm10"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PM10', 'guten-weather') + '</span>' + weather_loc_air_quality.pm10 + ' µg/m³' + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-sulphur-dioxide"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Sulphur dioxide', 'guten-weather') + '</span>' + weather_loc_air_quality.so2 + ' µg/m³' + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-us-epa-index"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('US - EPA index', 'guten-weather') + '</span>' + us_epa_index + '</div>';
-        props.attributes.WeatherTpl += '</div>';
-      }
-
       if (weatherType === 'forecast') {
         const weather_forecast = data.forecast.forecastday;
-        console.log('Forecast >>>', weather_forecast);
 
         if (weather_forecast.length > 0) {
           props.attributes.WeatherTpl += '<div class="weather-forecast-container">';
           weather_forecast.map(function (key, value) {
-            const astro_data = key.astro,
-                  day_data = key.day,
+            const day_data = key.day,
                   hour_data = key.hour;
-            props.attributes.WeatherTpl += '<div id="weather-forecast-day-' + value + '" class="weather-forecast-container">';
-            props.attributes.WeatherTpl += '<div class="weather-forecast-day-container">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'guten-weather') + ' ' + key.date + '</div>'; // props.attributes.WeatherTpl += '<div class="weather-astro-container">';
-            // props.attributes.WeatherTpl += '<div class="astro-phase">' + astro_data.moon_phase + '</div>';
-            // props.attributes.WeatherTpl += '<div class="astro-moonrise">' + astro_data.moonrise + '</div>';
-            // props.attributes.WeatherTpl += '<div class="astro-moonset">' + astro_data.moonset + '</div>';
-            // props.attributes.WeatherTpl += '<div class="astro-sunrise">' + astro_data.sunrise + '</div>';
-            // props.attributes.WeatherTpl += '<div class="astro-sunset">' + astro_data.sunset + '</div>';
-            // props.attributes.WeatherTpl += '</div>';
-
+            props.attributes.WeatherTpl += '<div id="weather-forecast-day-' + value + '" class="weather-forecast-day-container">';
+            props.attributes.WeatherTpl += '<div class="weather-forecast-day-main-title">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'guten-weather') + ' ' + key.date + '</div>';
             props.attributes.WeatherTpl += '<div class="weather-day-container">';
-            props.attributes.WeatherTpl += '<div class="weather-day-condition"><div weather-icon icon-' + day_data.condition.code + '"><img src="' + day_data.condition.icon + '" alt="' + day_data.condition.text + '" /><div class="weather-text">' + day_data.condition.text + '</div></div></div>';
+            props.attributes.WeatherTpl += '<div class="weather-day-condition">';
+            props.attributes.WeatherTpl += '<div class="weather-icon icon-' + day_data.condition.code + '">';
+            props.attributes.WeatherTpl += '<img src="' + day_data.condition.icon + '" alt="' + day_data.condition.text + '" />';
+            props.attributes.WeatherTpl += '</div>';
+            props.attributes.WeatherTpl += '<div class="weather-day-content">';
+            props.attributes.WeatherTpl += '<div class="weather-text">' + day_data.condition.text + '</div>';
+            props.attributes.WeatherTpl += '<div class="weather-mintemp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Min temperature', 'guten-weather') + '</span>' + day_data.mintemp_c + '°' + '</div>';
+            props.attributes.WeatherTpl += '<div class="weather-maxtemp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Max temperature', 'guten-weather') + '</span>' + day_data.maxtemp_c + '°' + '</div>';
+            props.attributes.WeatherTpl += '<div class="weather-mintemp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather') + '</span>' + day_data.avghumidity + '%' + '</div>';
+            props.attributes.WeatherTpl += '<div class="weather-maxtemp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total precipitation', 'guten-weather') + '</span>' + day_data.totalprecip_mm + 'mm' + '</div>';
+            props.attributes.WeatherTpl += '</div>';
+            props.attributes.WeatherTpl += '</div>';
             props.attributes.WeatherTpl += '</div>';
             props.attributes.WeatherTpl += '<div class="weather-hour-wrapper">';
             props.attributes.WeatherTpl += '<div class="swiper weather-hour-container">';
@@ -269,19 +185,16 @@ function Edit(props) {
               var formattedTime = hours + ':' + minutes;
               props.attributes.WeatherTpl += '<div id="weather-forecast-hour-' + hour_value + '" class="swiper-slide weather-hour-content">';
               props.attributes.WeatherTpl += '<div clss="weather-hour-depoint">' + formattedTime + '</div>';
-              props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-' + hour_condition.code + '"><img src="' + hour_condition.icon + '" alt="' + hour_condition.text + '" /></div></div>'; // props.attributes.WeatherTpl += '<div clss="weather-hour-humidity">'+ hour_key.humidity + '</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-precip_mm">'+ hour_key.precip_mm + '</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-temp_f">'+ hour_key.temp_f + '</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-time">'+ hour_key.time + '</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-wind-content">';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-wind-degree">'+ hour_key.wind_degree +'</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-wind-dir">'+ hour_key.wind_dir +'</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-wind-kph">'+ hour_key.wind_kph +'</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-wind-mph">'+ hour_key.wind_mph +'</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-windchill_c">'+ hour_key.windchill_c +'</div>';
-              // props.attributes.WeatherTpl += '<div clss="weather-hour-windchill_f">'+ hour_key.windchill_f +'</div>';
-              // props.attributes.WeatherTpl += '</div>';
-
+              props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-' + hour_condition.code + '"><img src="' + hour_condition.icon + '" alt="' + hour_condition.text + '" /></div></div>';
+              props.attributes.WeatherTpl += '<div clss="weather-hour-humidity"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather') + '</span>' + hour_key.humidity + '%' + '</div>';
+              props.attributes.WeatherTpl += '<div clss="weather-hour-precip_mm"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Rainfall', 'guten-weather') + '</span>' + hour_key.precip_mm + 'mm' + '</div>';
+              props.attributes.WeatherTpl += '<div clss="weather-hour-temp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Temperature', 'guten-weather') + '</span>' + hour_key.temp_c + '°' + '</div>';
+              props.attributes.WeatherTpl += '<div clss="weather-hour-wind-content">';
+              props.attributes.WeatherTpl += '<div clss="weather-hour-wind-degree"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind degree', 'guten-weather') + '</span>' + hour_key.wind_degree + '°' + '</div>';
+              props.attributes.WeatherTpl += '<div clss="weather-hour-wind-dir"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind direction', 'guten-weather') + '</span>' + hour_key.wind_dir + '</div>';
+              props.attributes.WeatherTpl += '<div clss="weather-hour-wind-kph"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind speed', 'guten-weather') + '</span>' + hour_key.wind_kph + '</div>';
+              props.attributes.WeatherTpl += '<div clss="weather-hour-windchill_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind chill', 'guten-weather') + '</span>' + hour_key.windchill_c + '°' + '</div>';
+              props.attributes.WeatherTpl += '</div>';
               props.attributes.WeatherTpl += '</div>';
             });
             props.attributes.WeatherTpl += '</div>';
@@ -296,10 +209,8 @@ function Edit(props) {
 
         jQuery(document).ready(function ($) {
           const swiper = new Swiper('.swiper', {
-            // Optional parameters
-            loop: true,
-            slidesPerView: 6,
-            // Navigation arrows
+            //loop: true,
+            slidesPerView: 3,
             navigation: {
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev'
@@ -378,32 +289,6 @@ function Edit(props) {
       value: '10'
     }],
     onChange: onChangeNumberDays
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
-    className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Air quality data', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-    label: "Enable the air quality data",
-    value: airQuality,
-    options: [{
-      label: 'No',
-      value: 'no'
-    }, {
-      label: 'Yes',
-      value: 'yes'
-    }],
-    onChange: onChangeAirQuality
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
-    className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Weather alert data', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-    label: "Enable the weather alert data",
-    value: weatherAlert,
-    options: [{
-      label: 'No',
-      value: 'no'
-    }, {
-      label: 'Yes',
-      value: 'yes'
-    }],
-    onChange: onChangeWeatherAlert
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Language data', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
@@ -664,8 +549,6 @@ function save(props) {
       city,
       weatherType,
       numberDays,
-      airQuality,
-      weatherAlert,
       languageData,
       layoutModel,
       WeatherTpl

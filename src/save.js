@@ -23,7 +23,7 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save(props) {
-	const { attributes: {city, weatherType, numberDays, airQuality, weatherAlert, languageData,layoutModel, WeatherTpl}, setAttributes } = props;
+	const { attributes: {city, weatherType, numberDays, languageData,layoutModel, WeatherTpl}, setAttributes } = props;
 	function createWeatherContent() {
 		return {__html: props.attributes.WeatherTpl};
 	}

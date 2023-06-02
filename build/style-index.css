@@ -858,24 +858,57 @@ swiper-container .swiper-notification {
   color: var(--blackBg);
 }
 .wp-block-guten-weather-guten-weather .widget-weather-container.layout--light .weather-air-quality-main-title,
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--light .weather-forecast-day-container {
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--light .weather-forecast-day-main-title {
   background: var(--blackBg);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--light .weather-forecast-day-container {
+  background: #f4f4f4;
 }
 .wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark {
   background: var(--blackBg);
   color: var(--whiteBg);
 }
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-air-quality-main-title {
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-air-quality-main-title,
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-forecast-day-main-title {
   color: var(--blackBg);
   background: var(--whiteBg);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-forecast-day-container {
+  background: #3d3d3d;
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .weather-hour-content:after {
+  background: var(--whiteBg);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .swiper-button-prev,
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .swiper-button-next {
+  background: var(--whiteBg);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .swiper-button-prev:after,
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .swiper-button-next:after {
+  color: var(--blackBg);
 }
 .wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons {
   background: var(--animatedBg);
   color: var(--animatedDarkBlueBg);
 }
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-air-quality-main-title {
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-air-quality-main-title,
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-forecast-day-main-title {
   color: var(--animatedDarkBlueBg);
   background: var(--animatedMiddleBlueBg);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-forecast-day-container {
+  background: #7aa5d7;
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .weather-hour-content:after {
+  background: var(--animatedDarkBlueBg);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .swiper-button-prev,
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .swiper-button-next {
+  background: var(--animatedMiddleBlueBg);
+}
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .swiper-button-prev:after,
+.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .swiper-button-next:after {
+  color: var(--whiteBg);
 }
 .wp-block-guten-weather-guten-weather .weather-icon {
   display: flex;
@@ -917,16 +950,65 @@ swiper-container .swiper-notification {
   border-radius: 5px;
   margin-bottom: 20px;
 }
-.wp-block-guten-weather-guten-weather .weather-forecast-container {
+.wp-block-guten-weather-guten-weather .weather-forecast-container,
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container {
   overflow-x: hidden;
 }
-.wp-block-guten-weather-guten-weather .weather-forecast-container .weather-forecast-day-container {
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container {
+  border-radius: 5px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-forecast-day-main-title {
   font-size: 1.2rem;
   font-weight: var(--semiBoldFont);
   color: var(--whiteBg);
   padding: 5px 10px;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-day-container {
+  margin-bottom: 20px;
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-day-condition {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-day-condition .weather-icon {
+  width: 25%;
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-day-condition .weather-day-content {
+  width: 75%;
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-day-condition .weather-day-content .weather-text {
+  font-size: 1.5rem;
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-hour-container .weather-hour-content {
+  text-align: center;
+  position: relative;
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-hour-container .weather-hour-content:after {
+  content: "";
+  width: 1px;
+  height: 40px;
+  background: var(--blackBg);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-hour-container .swiper-button-prev,
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-hour-container .swiper-button-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: var(--blackBg);
+}
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-hour-container .swiper-button-prev:after,
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-hour-container .swiper-button-next:after {
+  font-size: 15px;
+  color: var(--whiteBg);
 }
 
 /*# sourceMappingURL=style-index.css.map*/
