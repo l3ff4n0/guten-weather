@@ -82,6 +82,7 @@ export default function Edit(props) {
 	(weatherType === 'forecast') ? weather_endpoint = weather_api + apiKey + cityName + days + language : weather_endpoint = weather_api + apiKey + cityName + language;
 
 	if(weather_api_key != '' && city !== 'select your city'){
+		console.log('language >>', weather_endpoint);
 		fetch(weather_endpoint).then(response => response.json()).then(data => {
 			let weather_code,
 			weather_icon,
@@ -118,7 +119,7 @@ export default function Edit(props) {
 
 			props.attributes.WeatherTpl = '<div class="weather-icon icon-' + weather_code + '">';
 			props.attributes.WeatherTpl += '<div class="weather-temperature">' + weather_loc_temperature + '°' + '</div>';
-			props.attributes.WeatherTpl +=  '<img src="' + weather_icon_url + '" alt="' + weather_text + '" />';
+			props.attributes.WeatherTpl +=  '<img loading="lazy" src="' + weather_icon_url + '" alt="' + weather_text + '" />';
 			props.attributes.WeatherTpl += '</div>';
 			props.attributes.WeatherTpl += '<div class="weather-text-content">';
 			props.attributes.WeatherTpl += '<div class="weather-text">' + weather_text +'</div>';
@@ -148,7 +149,7 @@ export default function Edit(props) {
 							props.attributes.WeatherTpl += '<div class="weather-day-container">';
 							props.attributes.WeatherTpl += '<div class="weather-day-condition">';
 							props.attributes.WeatherTpl += '<div class="weather-icon icon-'+ day_data.condition.code +'">';
-							props.attributes.WeatherTpl += '<img src="'+ weather_icon_url +'" alt="'+ day_data.condition.text +'" />';
+							props.attributes.WeatherTpl += '<img loading="lazy" src="'+ weather_icon_url +'" alt="'+ day_data.condition.text +'" />';
 							props.attributes.WeatherTpl += '</div>';
 							props.attributes.WeatherTpl += '<div class="weather-day-content">';
 							props.attributes.WeatherTpl += '<div class="weather-text">'+ day_data.condition.text +'</div>';
@@ -174,7 +175,7 @@ export default function Edit(props) {
 
 								props.attributes.WeatherTpl += '<div id="weather-forecast-hour-'+ hour_value +'" class="swiper-slide weather-hour-content">';
 								props.attributes.WeatherTpl += '<div clss="weather-hour-depoint">'+ formattedTime + '</div>';
-								props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-'+ hour_condition.code +'"><img src="'+ weather_icon_url +'" alt="'+ hour_condition.text +
+								props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div class="weather-icon icon-'+ hour_condition.code +'"><img loading="lazy" src="'+ weather_icon_url +'" alt="'+ hour_condition.text +
 							'" /></div></div>';
 								props.attributes.WeatherTpl += '<div clss="weather-hour-humidity"><span class="weather-label">'+ __( 'Humidity', 'guten-weather' ) + '</span>' + hour_key.humidity + '%' + '</div>';
 								props.attributes.WeatherTpl += '<div clss="weather-hour-precip_mm"><span class="weather-label">'+ __( 'Rainfall', 'guten-weather' ) + '</span>' + hour_key.precip_mm + 'mm' + '</div>';

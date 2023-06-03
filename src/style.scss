@@ -886,6 +886,14 @@
 					right: 0;
 					transform: translateY(-50%);
 				}
+				.weather-hour-condition{
+					.weather-icon{
+						width: 70px;
+						height: 70px;
+						display: inline-block;
+						text-align: center;
+					}
+				}
 			}
 			.swiper-button-prev,
 			.swiper-button-next{

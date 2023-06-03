@@ -998,6 +998,12 @@ swiper-container .swiper-notification {
   right: 0;
   transform: translateY(-50%);
 }
+.wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-hour-container .weather-hour-content .weather-hour-condition .weather-icon {
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  text-align: center;
+}
 .wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-hour-container .swiper-button-prev,
 .wp-block-guten-weather-guten-weather .weather-forecast-day-container .weather-hour-container .swiper-button-next {
   width: 40px;
