@@ -867,6 +867,7 @@ add_action( 'admin_menu', 'guten_weather_menu' );
 function guten_weather_print_scripts() { ?>
 	<script type="text/javascript">
 		var weather_api_key = <?php echo json_encode(esc_attr( get_option('weather_api_key') )); ?>;
+        var plugin_path = <?php echo json_encode(plugin_dir_url( __FILE__ )); ?>;
 	</script>
 	<?php
 }

@@ -59,6 +59,8 @@ export default function Edit(props) {
 
 	const weather_api = 'http://api.weatherapi.com/v1/forecast.json?';
 
+	const regex = /\/(\w+)\/(\w+)\.(\w+)$/;
+
 	let weather_endpoint,
 	apiKey,
 	cityName = "&q=",
@@ -73,7 +75,7 @@ export default function Edit(props) {
 		cityName = "&q=" + city;
 	}
 
-	if(languageData !== 'select your language' && languageData !== undefined){
+	if(languageData !== 'select your language' && languageData !== 'undefined'){
 		language = "&lang=" + languageData;
 	}
 
@@ -83,6 +85,7 @@ export default function Edit(props) {
 		fetch(weather_endpoint).then(response => response.json()).then(data => {
 			let weather_code,
 			weather_icon,
+			weather_icon_url,
 			weather_text,
 			weather_loc_temperature,
 	 		weather_loc_name,
@@ -109,9 +112,13 @@ export default function Edit(props) {
 			weather_loc_wind_kph = data.current.wind_kph;
 			weather_loc_pressure = data.current.pressure_mb;
 
+			let matches = regex.exec(weather_icon);
+
+			weather_icon_url  = (layoutModel === 'animated_icons') ? plugin_path + 'animated-icons/'+ matches[1] + '/'+ matches[2] + '.svg' : weather_icon;
+
 			props.attributes.WeatherTpl = '<div class="weather-icon icon-' + weather_code + '">';
 			props.attributes.WeatherTpl += '<div class="weather-temperature">' + weather_loc_temperature + '°' + '</div>';
-			props.attributes.WeatherTpl += '<img src="' + weather_icon + '" alt="' + weather_text + '" />';
+			props.attributes.WeatherTpl +=  '<img src="' + weather_icon_url + '" alt="' + weather_text + '" />';
 			props.attributes.WeatherTpl += '</div>';
 			props.attributes.WeatherTpl += '<div class="weather-text-content">';
 			props.attributes.WeatherTpl += '<div class="weather-text">' + weather_text +'</div>';
@@ -130,14 +137,18 @@ export default function Edit(props) {
 					props.attributes.WeatherTpl += '<div class="weather-forecast-container">';
 					weather_forecast.map(function(key, value){
 						const day_data = key.day,
-							hour_data = key.hour;	
-						
+							hour_data = key.hour;
+							
+							matches = regex.exec(day_data.condition.icon);
+							
+							weather_icon_url  = (layoutModel === 'animated_icons') ? plugin_path + 'animated-icons/'+ matches[1] + '/'+ matches[2] + '.svg' : day_data.condition.icon;
+
 							props.attributes.WeatherTpl += '<div id="weather-forecast-day-'+ value +'" class="weather-forecast-day-container">';
 							props.attributes.WeatherTpl += '<div class="weather-forecast-day-main-title">' + __( 'Date', 'guten-weather' ) + ' ' + key.date + '</div>';
 							props.attributes.WeatherTpl += '<div class="weather-day-container">';
 							props.attributes.WeatherTpl += '<div class="weather-day-condition">';
 							props.attributes.WeatherTpl += '<div class="weather-icon icon-'+ day_data.condition.code +'">';
-							props.attributes.WeatherTpl += '<img src="'+ day_data.condition.icon +'" alt="'+ day_data.condition.text +'" />';
+							props.attributes.WeatherTpl += '<img src="'+ weather_icon_url +'" alt="'+ day_data.condition.text +'" />';
 							props.attributes.WeatherTpl += '</div>';
 							props.attributes.WeatherTpl += '<div class="weather-day-content">';
 							props.attributes.WeatherTpl += '<div class="weather-text">'+ day_data.condition.text +'</div>';
@@ -157,9 +168,13 @@ export default function Edit(props) {
 								var hours = (date.getHours()<= 9) ? "0" + date.getHours() : date.getHours();
 								var minutes = "0" + date.getMinutes();
 								var formattedTime = hours + ':' + minutes;
+
+								matches = regex.exec(hour_condition.icon);
+								weather_icon_url  = (layoutModel === 'animated_icons') ? plugin_path + 'animated-icons/'+ matches[1] + '/'+ matches[2] + '.svg' : hour_condition.icon;
+
 								props.attributes.WeatherTpl += '<div id="weather-forecast-hour-'+ hour_value +'" class="swiper-slide weather-hour-content">';
 								props.attributes.WeatherTpl += '<div clss="weather-hour-depoint">'+ formattedTime + '</div>';
-								props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-'+ hour_condition.code +'"><img src="'+ hour_condition.icon +'" alt="'+ hour_condition.text +
+								props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div weather-icon icon-'+ hour_condition.code +'"><img src="'+ weather_icon_url +'" alt="'+ hour_condition.text +
 							'" /></div></div>';
 								props.attributes.WeatherTpl += '<div clss="weather-hour-humidity"><span class="weather-label">'+ __( 'Humidity', 'guten-weather' ) + '</span>' + hour_key.humidity + '%' + '</div>';
 								props.attributes.WeatherTpl += '<div clss="weather-hour-precip_mm"><span class="weather-label">'+ __( 'Rainfall', 'guten-weather' ) + '</span>' + hour_key.precip_mm + 'mm' + '</div>';
