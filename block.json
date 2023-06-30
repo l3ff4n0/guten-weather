@@ -32,11 +32,11 @@
 		},
 		"languageData": {
 			"type": "string",
-			"default": "'select your language"
+			"default": "select your language"
 		},
 		"layoutModel": {
 			"type": "string",
-			"default": "'select your layout"
+			"default": "select your layout"
 		},
 		"WeatherTpl": {
 			"type": "string",

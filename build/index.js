@@ -115,9 +115,7 @@ function Edit(props) {
     cityName = "&q=" + city;
   }
 
-  if (languageData !== 'select your language' && languageData !== 'undefined') {
-    language = "&lang=" + languageData;
-  }
+  language = languageData !== 'select your language' ? "&lang=" + languageData : "";
 
   if (weather_api_key == '') {
     props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please create an API KEY and put it inside the Guten Weather settings plugin', 'guten-weather');
@@ -126,7 +124,6 @@ function Edit(props) {
       props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please add a Location to display the weather widget', 'guten-weather');
     } else {
       weatherType === 'forecast' ? weather_endpoint = weather_api + apiKey + cityName + days + language : weather_endpoint = weather_api + apiKey + cityName + language;
-      console.log('Weather endpoint', weather_endpoint);
       fetch(weather_endpoint).then(response => response.json()).then(data => {
         let weather_code, weather_icon, weather_icon_url, weather_text, weather_loc_temperature, weather_loc_name, weather_loc_country, weather_loc_coordinates, weather_loc_localtime, weather_loc_feelslike, weather_loc_humidity, weather_loc_wind_direction, weather_loc_wind_kph, weather_loc_pressure;
         weather_code = data.current.condition.code;

@@ -75,9 +75,7 @@ export default function Edit(props) {
 		cityName = "&q=" + city;
 	}
 
-	if(languageData !== 'select your language' && languageData !== 'undefined'){
-		language = "&lang=" + languageData;
-	}
+	language = (languageData !== 'select your language') ? "&lang=" + languageData : "";
 
 	if(weather_api_key == ''){
 		props.attributes.WeatherTpl = __('Please create an API KEY and put it inside the Guten Weather settings plugin','guten-weather');
@@ -86,14 +84,13 @@ export default function Edit(props) {
 			props.attributes.WeatherTpl = __('Please add a Location to display the weather widget','guten-weather');
 		} else{
 			(weatherType === 'forecast') ? weather_endpoint = weather_api + apiKey + cityName + days + language : weather_endpoint = weather_api + apiKey + cityName + language;
-				console.log('Weather endpoint',weather_endpoint);
 				fetch(weather_endpoint).then(response => response.json()).then(data => {
 					let weather_code,
 					weather_icon,
 					weather_icon_url,
 					weather_text,
 					weather_loc_temperature,
-					 weather_loc_name,
+					weather_loc_name,
 					weather_loc_country,
 					weather_loc_coordinates,
 					weather_loc_localtime,
