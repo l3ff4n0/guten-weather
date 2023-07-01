@@ -2,7 +2,7 @@
 Contributors:      Stefano Frasson Pianizzola
 Tags:              block
 Tested up to:      6.0
-Stable tag:        0.1.4
+Stable tag:        0.1.5
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,4 +14,4 @@ This is a gutenberg custom block to display the weather and forecast.
 - [ ] Default layout
 - [ ] Forecast default layout
 - [ ] Custom icons animated
-- [ ] Dfferent colors from ColorPalette
+- [ ] Different colors from ColorPalette
