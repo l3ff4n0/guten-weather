@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { Panel, PanelBody, SelectControl,TextControl } from '@wordpress/components';
+import { Panel, PanelBody, SelectControl,TextControl, ColorPalette } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 /**
@@ -56,6 +56,41 @@ export default function Edit(props) {
 	const onChangeLayoutModel = ( newLayoutModel ) => {
 		setAttributes( { layoutModel: newLayoutModel } );
 	};
+
+	const [ Backgroundcolor, setBgColor ] = useState ( '#fff' );
+	const [ Color, setColor ] = useState ( '#fff' );
+    const Backgroundcolors = [
+        { name: 'white', color: '#fff' },
+        { name: 'black', color: '#000' },
+        { name: 'orange', color: '#FFA500' },
+        { name: 'violet', color: '#D0A7F5' },
+        { name: 'light_blue', color: '#AFC6F5' },
+        { name: 'pink', color: '#F542A3' },
+        { name: 'vinaccia', color: '#A83674' },
+        { name: 'beige', color: '#F5D38C' },
+        { name: 'green', color: '#9EA83E' },
+        { name: 'dark_blue', color: '#387CA9' },
+        { name: 'bordeaux', color: '#A83F3E' },
+        { name: 'light_yellow', color: '#F4D66C' },
+    ];
+
+	const colors = [
+        { name: 'white', color: '#fff' },
+        { name: 'black', color: '#000' },
+        { name: 'orange', color: '#FFA500' },
+        { name: 'violet', color: '#D0A7F5' },
+        { name: 'light_blue', color: '#AFC6F5' },
+        { name: 'pink', color: '#F542A3' },
+        { name: 'vinaccia', color: '#A83674' },
+        { name: 'beige', color: '#F5D38C' },
+        { name: 'green', color: '#9EA83E' },
+        { name: 'dark_blue', color: '#387CA9' },
+        { name: 'bordeaux', color: '#A83F3E' },
+        { name: 'light_yellow', color: '#F4D66C' },
+    ];
+
+	console.log('Bg COlor >', Backgroundcolor);
+	console.log('color >', Color);
 
 	const weather_api = 'http://api.weatherapi.com/v1/'+ weatherType +'.json?';
 
@@ -340,13 +375,34 @@ export default function Edit(props) {
 					options={
 						[
 							{ label: 'Select your layout', value: 'select_your_layout', },
-							{ label: 'Light', value: 'light', },
-							{ label: 'Dark', value: 'dark', },
+							{ label: 'Static icons', value: 'static_icons', },
 							{ label: 'Animated icons', value: 'animated_icons', },
 						]
 					}
 					onChange={onChangeLayoutModel}
 					 />
+			</fieldset>
+			<fieldset>
+				<legend className="blocks-base-control__label">
+						{ __( 'Background color', 'guten-weather' ) }
+				</legend>
+				<ColorPalette
+					colors={ Backgroundcolors }
+					value={ Backgroundcolor }
+					enableAlpha="true"
+					onChange={ ( Backgroundcolor ) => setBgColor( Backgroundcolor ) }
+				/>
+			</fieldset>
+			<fieldset>
+				<legend className="blocks-base-control__label">
+						{ __( 'Color', 'guten-weather' ) }
+				</legend>
+				<ColorPalette
+					colors={ colors }
+					value={ Color }
+					enableAlpha="true"
+					onChange={ ( Color ) => setColor( Color ) }
+				/>
 			</fieldset>
    			</PanelBody>
 		</InspectorControls>

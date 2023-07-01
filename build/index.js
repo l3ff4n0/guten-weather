@@ -99,6 +99,84 @@ function Edit(props) {
     });
   };
 
+  const [Backgroundcolor, setBgColor] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('#fff');
+  const [Color, setColor] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('#fff');
+  const Backgroundcolors = [{
+    name: 'white',
+    color: '#fff'
+  }, {
+    name: 'black',
+    color: '#000'
+  }, {
+    name: 'orange',
+    color: '#FFA500'
+  }, {
+    name: 'violet',
+    color: '#D0A7F5'
+  }, {
+    name: 'light_blue',
+    color: '#AFC6F5'
+  }, {
+    name: 'pink',
+    color: '#F542A3'
+  }, {
+    name: 'vinaccia',
+    color: '#A83674'
+  }, {
+    name: 'beige',
+    color: '#F5D38C'
+  }, {
+    name: 'green',
+    color: '#9EA83E'
+  }, {
+    name: 'dark_blue',
+    color: '#387CA9'
+  }, {
+    name: 'bordeaux',
+    color: '#A83F3E'
+  }, {
+    name: 'light_yellow',
+    color: '#F4D66C'
+  }];
+  const colors = [{
+    name: 'white',
+    color: '#fff'
+  }, {
+    name: 'black',
+    color: '#000'
+  }, {
+    name: 'orange',
+    color: '#FFA500'
+  }, {
+    name: 'violet',
+    color: '#D0A7F5'
+  }, {
+    name: 'light_blue',
+    color: '#AFC6F5'
+  }, {
+    name: 'pink',
+    color: '#F542A3'
+  }, {
+    name: 'vinaccia',
+    color: '#A83674'
+  }, {
+    name: 'beige',
+    color: '#F5D38C'
+  }, {
+    name: 'green',
+    color: '#9EA83E'
+  }, {
+    name: 'dark_blue',
+    color: '#387CA9'
+  }, {
+    name: 'bordeaux',
+    color: '#A83F3E'
+  }, {
+    name: 'light_yellow',
+    color: '#F4D66C'
+  }];
+  console.log('Bg COlor >', Backgroundcolor);
+  console.log('color >', Color);
   const weather_api = 'http://api.weatherapi.com/v1/' + weatherType + '.json?';
   const regex = /\/(\w+)\/(\w+)\.(\w+)$/;
   let weather_endpoint,
@@ -439,16 +517,27 @@ function Edit(props) {
       label: 'Select your layout',
       value: 'select_your_layout'
     }, {
-      label: 'Light',
-      value: 'light'
-    }, {
-      label: 'Dark',
-      value: 'dark'
+      label: 'Static icons',
+      value: 'static_icons'
     }, {
       label: 'Animated icons',
       value: 'animated_icons'
     }],
     onChange: onChangeLayoutModel
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
+    className: "blocks-base-control__label"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background color', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    colors: Backgroundcolors,
+    value: Backgroundcolor,
+    enableAlpha: "true",
+    onChange: Backgroundcolor => setBgColor(Backgroundcolor)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
+    className: "blocks-base-control__label"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    colors: colors,
+    value: Color,
+    enableAlpha: "true",
+    onChange: Color => setColor(Color)
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "widget-weather-container layout--" + layoutModel,
