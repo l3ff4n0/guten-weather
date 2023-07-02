@@ -114,78 +114,78 @@ function Edit(props) {
   };
 
   const Backgroundcolors = [{
-    name: 'white',
+    name: 'White',
     color: '#fff'
   }, {
-    name: 'black',
+    name: 'Black',
     color: '#000'
   }, {
-    name: 'orange',
+    name: 'Orange',
     color: '#FFA500'
   }, {
-    name: 'violet',
+    name: 'Pink Illusion',
     color: '#D0A7F5'
   }, {
-    name: 'light_blue',
+    name: 'Baby Blue Eyes',
     color: '#AFC6F5'
   }, {
-    name: 'pink',
+    name: 'Rose Bonbon',
     color: '#F542A3'
   }, {
-    name: 'vinaccia',
+    name: 'Fuchsia Red',
     color: '#A83674'
   }, {
-    name: 'beige',
+    name: 'Pastel Maybe Maui',
     color: '#F5D38C'
   }, {
-    name: 'green',
+    name: 'Machine Green',
     color: '#9EA83E'
   }, {
-    name: 'dark_blue',
+    name: 'Python Blue',
     color: '#387CA9'
   }, {
-    name: 'bordeaux',
+    name: 'California Poppy',
     color: '#A83F3E'
   }, {
-    name: 'light_yellow',
+    name: 'Pastel Pale Pear',
     color: '#F4D66C'
   }];
   const colors = [{
-    name: 'white',
+    name: 'White',
     color: '#fff'
   }, {
-    name: 'black',
+    name: 'Black',
     color: '#000'
   }, {
-    name: 'orange',
-    color: '#FFA500'
+    name: 'Soulstone Blue',
+    color: '#0049A6'
   }, {
-    name: 'violet',
-    color: '#D0A7F5'
+    name: 'Lush Greenery',
+    color: '#E3ED39'
   }, {
-    name: 'light_blue',
-    color: '#AFC6F5'
+    name: 'Pastel Triforce Yellow',
+    color: '#E6F20A'
   }, {
-    name: 'pink',
-    color: '#F542A3'
+    name: 'Free Speech Green',
+    color: '#12F20A'
   }, {
-    name: 'vinaccia',
-    color: '#A83674'
+    name: 'Aquamentus Green',
+    color: '#06A600'
   }, {
-    name: 'beige',
-    color: '#F5D38C'
+    name: 'Y7 K Blue',
+    color: '#0A5CF2'
   }, {
-    name: 'green',
-    color: '#9EA83E'
+    name: 'Electric Violet',
+    color: '#8E0AF2'
   }, {
-    name: 'dark_blue',
-    color: '#387CA9'
+    name: 'Cheddar',
+    color: '#F2930A'
   }, {
-    name: 'bordeaux',
-    color: '#A83F3E'
+    name: 'Mike Wazowski Green',
+    color: '#0AF253'
   }, {
-    name: 'light_yellow',
-    color: '#F4D66C'
+    name: 'Rich Blue',
+    color: '#0A1FF2'
   }];
   const weather_api = 'http://api.weatherapi.com/v1/' + weatherType + '.json?';
   const regex = /\/(\w+)\/(\w+)\.(\w+)$/;
