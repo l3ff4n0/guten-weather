@@ -66,12 +66,17 @@ function guten_weather_options_page(){ ?>
 
 function gutern_weather_api_documentation(){ ?>
     <div class="wrap">
-        <h1><?php _e('Guten Weather API Documentation','guten-weather'); ?></h1>
+        <div class="weather-logo">
+            <img loading="lazy" src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png" />
+        </div>
+        <h1>
+            <?php _e('Guten Weather API Documentation','guten-weather'); ?>
+        </h1>
         <div class="weather-api-container">
             <h2 class="docs-heading">Introduction</h1>
             <section class="docs-intro">
-                <p class="mob-vers6">WeatherAPI.com provides access to free weather and geo data via a JSON/XML restful API. It allows developers to create desktop, web and mobile applications using this data very easy.</p>
-                <p class="tit-list">We provide following data through our API:</p>
+                <p>WeatherAPI.com provides access to free weather and geo data via a JSON/XML restful API. It allows developers to create desktop, web and mobile applications using this data very easy.</p>
+                <p>We provide following data through our API:</p>
                 <ul class="doc-list">
                     <li>Real-time weather</li>
                     <li>14 day weather forecast</li>
@@ -100,12 +105,12 @@ function gutern_weather_api_documentation(){ ?>
             </section>
             <section class="docs-section" id="intro-request">
                         <h2 class="section-heading">Request</h2>
-                        <h5 class="doc-tit-text">Request URL</h5>
-                        <p class="mob-vers8">
+                        <h5>Request URL</h5>
+                        <p>
                             Request to WeatherAPI.com API consists of base url and API method. You can make both
                     HTTP or HTTPS request to our API.
                         </p>
-                        <p class="mob-vers8">Base URL: <a href="#">http://api.weatherapi.com/v1</a></p>
+                        <p>Base URL: <a href="#">http://api.weatherapi.com/v1</a></p>
                         <div class="table-responsive">
                             <table class="table table-bordered table-correct">
                                 <tbody><tr>
@@ -157,7 +162,7 @@ function gutern_weather_api_documentation(){ ?>
                                 
                             </tbody></table>
                         </div>
-                        <h4 class="doc-tit-text mob-vers7">Request Parameters</h4>
+                        <h4 class="doc-tit-text">Request Parameters</h4>
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <tbody><tr>
@@ -288,178 +293,177 @@ function gutern_weather_api_documentation(){ ?>
                                     <td>
                                         <p>Please pass 'lang code' from below table. e.g.: lang=fr</p>
                                         <table class="table table-striped table-bordered">
-                                            <tbody><tr>
-                                                <th>Language</th>
-                                                <th>lang code</th>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Arabic</td>
-                                                <td class="last">ar</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Bengali</td>
-                                                <td class="last">bn</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Bulgarian</td>
-                                                <td class="last">bg</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Chinese Simplified</td>
-                                                <td class="last">zh</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Chinese Traditional</td>
-                                                <td class="last">zh_tw</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Czech</td>
-                                                <td class="last">cs</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Danish</td>
-                                                <td class="last">da</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Dutch</td>
-                                                <td class="last">nl</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Finnish</td>
-                                                <td class="last">fi</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>French</td>
-                                                <td class="last">fr</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>German</td>
-                                                <td class="last">de</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Greek</td>
-                                                <td class="last">el</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Hindi</td>
-                                                <td class="last">hi</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Hungarian</td>
-                                                <td class="last">hu</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Italian</td>
-                                                <td class="last">it</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Japanese</td>
-                                                <td class="last">ja</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Javanese</td>
-                                                <td class="last">jv</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Korean</td>
-                                                <td class="last">ko</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Mandarin</td>
-                                                <td class="last">zh_cmn</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Marathi</td>
-                                                <td class="last">mr</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Polish</td>
-                                                <td class="last">pl</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Portuguese</td>
-                                                <td class="last">pt</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Punjabi</td>
-                                                <td class="last">pa</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Romanian</td>
-                                                <td class="last">ro</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Russian</td>
-                                                <td class="last">ru</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Serbian</td>
-                                                <td class="last">sr</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Sinhalese</td>
-                                                <td class="last">si</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Slovak</td>
-                                                <td class="last">sk</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Spanish</td>
-                                                <td class="last">es</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Swedish</td>
-                                                <td class="last">sv</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Tamil</td>
-                                                <td class="last">ta</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Telugu</td>
-                                                <td class="last">te</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Turkish</td>
-                                                <td class="last">tr</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Ukrainian</td>
-                                                <td class="last">uk</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Urdu</td>
-                                                <td class="last">ur</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Vietnamese</td>
-                                                <td class="last">vi</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Wu (Shanghainese)</td>
-                                                <td class="last">zh_wuu</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Xiang</td>
-                                                <td class="last">zh_hsn</td>
-                                            </tr>
-                                            <tr class="whiterow">
-                                                <td>Yue (Cantonese)</td>
-                                                <td class="last">zh_yue</td>
-                                            </tr>
-                                            <tr class="grayrow">
-                                                <td>Zulu</td>
-                                                <td class="last">zu</td>
-                                            </tr>
-
-
-                                        </tbody></table>
-
-
+                                            <tbody>
+                                                <tr>
+                                                    <th>Language</th>
+                                                    <th>lang code</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Arabic</td>
+                                                    <td>ar</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bengali</td>
+                                                    <td>bn</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bulgarian</td>
+                                                    <td>bg</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Chinese Simplified</td>
+                                                    <td>zh</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Chinese Traditional</td>
+                                                    <td>zh_tw</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Czech</td>
+                                                    <td>cs</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Danish</td>
+                                                    <td>da</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dutch</td>
+                                                    <td>nl</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Finnish</td>
+                                                    <td >fi</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>French</td>
+                                                    <td>fr</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>German</td>
+                                                    <td>de</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Greek</td>
+                                                    <td>el</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hindi</td>
+                                                    <td>hi</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hungarian</td>
+                                                    <td>hu</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Italian</td>
+                                                    <td>it</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Japanese</td>
+                                                    <td>ja</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Javanese</td>
+                                                    <td>jv</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Korean</td>
+                                                    <td>ko</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mandarin</td>
+                                                    <td>zh_cmn</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Marathi</td>
+                                                    <td>mr</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Polish</td>
+                                                    <td>pl</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Portuguese</td>
+                                                    <td>pt</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Punjabi</td>
+                                                    <td>pa</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Romanian</td>
+                                                    <td>ro</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Russian</td>
+                                                    <td>ru</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Serbian</td>
+                                                    <td>sr</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sinhalese</td>
+                                                    <td>si</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Slovak</td>
+                                                    <td>sk</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Spanish</td>
+                                                    <td>es</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Swedish</td>
+                                                    <td>sv</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tamil</td>
+                                                    <td>ta</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Telugu</td>
+                                                    <td>te</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Turkish</td>
+                                                    <td>tr</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ukrainian</td>
+                                                    <td>uk</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Urdu</td>
+                                                    <td>ur</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Vietnamese</td>
+                                                    <td>vi</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Wu (Shanghainese)</td>
+                                                    <td>zh_wuu</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Xiang</td>
+                                                    <td>zh_hsn</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Yue (Cantonese)</td>
+                                                    <td>zh_yue</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Zulu</td>
+                                                    <td>zu</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </td>
                                 </tr>
-                            </tbody></table>
+                                </tbody>
+                            </table>
                         </div>
                     </section>
                     <section class="docs-section" id="intro-location">
@@ -530,261 +534,6 @@ function gutern_weather_api_documentation(){ ?>
                                     <td>Local date and time</td>
                                 </tr>
                             </tbody></table>
-                        </div>
-                    </section>
-                    <section class="docs-section" id="intro-alerts">
-                        <h2 class="section-heading">Weather Alerts</h2>
-
-                        <p>
-                            <a href="#apis-forecast">Forecast API</a> returns alerts and warnings issued by government agencies (USA, UK, Europe and Rest of the World) as an array if available for the location provided through the <a href="#apis-forecast">Forecast API</a>.
-                        </p>
-
-                        <p>
-                            By default alerts are not returned. To get alerts back in the response from <a href="#apis-forecast">Forecast API</a>, pass the parameter <b>alerts=yes</b>.
-                        </p>
-                        <p>
-                            Note: Some of the alerts may be in local language of the location.
-                        </p>
-
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-correct">
-                                <tbody><tr>
-                                    <th>Field</th>
-                                    <th class="new-width">Data Type</th>
-                                    <th>Description</th>
-                                </tr>
-                                <tr>
-                                    <td>headline</td>
-                                    <td>string</td>
-                                    <td>Alert headline</td>
-                                </tr>
-                                <tr>
-                                    <td>msgType</td>
-                                    <td>string</td>
-                                    <td>Type of alert</td>
-                                </tr>
-                                <tr>
-                                    <td>severity</td>
-                                    <td>string</td>
-                                    <td>Severity of alert</td>
-                                </tr>
-                                <tr>
-                                    <td>urgency</td>
-                                    <td>string</td>
-                                    <td>Urgency</td>
-                                </tr>
-                                <tr>
-                                    <td>areas</td>
-                                    <td>string</td>
-                                    <td>Areas covered</td>
-                                </tr>
-                                <tr>
-                                    <td>category</td>
-                                    <td>string</td>
-                                    <td>Category</td>
-                                </tr>
-                                <tr>
-                                    <td>certainty</td>
-                                    <td>string</td>
-                                    <td>Certainty</td>
-                                </tr>
-                                <tr>
-                                    <td>event</td>
-                                    <td>string</td>
-                                    <td>Event</td>
-                                </tr>
-
-                                <tr>
-                                    <td>note</td>
-                                    <td>string</td>
-                                    <td>Note</td>
-                                </tr>
-                                <tr>
-                                    <td>effective</td>
-                                    <td>date</td>
-                                    <td>Effective</td>
-                                </tr>
-                                <tr>
-                                    <td>expires</td>
-                                    <td>string</td>
-                                    <td>Expires</td>
-                                </tr>
-                                <tr>
-                                    <td>desc</td>
-                                    <td>string</td>
-                                    <td>Description</td>
-                                </tr>
-                                <tr>
-                                    <td>instruction</td>
-                                    <td>string</td>
-                                    <td>Instruction</td>
-                                </tr>
-
-                            </tbody></table>
-                        </div>
-
-                        <h4>Example response of alerts</h4>
-                        <pre class="rounded">                            <code class="json hljs"><span class="hljs-string">"alerts"</span>:{
-    <span class="hljs-attr">"alert"</span>:[
-        {
-        <span class="hljs-attr">"headline"</span>:<span class="hljs-string">"Flood Warning issued January 05 at 9:47PM EST until January 07 at 6:15AM EST by NWS"</span>,
-        <span class="hljs-attr">"msgtype"</span>:<span class="hljs-string">"Alert"</span>,
-        <span class="hljs-attr">"severity"</span>:<span class="hljs-string">"Moderate"</span>,
-        <span class="hljs-attr">"urgency"</span>:<span class="hljs-string">"Expected"</span>,
-        <span class="hljs-attr">"areas"</span>:<span class="hljs-string">"Calhoun; Lexington; Richland"</span>,
-        <span class="hljs-attr">"category"</span>:<span class="hljs-string">"Met"</span>,
-        <span class="hljs-attr">"certainty"</span>:<span class="hljs-string">"Likely"</span>,
-        <span class="hljs-attr">"event"</span>:<span class="hljs-string">"Flood Warning"</span>,
-        <span class="hljs-attr">"note"</span>:<span class="hljs-string">"Alert for Calhoun; Lexington; Richland (South Carolina) Issued by the National Weather Service"</span>,
-        <span class="hljs-attr">"effective"</span>:<span class="hljs-string">"2021-01-05T21:47:00-05:00"</span>,
-        <span class="hljs-attr">"expires"</span>:<span class="hljs-string">"2021-01-07T06:15:00-05:00"</span>,
-        <span class="hljs-attr">"desc"</span>:<span class="hljs-string">"...The Flood Warning continues for the following rivers in South\nCarolina...\nCongaree River At Carolina Eastman affecting Richland, Calhoun\nand Lexington Counties.\nCongaree River At Congaree National Park-Gadsden affecting\nCalhoun and Richland Counties.\nNorth Fork Edisto River At Orangeburg affecting Orangeburg County.\n...The Flood Warning is now in effect until Thursday morning...\nThe Flood Warning continues for\nthe Congaree River At Carolina Eastman.\n* Until Thursday morning.\n* At 9:28 PM EST Tuesday the stage was 115.6 feet.\n* Flood stage is 115.0 feet.\n* Minor flooding is occurring and minor flooding is forecast.\n* Recent Activity...The maximum river stage in the 24 hours ending\nat 9:28 PM EST Tuesday was 118.2 feet.\n* Forecast...The river will rise to 115.7 feet just after midnight\ntonight. It will then fall below flood stage tomorrow morning to\n114.2 feet and begin rising again tomorrow evening. It will rise\nto 114.3 feet early Thursday morning. It will then fall again and\nremain below flood stage.\n* Impact...At 115.0 feet, Flooding occurs in low lying areas of the\nCarolina Eastman Facility and at the Congaree National Park.\n* Flood History...This crest compares to a previous crest of 116.3\nfeet on 12/03/2020.\n&amp;&amp;"</span>,
-        <span class="hljs-attr">"instruction"</span>:<span class="hljs-string">"A Flood Warning means that flooding is imminent or occurring. All\ninterested parties should take necessary precautions immediately.\nMotorists should not attempt to drive around barricades or drive\ncars through flooded areas.\nCaution is urged when walking near riverbanks.\nAdditional information is available at www.weather.gov.\nThe next statement will be issued Wednesday morning at 1000 AM EST."</span>
-        },
-        {
-        <span class="hljs-attr">"headline"</span>:<span class="hljs-string">"Flood Warning issued January 05 at 9:47PM EST until January 09 at 4:00AM EST by NWS"</span>,
-        <span class="hljs-attr">"msgtype"</span>:<span class="hljs-string">"Alert"</span>,
-        <span class="hljs-attr">"severity"</span>:<span class="hljs-string">"Moderate"</span>,
-        <span class="hljs-attr">"urgency"</span>:<span class="hljs-string">"Expected"</span>,
-        <span class="hljs-attr">"areas"</span>:<span class="hljs-string">"Calhoun; Richland"</span>,
-        <span class="hljs-attr">"category"</span>:<span class="hljs-string">"Met"</span>,
-        <span class="hljs-attr">"certainty"</span>:<span class="hljs-string">"Likely"</span>,
-        <span class="hljs-attr">"event"</span>:<span class="hljs-string">"Flood Warning"</span>,
-        <span class="hljs-attr">"note"</span>:<span class="hljs-string">"Alert for Calhoun; Richland (South Carolina) Issued by the National Weather Service"</span>,
-        <span class="hljs-attr">"effective"</span>:<span class="hljs-string">"2021-01-05T21:47:00-05:00"</span>,
-        <span class="hljs-attr">"expires"</span>:<span class="hljs-string">"2021-01-09T04:00:00-05:00"</span>,
-        <span class="hljs-attr">"desc"</span>:<span class="hljs-string">"...The Flood Warning continues for the following rivers in South\nCarolina...\nCongaree River At Carolina Eastman affecting Richland, Calhoun\nand Lexington Counties.\nCongaree River At Congaree National Park-Gadsden affecting\nCalhoun and Richland Counties.\nNorth Fork Edisto River At Orangeburg affecting Orangeburg County.\n...The Flood Warning is now in effect until early Saturday morning...\nThe Flood Warning continues for\nthe Congaree River At Congaree National Park-Gadsden.\n* Until late Friday night.\n* At 9:00 PM EST Tuesday the stage was 16.5 feet.\n* Flood stage is 15.0 feet.\n* Minor flooding is occurring and minor flooding is forecast.\n* Recent Activity...The maximum river stage in the 24 hours ending\nat 9:00 PM EST Tuesday was 17.2 feet.\n* Forecast...The river is expected to fall below flood stage early\nFriday morning and continue falling to 12.4 feet Sunday evening.\n* Impact...At 15.0 feet, Flooding begins in the Congaree National\nPark. This will begin to produce flooding of portions of the lower\nboardwalk.\n* Impact...At 17.0 feet, The access road to the Sandy Run\nsubdivision becomes flooded. The lower boardwalk in the Congaree\nNational Park becomes flooded by Cedar Creek.\n* Impact...At 18.0 feet, Several homes in the Sandy Run subdivision\nalong the river become flooded. At 18 feet the river covers the\nWeston Lake overlook in the Congaree National Park. Between 18 and\n18.5 feet the river begins to cover sections of the elevated\nboardwalk.\n* Flood History...This crest compares to a previous crest of 16.3\nfeet on 12/03/2020.\n&amp;&amp;"</span>,
-        <span class="hljs-attr">"instruction"</span>:<span class="hljs-string">"A Flood Warning means that flooding is imminent or occurring. All\ninterested parties should take necessary precautions immediately.\nMotorists should not attempt to drive around barricades or drive\ncars through flooded areas.\nCaution is urged when walking near riverbanks.\nAdditional information is available at www.weather.gov.\nThe next statement will be issued Wednesday morning at 1000 AM EST."</span>
-        }
-    ]
-}
-                            </code>
-                        </pre>
-                    </section>
-                    <section class="docs-section" id="intro-aqi">
-                        <h2 class="section-heading">Air Quality Data</h2>
-
-                        <p>
-                            Air Quality data is returned in the <a href="#apis-forecast">Forecast API</a> and <a href="#apis-realtime">Realtime API</a> response. Depending upon your subscription plan we provide current and 3 day air quality data for the given location in json and xml.
-                        </p>
-
-                        <p>
-                            It provides air quality index (see below) data on major pollutant gases like Carbon monoxide (CO), Ozone (O3), Nitrogen dioxide (NO2), Sulphur dioxide (SO2), PM 2.5 and PM 10.
-                        </p>
-
-                        <p>
-                            By default air quality data is not returned. To get air quality data back in the response from <a href="#apis-forecast">Forecast API</a> and <a href="#apis-realtime">Realtime API</a>, pass the parameter <b>aqi=yes</b>.
-                        </p>
-
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-correct">
-                                <tbody><tr>
-                                    <th>Field</th>
-                                    <th class="new-width">Data Type</th>
-                                    <th>Description</th>
-                                </tr>
-                                <tr>
-                                    <td>co</td>
-                                    <td>float</td>
-                                    <td>Carbon Monoxide (μg/m3)</td>
-                                </tr>
-                                <tr>
-                                    <td>o3</td>
-                                    <td>float</td>
-                                    <td>Ozone (μg/m3)</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td>no2</td>
-                                    <td>float</td>
-                                    <td>Nitrogen dioxide (μg/m3)</td>
-                                </tr>
-                                <tr>
-                                    <td>so2</td>
-                                    <td>float</td>
-                                    <td>Sulphur dioxide (μg/m3)</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td>pm2_5</td>
-                                    <td>float</td>
-                                    <td>PM2.5 (μg/m3)</td>
-                                </tr>
-                                <tr>
-                                    <td>pm10</td>
-                                    <td>float</td>
-                                    <td>PM10 (μg/m3)</td>
-                                </tr>
-                                <tr>
-                                    <td>us-epa-index</td>
-                                    <td>integer</td>
-                                    <td>US - EPA standard.
-                                        <ul>
-                                            <li>1 means Good</li>
-                                            <li>2 means Moderate</li>
-                                            <li>3 means Unhealthy for sensitive group</li>
-                                            <li>4 means Unhealthy</li>
-                                            <li>5 means Very Unhealthy</li>
-                                            <li>6 means Hazardous</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>gb-defra-index</td>
-                                    <td>integer</td>
-                                    <td>UK Defra Index (See table below)
-                                    </td>
-                                </tr>
-                            </tbody></table>
-
-                            <p>
-                            </p>
-                            <h4>UK DEFRA INDEX Table</h4>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Index</th>
-                                        <th>1</th>
-                                        <th>2</th>
-                                        <th>3</th>
-                                        <th>4</th>
-                                        <th>5</th>
-                                        <th>6</th>
-                                        <th>7</th>
-                                        <th>8</th>
-                                        <th>9</th>
-                                        <th>10</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th>Band</th>
-                                        <td class="bg_low1">Low</td>
-                                        <td class="bg_low2">Low</td>
-                                        <td class="bg_low3">Low</td>
-                                        <td class="bg_moderate4">Moderate</td>
-                                        <td class="bg_moderate5">Moderate</td>
-                                        <td class="bg_moderate6">Moderate</td>
-                                        <td class="bg_high7">High</td>
-                                        <td class="bg_high8">High</td>
-                                        <td class="bg_high9">High</td>
-                                        <td class="bg_very_high10">Very High</td>
-                                    </tr>
-                                    <tr>
-                                        <th>µgm<sup>-3</sup></th>
-                                        <td class="bg_low1">0-11</td>
-                                        <td class="bg_low2">12-23</td>
-                                        <td class="bg_low3">24-35</td>
-                                        <td class="bg_moderate4">36-41</td>
-                                        <td class="bg_moderate5">42-47</td>
-                                        <td class="bg_moderate6">48-53</td>
-                                        <td class="bg_high7">54-58</td>
-                                        <td class="bg_high8">59-64</td>
-                                        <td class="bg_high9">65-70</td>
-                                        <td class="bg_very_high10">71 or more</td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </section>
                     <section class="docs-section" id="intro-error-codes">
@@ -863,6 +612,12 @@ function gutern_weather_api_documentation(){ ?>
 <?php }
 
 add_action( 'admin_menu', 'guten_weather_menu' );
+
+add_action('admin_enqueue_scripts', 'guten_weather_plugin_admin_assets');
+
+function guten_weather_plugin_admin_assets(){
+    wp_enqueue_style('boot_css', plugins_url('admin/admin.css',__FILE__ ));
+}
 
 function guten_weather_print_scripts() { ?>
 	<script type="text/javascript">
