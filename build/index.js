@@ -64,6 +64,8 @@ function Edit(props) {
       numberDays,
       languageData,
       layoutModel,
+      WidgetBgColor,
+      WidgetColor,
       WeatherTpl
     },
     setAttributes
@@ -99,8 +101,18 @@ function Edit(props) {
     });
   };
 
-  const [Backgroundcolor, setBgColor] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('#fff');
-  const [Color, setColor] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('#fff');
+  const onChangeSetBgColor = newBgColor => {
+    setAttributes({
+      WidgetBgColor: newBgColor
+    });
+  };
+
+  const onChangeSetColor = newColor => {
+    setAttributes({
+      WidgetColor: newColor
+    });
+  };
+
   const Backgroundcolors = [{
     name: 'white',
     color: '#fff'
@@ -175,8 +187,6 @@ function Edit(props) {
     name: 'light_yellow',
     color: '#F4D66C'
   }];
-  console.log('Bg COlor >', Backgroundcolor);
-  console.log('color >', Color);
   const weather_api = 'http://api.weatherapi.com/v1/' + weatherType + '.json?';
   const regex = /\/(\w+)\/(\w+)\.(\w+)$/;
   let weather_endpoint,
@@ -528,19 +538,23 @@ function Edit(props) {
     className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background color', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
     colors: Backgroundcolors,
-    value: Backgroundcolor,
+    value: WidgetBgColor,
     enableAlpha: "true",
-    onChange: Backgroundcolor => setBgColor(Backgroundcolor)
+    onChange: onChangeSetBgColor
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
     colors: colors,
-    value: Color,
+    value: WidgetColor,
     enableAlpha: "true",
-    onChange: Color => setColor(Color)
+    onChange: onChangeSetColor
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "widget-weather-container layout--" + layoutModel,
+    className: "widget-weather-container",
+    style: {
+      background: WidgetBgColor,
+      color: WidgetColor
+    },
     dangerouslySetInnerHTML: createWeatherContent()
   })));
 }
@@ -652,6 +666,8 @@ function save(props) {
       numberDays,
       languageData,
       layoutModel,
+      WidgetBgColor,
+      WidgetColor,
       WeatherTpl
     },
     setAttributes
@@ -663,8 +679,13 @@ function save(props) {
     };
   }
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "widget-weather-container layout--" + layoutModel,
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save()
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "widget-weather-container",
+    style: {
+      background: WidgetBgColor,
+      color: WidgetColor
+    },
     dangerouslySetInnerHTML: createWeatherContent()
   }));
 }

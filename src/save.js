@@ -23,14 +23,14 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save(props) {
-	const { attributes: {city, weatherType, numberDays, languageData,layoutModel, WeatherTpl}, setAttributes } = props;
+	const { attributes: {city, weatherType, numberDays, languageData,layoutModel, WidgetBgColor, WidgetColor, WeatherTpl}, setAttributes } = props;
 	function createWeatherContent() {
 		return {__html: props.attributes.WeatherTpl};
 	}
 
 	return (
 		<div { ...useBlockProps.save() }>
-			<div className={"widget-weather-container layout--" + layoutModel} dangerouslySetInnerHTML={createWeatherContent()} />
+			<div className={"widget-weather-container"} style={{ background: WidgetBgColor, color: WidgetColor }} dangerouslySetInnerHTML={createWeatherContent()} />
 		</div>
 	);
 }

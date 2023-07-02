@@ -34,7 +34,7 @@ import './editor.scss';
 
 export default function Edit(props) {
 
-	const { attributes: { city, weatherType, numberDays, languageData, layoutModel, WeatherTpl }, setAttributes } = props;
+	const { attributes: { city, weatherType, numberDays, languageData, layoutModel, WidgetBgColor, WidgetColor, WeatherTpl }, setAttributes } = props;
 
 	const onChangeCity = ( newCityName ) => {
 		setAttributes( { city: newCityName } );
@@ -57,8 +57,14 @@ export default function Edit(props) {
 		setAttributes( { layoutModel: newLayoutModel } );
 	};
 
-	const [ Backgroundcolor, setBgColor ] = useState ( '#fff' );
-	const [ Color, setColor ] = useState ( '#fff' );
+	const onChangeSetBgColor = (newBgColor) => {
+		setAttributes ({ WidgetBgColor: newBgColor });
+	};
+
+	const onChangeSetColor = (newColor) => {
+		setAttributes ({ WidgetColor: newColor });
+	};
+
     const Backgroundcolors = [
         { name: 'white', color: '#fff' },
         { name: 'black', color: '#000' },
@@ -88,9 +94,6 @@ export default function Edit(props) {
         { name: 'bordeaux', color: '#A83F3E' },
         { name: 'light_yellow', color: '#F4D66C' },
     ];
-
-	console.log('Bg COlor >', Backgroundcolor);
-	console.log('color >', Color);
 
 	const weather_api = 'http://api.weatherapi.com/v1/'+ weatherType +'.json?';
 
@@ -388,9 +391,9 @@ export default function Edit(props) {
 				</legend>
 				<ColorPalette
 					colors={ Backgroundcolors }
-					value={ Backgroundcolor }
+					value={ WidgetBgColor }
 					enableAlpha="true"
-					onChange={ ( Backgroundcolor ) => setBgColor( Backgroundcolor ) }
+					onChange={onChangeSetBgColor}
 				/>
 			</fieldset>
 			<fieldset>
@@ -399,16 +402,16 @@ export default function Edit(props) {
 				</legend>
 				<ColorPalette
 					colors={ colors }
-					value={ Color }
+					value={ WidgetColor }
 					enableAlpha="true"
-					onChange={ ( Color ) => setColor( Color ) }
+					onChange={ onChangeSetColor }
 				/>
 			</fieldset>
    			</PanelBody>
 		</InspectorControls>
 
 		<div { ...useBlockProps() }>
-			<div className={"widget-weather-container layout--" + layoutModel} dangerouslySetInnerHTML={createWeatherContent()} />
+			<div className={"widget-weather-container"}  style={{ background: WidgetBgColor, color: WidgetColor }} dangerouslySetInnerHTML={createWeatherContent()} />
 		</div>
 		</div>
 	);

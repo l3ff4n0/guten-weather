@@ -38,6 +38,14 @@
 			"type": "string",
 			"default": "select your layout"
 		},
+		"WidgetBgColor": {
+			"type": "string",
+			"default": "#fff"
+		},
+		"WidgetColor": {
+			"type": "string",
+			"default": "#000"
+		},
 		"WeatherTpl": {
 			"type": "string",
 			"source": "html",

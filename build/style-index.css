@@ -828,9 +828,6 @@ swiper-container .swiper-notification {
   --boldFont: 700;
   --whiteBg: #ffffff;
   --blackBg: #000;
-  --animatedBg: #8CB8EA;
-  --animatedMiddleBlueBg: #4A719E;
-  --animatedDarkBlueBg: #263B52;
 }
 
 .wp-block-guten-weather-guten-weather {
@@ -852,63 +849,6 @@ swiper-container .swiper-notification {
   border-radius: 5px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   width: 100%;
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--light {
-  background: var(--whiteBg);
-  color: var(--blackBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--light .weather-air-quality-main-title,
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--light .weather-forecast-day-main-title {
-  background: var(--blackBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--light .weather-forecast-day-container {
-  background: #f4f4f4;
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark {
-  background: var(--blackBg);
-  color: var(--whiteBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-air-quality-main-title,
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-forecast-day-main-title {
-  color: var(--blackBg);
-  background: var(--whiteBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-forecast-day-container {
-  background: #3d3d3d;
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .weather-hour-content:after {
-  background: var(--whiteBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .swiper-button-prev,
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .swiper-button-next {
-  background: var(--whiteBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .swiper-button-prev:after,
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--dark .weather-hour-container .swiper-button-next:after {
-  color: var(--blackBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons {
-  background: var(--animatedBg);
-  color: var(--animatedDarkBlueBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-air-quality-main-title,
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-forecast-day-main-title {
-  color: var(--animatedDarkBlueBg);
-  background: var(--animatedMiddleBlueBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-forecast-day-container {
-  background: #7aa5d7;
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .weather-hour-content:after {
-  background: var(--animatedDarkBlueBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .swiper-button-prev,
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .swiper-button-next {
-  background: var(--animatedMiddleBlueBg);
-}
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .swiper-button-prev:after,
-.wp-block-guten-weather-guten-weather .widget-weather-container.layout--animated_icons .weather-hour-container .swiper-button-next:after {
-  color: var(--whiteBg);
 }
 .wp-block-guten-weather-guten-weather .weather-icon {
   display: flex;
@@ -938,18 +878,6 @@ swiper-container .swiper-notification {
   font-weight: var(--semiBoldFont);
   margin-bottom: 10px;
 }
-.wp-block-guten-weather-guten-weather .weather-air-quality-container {
-  width: 100%;
-  margin-top: 20px;
-}
-.wp-block-guten-weather-guten-weather .weather-air-quality-container .weather-air-quality-main-title {
-  font-size: 1.2rem;
-  font-weight: var(--semiBoldFont);
-  color: var(--whiteBg);
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
 .wp-block-guten-weather-guten-weather .weather-forecast-container,
 .wp-block-guten-weather-guten-weather .weather-forecast-day-container {
   overflow-x: hidden;
@@ -963,6 +891,7 @@ swiper-container .swiper-notification {
   font-size: 1.2rem;
   font-weight: var(--semiBoldFont);
   color: var(--whiteBg);
+  background-color: var(--blackBg);
   padding: 5px 10px;
   border-radius: 5px;
   margin-bottom: 20px;
