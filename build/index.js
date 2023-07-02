@@ -230,18 +230,19 @@ function Edit(props) {
         let matches = regex.exec(weather_icon);
         weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : weather_icon;
         props.attributes.WeatherTpl = '<div class="weather-icon icon-' + weather_code + '">';
-        props.attributes.WeatherTpl += '<div class="weather-temperature">' + weather_loc_temperature + '°' + '</div>';
-        props.attributes.WeatherTpl += '<img loading="lazy" src="' + weather_icon_url + '" alt="' + weather_text + '" />';
-        props.attributes.WeatherTpl += '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-text-content">';
-        props.attributes.WeatherTpl += '<div class="weather-text">' + weather_text + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-loc-name"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Location', 'guten-weather') + '</span>' + weather_loc_name + ' - ' + weather_loc_country + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-loc-coords"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Coordinates', 'guten-weather') + '</span>' + weather_loc_coordinates + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-loc-feelslike"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Feelslike', 'guten-weather') + '</span>' + weather_loc_feelslike + '°' + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-loc-humidity"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather') + '</span>' + weather_loc_humidity + '%' + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-loc-wind"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind', 'guten-weather') + '</span>' + weather_loc_wind_kph + ' km/h' + ' - ' + weather_loc_wind_direction + '</div>';
-        props.attributes.WeatherTpl += '<div class="weather-loc-pressure"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pressure', 'guten-weather') + '</span>' + weather_loc_pressure + ' mbar' + '</div>';
-        props.attributes.WeatherTpl += '</div>';
+        props.attributes.WeatherTpl += `<div class="weather-temperature">${weather_loc_temperature}°</div>
+													<img loading="lazy" src="${weather_icon_url}" alt="${weather_text}" />
+													</div>
+													<div class="weather-text-content">
+														<div class="weather-text">${weather_text}</div>
+														<div class="weather-loc-name"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Location', 'guten-weather')}</span>${weather_loc_name} - ${weather_loc_country}</div>
+														<div class="weather-loc-coords"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Coordinates', 'guten-weather')}</span>${weather_loc_coordinates}</div>
+														<div class="weather-loc-feelslike"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Feelslike', 'guten-weather')}</span>${weather_loc_feelslike}°</div>
+														<div class="weather-loc-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${weather_loc_humidity}%</div>
+														<div class="weather-loc-wind"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind', 'guten-weather')}</span>${weather_loc_wind_kph} km/h - ${weather_loc_wind_direction}</div>
+														<div class="weather-loc-pressure"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pressure', 'guten-weather')}</span>${weather_loc_pressure} mbar</div>
+													</div>
+													`;
 
         if (weatherType === 'forecast') {
           const weather_forecast = data.forecast.forecastday;
@@ -253,25 +254,26 @@ function Edit(props) {
                     hour_data = key.hour;
               matches = regex.exec(day_data.condition.icon);
               weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : day_data.condition.icon;
-              props.attributes.WeatherTpl += '<div id="weather-forecast-day-' + value + '" class="weather-forecast-day-container">';
-              props.attributes.WeatherTpl += '<div class="weather-forecast-day-main-title">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'guten-weather') + ' ' + key.date + '</div>';
-              props.attributes.WeatherTpl += '<div class="weather-day-container">';
-              props.attributes.WeatherTpl += '<div class="weather-day-condition">';
-              props.attributes.WeatherTpl += '<div class="weather-icon icon-' + day_data.condition.code + '">';
-              props.attributes.WeatherTpl += '<img loading="lazy" src="' + weather_icon_url + '" alt="' + day_data.condition.text + '" />';
-              props.attributes.WeatherTpl += '</div>';
-              props.attributes.WeatherTpl += '<div class="weather-day-content">';
-              props.attributes.WeatherTpl += '<div class="weather-text">' + day_data.condition.text + '</div>';
-              props.attributes.WeatherTpl += '<div class="weather-mintemp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Min temperature', 'guten-weather') + '</span>' + day_data.mintemp_c + '°' + '</div>';
-              props.attributes.WeatherTpl += '<div class="weather-maxtemp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Max temperature', 'guten-weather') + '</span>' + day_data.maxtemp_c + '°' + '</div>';
-              props.attributes.WeatherTpl += '<div class="weather-mintemp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather') + '</span>' + day_data.avghumidity + '%' + '</div>';
-              props.attributes.WeatherTpl += '<div class="weather-maxtemp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total precipitation', 'guten-weather') + '</span>' + day_data.totalprecip_mm + 'mm' + '</div>';
-              props.attributes.WeatherTpl += '</div>';
-              props.attributes.WeatherTpl += '</div>';
-              props.attributes.WeatherTpl += '</div>';
-              props.attributes.WeatherTpl += '<div class="weather-hour-wrapper">';
-              props.attributes.WeatherTpl += '<div class="swiper weather-hour-container">';
-              props.attributes.WeatherTpl += '<div class="swiper-wrapper">';
+              props.attributes.WeatherTpl += `<div id="weather-forecast-day-${value}" class="weather-forecast-day-container">
+																		<div class="weather-forecast-day-main-title">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'guten-weather')} ${key.date}</div>
+																		<div class="weather-day-container">
+																		<div class="weather-day-condition">
+																			<div class="weather-icon icon-${day_data.condition.code}">
+																			<img loading="lazy" src="${weather_icon_url}" alt="${day_data.condition.text}" />
+																			</div>
+																			<div class="weather-day-content">
+																			<div class="weather-text">${day_data.condition.text}</div>
+																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Min temperature', 'guten-weather')}</span>${day_data.mintemp_c}°</div>
+																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Max temperature', 'guten-weather')}</span>${day_data.maxtemp_c}°</div>
+																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${day_data.avghumidity}%</div>
+																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total precipitation', 'guten-weather')}</span>${day_data.totalprecip_mm}mm</div>
+																			</div>
+																		</div>
+																		</div>
+																		<div class="weather-hour-wrapper">
+																		<div class="swiper weather-hour-container">
+																			<div class="swiper-wrapper">
+																	`;
               hour_data.map(function (hour_key, hour_value) {
                 const hour_condition = hour_key.condition;
                 const date = new Date(hour_key.time_epoch * 1000);
@@ -280,26 +282,31 @@ function Edit(props) {
                 var formattedTime = hours + ':' + minutes;
                 matches = regex.exec(hour_condition.icon);
                 weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : hour_condition.icon;
-                props.attributes.WeatherTpl += '<div id="weather-forecast-hour-' + hour_value + '" class="swiper-slide weather-hour-content">';
-                props.attributes.WeatherTpl += '<div clss="weather-hour-depoint">' + formattedTime + '</div>';
-                props.attributes.WeatherTpl += '<div class="weather-hour-condition"><div class="weather-icon icon-' + hour_condition.code + '"><img loading="lazy" src="' + weather_icon_url + '" alt="' + hour_condition.text + '" /></div></div>';
-                props.attributes.WeatherTpl += '<div clss="weather-hour-humidity"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather') + '</span>' + hour_key.humidity + '%' + '</div>';
-                props.attributes.WeatherTpl += '<div clss="weather-hour-precip_mm"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Rainfall', 'guten-weather') + '</span>' + hour_key.precip_mm + 'mm' + '</div>';
-                props.attributes.WeatherTpl += '<div clss="weather-hour-temp_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Temperature', 'guten-weather') + '</span>' + hour_key.temp_c + '°' + '</div>';
-                props.attributes.WeatherTpl += '<div clss="weather-hour-wind-content">';
-                props.attributes.WeatherTpl += '<div clss="weather-hour-wind-degree"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind degree', 'guten-weather') + '</span>' + hour_key.wind_degree + '°' + '</div>';
-                props.attributes.WeatherTpl += '<div clss="weather-hour-wind-dir"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind direction', 'guten-weather') + '</span>' + hour_key.wind_dir + '</div>';
-                props.attributes.WeatherTpl += '<div clss="weather-hour-wind-kph"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind speed', 'guten-weather') + '</span>' + hour_key.wind_kph + '</div>';
-                props.attributes.WeatherTpl += '<div clss="weather-hour-windchill_c"><span class="weather-label">' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind chill', 'guten-weather') + '</span>' + hour_key.windchill_c + '°' + '</div>';
-                props.attributes.WeatherTpl += '</div>';
-                props.attributes.WeatherTpl += '</div>';
+                props.attributes.WeatherTpl += `<div id="weather-forecast-hour-${hour_value}" class="swiper-slide weather-hour-content">
+																			<div class="weather-hour-depoint">${formattedTime}</div>
+																			<div class="weather-hour-condition">
+																			<div class="weather-icon icon-${hour_condition.code}">
+																				<img loading="lazy" src="${weather_icon_url}" alt="${hour_condition.text}" />
+																			</div>
+																			</div>
+																			<div class="weather-hour-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${hour_key.humidity}%</div>
+																			<div class="weather-hour-precip_mm"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Rainfall', 'guten-weather')}</span>${hour_key.precip_mm}mm</div>
+																			<div class="weather-hour-temp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Temperature', 'guten-weather')}</span>${hour_key.temp_c}°</div>
+																			<div class="weather-hour-wind-content">
+																			<div class="weather-hour-wind-degree"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind degree', 'guten-weather')}</span>${hour_key.wind_degree}°</div>
+																			<div class="weather-hour-wind-dir"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind direction', 'guten-weather')}</span>${hour_key.wind_dir}</div>
+																			<div class="weather-hour-wind-kph"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind speed', 'guten-weather')}</span>${hour_key.wind_kph}</div>
+																			<div class="weather-hour-windchill_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind chill', 'guten-weather')}</span>${hour_key.windchill_c}°</div>
+																			</div>
+																		</div>`;
               });
-              props.attributes.WeatherTpl += '</div>';
-              props.attributes.WeatherTpl += '<div class="swiper-button-prev"></div>';
-              props.attributes.WeatherTpl += '<div class="swiper-button-next"></div>';
-              props.attributes.WeatherTpl += '</div>';
-              props.attributes.WeatherTpl += '</div>';
-              props.attributes.WeatherTpl += '</div>';
+              props.attributes.WeatherTpl += `</div>
+																	<div class="swiper-button-prev"></div>
+																	<div class="swiper-button-next"></div>
+																	</div>
+																	</div>
+																	</div>
+																	`;
             });
             props.attributes.WeatherTpl += '</div>';
           }
