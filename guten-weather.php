@@ -22,7 +22,6 @@
  */
 function guten_weather_guten_weather_block_init() {
     wp_register_script('swiper-js', '//cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js');
-    wp_register_style('swiper-css', '//cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css');
 	register_block_type( __DIR__, array(
         'view_script' => 'swiper-js',
         'editor_script' => 'swiper-js'
