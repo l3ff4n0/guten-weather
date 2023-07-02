@@ -72,6 +72,11 @@ function gutern_weather_api_documentation(){ ?>
         <h1>
             <?php _e('Guten Weather API Documentation','guten-weather'); ?>
         </h1>
+        <div class="warning-wrap">
+            <div class="warning">
+                <span class="icon">&#9888;</span>At moment this plugin block use only the request base url API "current" and "forecast" without Weather Alerts and Air Quality Data
+            </div>
+        </div>
         <div class="weather-api-container">
             <h2 class="docs-heading">Introduction</h1>
             <section class="docs-intro">

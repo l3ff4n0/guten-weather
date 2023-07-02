@@ -14,6 +14,24 @@ body.guten-weather_page_guten_weather_api_documentation .wrap{
     margin-left: 0;
 }
 
+body.guten-weather_page_guten_weather_api_documentation .warning-wrap,
+body.guten-weather_page_guten_weather_api_documentation .warning{
+    padding: 20px;
+}
+
+body.guten-weather_page_guten_weather_api_documentation .warning{
+    display: flex;
+    align-items: center;
+    background: rgba(255,0,0,.6);
+    border: 1px solid #ff0000;
+    border-radius: 10px;
+}
+
+body.guten-weather_page_guten_weather_api_documentation .warning .icon{
+    font-size: 40px;
+    margin-right: 20px;
+}
+
 body.guten-weather_page_guten_weather_api_documentation .weather-logo{
     display: block;
     background: #fff;
