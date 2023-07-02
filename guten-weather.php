@@ -2,9 +2,9 @@
 /**
  * Plugin Name:       Guten weather
  * Description:       This is a guten weather block to display weather and forecast
- * Requires at least: 6.0
+ * Requires at least: 6.2
  * Requires PHP:      7.0
- * Version:           0.1.4
+ * Version:           0.1.6
  * Author:            Stefano Frasson Pianizzola
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
