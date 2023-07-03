@@ -1,7 +1,7 @@
 {
 	"apiVersion": 3,
 	"name": "guten-weather/guten-weather",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"title": "Guten weather",
 	"category": "widgets",
 	"icon": "cloud",
