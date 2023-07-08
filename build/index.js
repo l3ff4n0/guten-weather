@@ -1,4 +1,4 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
@@ -6,11 +6,11 @@
 /*!*********************!*\
   !*** ./src/edit.js ***!
   \*********************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ Edit; }
+/* harmony export */   "default": () => (/* binding */ Edit)
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -572,7 +572,7 @@ function Edit(props) {
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
@@ -627,11 +627,11 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************!*\
   !*** ./src/save.js ***!
   \*********************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ save; }
+/* harmony export */   "default": () => (/* binding */ save)
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -679,6 +679,146 @@ function save(props) {
     },
     setAttributes
   } = props;
+  const weather_api = 'http://api.weatherapi.com/v1/' + weatherType + '.json?';
+  const regex = /\/(\w+)\/(\w+)\.(\w+)$/;
+  let weather_endpoint,
+      apiKey,
+      cityName = "&q=",
+      days = "&days=" + numberDays,
+      language;
+
+  if (weather_api_key != '') {
+    apiKey = 'key=' + weather_api_key;
+  }
+
+  if (city !== 'select your city') {
+    cityName = "&q=" + city;
+  }
+
+  language = languageData !== 'select your language' ? "&lang=" + languageData : "";
+
+  if (weather_api_key == '') {
+    props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please create an API KEY and put it inside the Guten Weather settings plugin', 'guten-weather');
+  } else {
+    if (city == 'select your city' || city == '') {
+      props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please add a Location to display the weather widget', 'guten-weather');
+    } else {
+      weatherType === 'forecast' ? weather_endpoint = weather_api + apiKey + cityName + days + language : weather_endpoint = weather_api + apiKey + cityName + language;
+      fetch(weather_endpoint).then(response => response.json()).then(data => {
+        let weather_code, weather_icon, weather_icon_url, weather_text, weather_loc_temperature, weather_loc_name, weather_loc_country, weather_loc_coordinates, weather_loc_localtime, weather_loc_feelslike, weather_loc_humidity, weather_loc_wind_direction, weather_loc_wind_kph, weather_loc_pressure;
+        weather_code = data.current.condition.code;
+        weather_icon = data.current.condition.icon;
+        weather_text = data.current.condition.text;
+        weather_loc_temperature = data.current.temp_c;
+        weather_loc_name = data.location.name;
+        weather_loc_country = data.location.country;
+        weather_loc_coordinates = data.location.lat + "," + data.location.lon;
+        weather_loc_localtime = data.location.localtime;
+        weather_loc_feelslike = data.current.feelslike_c;
+        weather_loc_humidity = data.current.humidity;
+        weather_loc_wind_direction = data.current.wind_dir;
+        weather_loc_wind_kph = data.current.wind_kph;
+        weather_loc_pressure = data.current.pressure_mb;
+        let matches = regex.exec(weather_icon);
+        weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : weather_icon;
+        props.attributes.WeatherTpl = '<div class="weather-icon icon-' + weather_code + '">';
+        props.attributes.WeatherTpl += `<div class="weather-temperature">${weather_loc_temperature}°</div>
+													<img loading="lazy" src="${weather_icon_url}" alt="${weather_text}" />
+													</div>
+													<div class="weather-text-content">
+														<div class="weather-text">${weather_text}</div>
+														<div class="weather-loc-name"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Location', 'guten-weather')}</span>${weather_loc_name} - ${weather_loc_country}</div>
+														<div class="weather-loc-coords"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Coordinates', 'guten-weather')}</span>${weather_loc_coordinates}</div>
+														<div class="weather-loc-feelslike"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Feelslike', 'guten-weather')}</span>${weather_loc_feelslike}°</div>
+														<div class="weather-loc-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${weather_loc_humidity}%</div>
+														<div class="weather-loc-wind"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind', 'guten-weather')}</span>${weather_loc_wind_kph} km/h - ${weather_loc_wind_direction}</div>
+														<div class="weather-loc-pressure"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pressure', 'guten-weather')}</span>${weather_loc_pressure} mbar</div>
+													</div>
+													`;
+
+        if (weatherType === 'forecast') {
+          const weather_forecast = data.forecast.forecastday;
+
+          if (weather_forecast.length > 0) {
+            props.attributes.WeatherTpl += '<div class="weather-forecast-container">';
+            weather_forecast.map(function (key, value) {
+              const day_data = key.day,
+                    hour_data = key.hour;
+              matches = regex.exec(day_data.condition.icon);
+              weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : day_data.condition.icon;
+              props.attributes.WeatherTpl += `<div id="weather-forecast-day-${value}" class="weather-forecast-day-container">
+																		<div class="weather-forecast-day-main-title">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'guten-weather')} ${key.date}</div>
+																		<div class="weather-day-container">
+																		<div class="weather-day-condition">
+																			<div class="weather-icon icon-${day_data.condition.code}">
+																			<img loading="lazy" src="${weather_icon_url}" alt="${day_data.condition.text}" />
+																			</div>
+																			<div class="weather-day-content">
+																			<div class="weather-text">${day_data.condition.text}</div>
+																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Min temperature', 'guten-weather')}</span>${day_data.mintemp_c}°</div>
+																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Max temperature', 'guten-weather')}</span>${day_data.maxtemp_c}°</div>
+																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${day_data.avghumidity}%</div>
+																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total precipitation', 'guten-weather')}</span>${day_data.totalprecip_mm}mm</div>
+																			</div>
+																		</div>
+																		</div>
+																		<div class="weather-hour-wrapper">
+																		<div class="swiper weather-hour-container">
+																			<div class="swiper-wrapper">
+																	`;
+              hour_data.map(function (hour_key, hour_value) {
+                const hour_condition = hour_key.condition;
+                const date = new Date(hour_key.time_epoch * 1000);
+                var hours = date.getHours() <= 9 ? "0" + date.getHours() : date.getHours();
+                var minutes = "0" + date.getMinutes();
+                var formattedTime = hours + ':' + minutes;
+                matches = regex.exec(hour_condition.icon);
+                weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : hour_condition.icon;
+                props.attributes.WeatherTpl += `<div id="weather-forecast-hour-${hour_value}" class="swiper-slide weather-hour-content">
+																			<div class="weather-hour-depoint">${formattedTime}</div>
+																			<div class="weather-hour-condition">
+																			<div class="weather-icon icon-${hour_condition.code}">
+																				<img loading="lazy" src="${weather_icon_url}" alt="${hour_condition.text}" />
+																			</div>
+																			</div>
+																			<div class="weather-hour-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${hour_key.humidity}%</div>
+																			<div class="weather-hour-precip_mm"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Rainfall', 'guten-weather')}</span>${hour_key.precip_mm}mm</div>
+																			<div class="weather-hour-temp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Temperature', 'guten-weather')}</span>${hour_key.temp_c}°</div>
+																			<div class="weather-hour-wind-content">
+																			<div class="weather-hour-wind-degree"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind degree', 'guten-weather')}</span>${hour_key.wind_degree}°</div>
+																			<div class="weather-hour-wind-dir"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind direction', 'guten-weather')}</span>${hour_key.wind_dir}</div>
+																			<div class="weather-hour-wind-kph"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind speed', 'guten-weather')}</span>${hour_key.wind_kph}</div>
+																			<div class="weather-hour-windchill_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind chill', 'guten-weather')}</span>${hour_key.windchill_c}°</div>
+																			</div>
+																		</div>`;
+              });
+              props.attributes.WeatherTpl += `</div>
+																	<div class="swiper-button-prev"></div>
+																	<div class="swiper-button-next"></div>
+																	</div>
+																	</div>
+																	</div>
+																	`;
+            });
+            props.attributes.WeatherTpl += '</div>';
+          }
+
+          jQuery(document).ready(function ($) {
+            const swiper = new Swiper('.swiper', {
+              //loop: true,
+              slidesPerView: 3,
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+              }
+            });
+          });
+        }
+      }).catch(error => {
+        console.log('error >>>', error);
+      });
+    }
+  }
 
   function createWeatherContent() {
     return {
@@ -703,7 +843,7 @@ function save(props) {
 /*!*************************!*\
   !*** ./src/editor.scss ***!
   \*************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
@@ -715,7 +855,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************!*\
   !*** ./src/style.scss ***!
   \************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
@@ -727,7 +867,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** external ["wp","blockEditor"] ***!
   \*************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 module.exports = window["wp"]["blockEditor"];
 
@@ -737,7 +877,7 @@ module.exports = window["wp"]["blockEditor"];
 /*!********************************!*\
   !*** external ["wp","blocks"] ***!
   \********************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 module.exports = window["wp"]["blocks"];
 
@@ -747,7 +887,7 @@ module.exports = window["wp"]["blocks"];
 /*!************************************!*\
   !*** external ["wp","components"] ***!
   \************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 module.exports = window["wp"]["components"];
 
@@ -757,7 +897,7 @@ module.exports = window["wp"]["components"];
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
   \*********************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 module.exports = window["wp"]["element"];
 
@@ -767,7 +907,7 @@ module.exports = window["wp"]["element"];
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
   \******************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 module.exports = window["wp"]["i18n"];
 
@@ -804,9 +944,9 @@ module.exports = window["wp"]["i18n"];
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = function(result, chunkIds, fn, priority) {
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
 /******/ 			if(chunkIds) {
 /******/ 				priority = priority || 0;
 /******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
@@ -820,7 +960,7 @@ module.exports = window["wp"]["i18n"];
 /******/ 				var priority = deferred[i][2];
 /******/ 				var fulfilled = true;
 /******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every(function(key) { return __webpack_require__.O[key](chunkIds[j]); })) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
 /******/ 						chunkIds.splice(j--, 1);
 /******/ 					} else {
 /******/ 						fulfilled = false;
@@ -835,50 +975,50 @@ module.exports = window["wp"]["i18n"];
 /******/ 			}
 /******/ 			return result;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// no baseURI
 /******/ 		
 /******/ 		// object to store loaded and loading chunks
@@ -899,17 +1039,17 @@ module.exports = window["wp"]["i18n"];
 /******/ 		
 /******/ 		// no HMR manifest
 /******/ 		
-/******/ 		__webpack_require__.O.j = function(chunkId) { return installedChunks[chunkId] === 0; };
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
 /******/ 		
 /******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = function(parentChunkLoadingFunction, data) {
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var chunkIds = data[0];
 /******/ 			var moreModules = data[1];
 /******/ 			var runtime = data[2];
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
 /******/ 			var moduleId, chunkId, i = 0;
-/******/ 			if(chunkIds.some(function(id) { return installedChunks[id] !== 0; })) {
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
 /******/ 				for(moduleId in moreModules) {
 /******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
 /******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
@@ -931,14 +1071,14 @@ module.exports = window["wp"]["i18n"];
 /******/ 		var chunkLoadingGlobal = self["webpackChunkguten_weather"] = self["webpackChunkguten_weather"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-index"], function() { return __webpack_require__("./src/index.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-index"], () => (__webpack_require__("./src/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
