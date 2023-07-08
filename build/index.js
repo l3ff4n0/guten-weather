@@ -14,13 +14,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 
 
 /**
@@ -28,6 +30,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
+
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -206,10 +209,10 @@ function Edit(props) {
   language = languageData !== 'select your language' ? "&lang=" + languageData : "";
 
   if (weather_api_key == '') {
-    props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please create an API KEY and put it inside the Guten Weather settings plugin', 'guten-weather');
+    props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please create an API KEY and put it inside the Guten Weather settings plugin', 'guten-weather');
   } else {
     if (city == 'select your city' || city == '') {
-      props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please add a Location to display the weather widget', 'guten-weather');
+      props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please add a Location to display the weather widget', 'guten-weather');
     } else {
       weatherType === 'forecast' ? weather_endpoint = weather_api + apiKey + cityName + days + language : weather_endpoint = weather_api + apiKey + cityName + language;
       fetch(weather_endpoint).then(response => response.json()).then(data => {
@@ -235,12 +238,12 @@ function Edit(props) {
 													</div>
 													<div class="weather-text-content">
 														<div class="weather-text">${weather_text}</div>
-														<div class="weather-loc-name"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Location', 'guten-weather')}</span>${weather_loc_name} - ${weather_loc_country}</div>
-														<div class="weather-loc-coords"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Coordinates', 'guten-weather')}</span>${weather_loc_coordinates}</div>
-														<div class="weather-loc-feelslike"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Feelslike', 'guten-weather')}</span>${weather_loc_feelslike}°</div>
-														<div class="weather-loc-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${weather_loc_humidity}%</div>
-														<div class="weather-loc-wind"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind', 'guten-weather')}</span>${weather_loc_wind_kph} km/h - ${weather_loc_wind_direction}</div>
-														<div class="weather-loc-pressure"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pressure', 'guten-weather')}</span>${weather_loc_pressure} mbar</div>
+														<div class="weather-loc-name"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Location', 'guten-weather')}</span>${weather_loc_name} - ${weather_loc_country}</div>
+														<div class="weather-loc-coords"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Coordinates', 'guten-weather')}</span>${weather_loc_coordinates}</div>
+														<div class="weather-loc-feelslike"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Feelslike', 'guten-weather')}</span>${weather_loc_feelslike}°</div>
+														<div class="weather-loc-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Humidity', 'guten-weather')}</span>${weather_loc_humidity}%</div>
+														<div class="weather-loc-wind"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind', 'guten-weather')}</span>${weather_loc_wind_kph} km/h - ${weather_loc_wind_direction}</div>
+														<div class="weather-loc-pressure"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pressure', 'guten-weather')}</span>${weather_loc_pressure} mbar</div>
 													</div>
 													`;
 
@@ -255,7 +258,7 @@ function Edit(props) {
               matches = regex.exec(day_data.condition.icon);
               weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : day_data.condition.icon;
               props.attributes.WeatherTpl += `<div id="weather-forecast-day-${value}" class="weather-forecast-day-container">
-																		<div class="weather-forecast-day-main-title">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'guten-weather')} ${key.date}</div>
+																		<div class="weather-forecast-day-main-title">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Date', 'guten-weather')} ${key.date}</div>
 																		<div class="weather-day-container">
 																		<div class="weather-day-condition">
 																			<div class="weather-icon icon-${day_data.condition.code}">
@@ -263,10 +266,10 @@ function Edit(props) {
 																			</div>
 																			<div class="weather-day-content">
 																			<div class="weather-text">${day_data.condition.text}</div>
-																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Min temperature', 'guten-weather')}</span>${day_data.mintemp_c}°</div>
-																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Max temperature', 'guten-weather')}</span>${day_data.maxtemp_c}°</div>
-																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${day_data.avghumidity}%</div>
-																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total precipitation', 'guten-weather')}</span>${day_data.totalprecip_mm}mm</div>
+																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Min temperature', 'guten-weather')}</span>${day_data.mintemp_c}°</div>
+																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Max temperature', 'guten-weather')}</span>${day_data.maxtemp_c}°</div>
+																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Humidity', 'guten-weather')}</span>${day_data.avghumidity}%</div>
+																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Total precipitation', 'guten-weather')}</span>${day_data.totalprecip_mm}mm</div>
 																			</div>
 																		</div>
 																		</div>
@@ -289,14 +292,14 @@ function Edit(props) {
 																				<img loading="lazy" src="${weather_icon_url}" alt="${hour_condition.text}" />
 																			</div>
 																			</div>
-																			<div class="weather-hour-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${hour_key.humidity}%</div>
-																			<div class="weather-hour-precip_mm"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Rainfall', 'guten-weather')}</span>${hour_key.precip_mm}mm</div>
-																			<div class="weather-hour-temp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Temperature', 'guten-weather')}</span>${hour_key.temp_c}°</div>
+																			<div class="weather-hour-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Humidity', 'guten-weather')}</span>${hour_key.humidity}%</div>
+																			<div class="weather-hour-precip_mm"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rainfall', 'guten-weather')}</span>${hour_key.precip_mm}mm</div>
+																			<div class="weather-hour-temp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Temperature', 'guten-weather')}</span>${hour_key.temp_c}°</div>
 																			<div class="weather-hour-wind-content">
-																			<div class="weather-hour-wind-degree"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind degree', 'guten-weather')}</span>${hour_key.wind_degree}°</div>
-																			<div class="weather-hour-wind-dir"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind direction', 'guten-weather')}</span>${hour_key.wind_dir}</div>
-																			<div class="weather-hour-wind-kph"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind speed', 'guten-weather')}</span>${hour_key.wind_kph}</div>
-																			<div class="weather-hour-windchill_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind chill', 'guten-weather')}</span>${hour_key.windchill_c}°</div>
+																			<div class="weather-hour-wind-degree"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind degree', 'guten-weather')}</span>${hour_key.wind_degree}°</div>
+																			<div class="weather-hour-wind-dir"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind direction', 'guten-weather')}</span>${hour_key.wind_dir}</div>
+																			<div class="weather-hour-wind-kph"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind speed', 'guten-weather')}</span>${hour_key.wind_kph}</div>
+																			<div class="weather-hour-windchill_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind chill', 'guten-weather')}</span>${hour_key.windchill_c}°</div>
 																			</div>
 																		</div>`;
               });
@@ -311,9 +314,8 @@ function Edit(props) {
             props.attributes.WeatherTpl += '</div>';
           }
 
-          jQuery(document).ready(function ($) {
+          _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
             const swiper = new Swiper('.swiper', {
-              //loop: true,
               slidesPerView: 3,
               navigation: {
                 nextEl: '.swiper-button-next',
@@ -334,20 +336,20 @@ function Edit(props) {
     };
   }
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
     key: "setting"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Guten weather settings', 'guten-weather')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Guten weather settings', 'guten-weather')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('City', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('City', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: "Write the name of your city",
     value: city,
     onChange: onChangeCity
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Weather type', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Weather type', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     label: "Select the weather type",
     value: weatherType,
     options: [{
@@ -360,7 +362,7 @@ function Edit(props) {
     onChange: onChangeWeatherType
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Number of days of weather forecast', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Number of days of weather forecast', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     label: " Select the number of days",
     value: numberDays,
     options: [{
@@ -397,7 +399,7 @@ function Edit(props) {
     onChange: onChangeNumberDays
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Language data', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Language data', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     label: "Choose the language",
     value: languageData,
     options: [{
@@ -527,7 +529,7 @@ function Edit(props) {
     onChange: onChangeLanguageData
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout weather', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Layout weather', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
     label: "Choose your layout",
     value: layoutModel,
     options: [{
@@ -543,19 +545,19 @@ function Edit(props) {
     onChange: onChangeLayoutModel
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background color', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background color', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPalette, {
     colors: Backgroundcolors,
     value: WidgetBgColor,
     enableAlpha: "true",
     onChange: onChangeSetBgColor
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Color', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPalette, {
     colors: colors,
     value: WidgetColor,
     enableAlpha: "true",
     onChange: onChangeSetColor
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "widget-weather-container",
     style: {
@@ -620,6 +622,15 @@ __webpack_require__.r(__webpack_exports__);
    */
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
+window.addEventListener("load", function () {
+  const swiper = new Swiper('.swiper', {
+    slidesPerView: 3,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  });
+});
 
 /***/ }),
 
@@ -635,10 +646,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 
 
 /**
@@ -646,6 +659,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
+
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -698,10 +712,10 @@ function save(props) {
   language = languageData !== 'select your language' ? "&lang=" + languageData : "";
 
   if (weather_api_key == '') {
-    props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please create an API KEY and put it inside the Guten Weather settings plugin', 'guten-weather');
+    props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please create an API KEY and put it inside the Guten Weather settings plugin', 'guten-weather');
   } else {
     if (city == 'select your city' || city == '') {
-      props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please add a Location to display the weather widget', 'guten-weather');
+      props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please add a Location to display the weather widget', 'guten-weather');
     } else {
       weatherType === 'forecast' ? weather_endpoint = weather_api + apiKey + cityName + days + language : weather_endpoint = weather_api + apiKey + cityName + language;
       fetch(weather_endpoint).then(response => response.json()).then(data => {
@@ -727,12 +741,12 @@ function save(props) {
 													</div>
 													<div class="weather-text-content">
 														<div class="weather-text">${weather_text}</div>
-														<div class="weather-loc-name"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Location', 'guten-weather')}</span>${weather_loc_name} - ${weather_loc_country}</div>
-														<div class="weather-loc-coords"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Coordinates', 'guten-weather')}</span>${weather_loc_coordinates}</div>
-														<div class="weather-loc-feelslike"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Feelslike', 'guten-weather')}</span>${weather_loc_feelslike}°</div>
-														<div class="weather-loc-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${weather_loc_humidity}%</div>
-														<div class="weather-loc-wind"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind', 'guten-weather')}</span>${weather_loc_wind_kph} km/h - ${weather_loc_wind_direction}</div>
-														<div class="weather-loc-pressure"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pressure', 'guten-weather')}</span>${weather_loc_pressure} mbar</div>
+														<div class="weather-loc-name"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Location', 'guten-weather')}</span>${weather_loc_name} - ${weather_loc_country}</div>
+														<div class="weather-loc-coords"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Coordinates', 'guten-weather')}</span>${weather_loc_coordinates}</div>
+														<div class="weather-loc-feelslike"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Feelslike', 'guten-weather')}</span>${weather_loc_feelslike}°</div>
+														<div class="weather-loc-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Humidity', 'guten-weather')}</span>${weather_loc_humidity}%</div>
+														<div class="weather-loc-wind"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind', 'guten-weather')}</span>${weather_loc_wind_kph} km/h - ${weather_loc_wind_direction}</div>
+														<div class="weather-loc-pressure"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pressure', 'guten-weather')}</span>${weather_loc_pressure} mbar</div>
 													</div>
 													`;
 
@@ -747,7 +761,7 @@ function save(props) {
               matches = regex.exec(day_data.condition.icon);
               weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : day_data.condition.icon;
               props.attributes.WeatherTpl += `<div id="weather-forecast-day-${value}" class="weather-forecast-day-container">
-																		<div class="weather-forecast-day-main-title">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date', 'guten-weather')} ${key.date}</div>
+																		<div class="weather-forecast-day-main-title">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Date', 'guten-weather')} ${key.date}</div>
 																		<div class="weather-day-container">
 																		<div class="weather-day-condition">
 																			<div class="weather-icon icon-${day_data.condition.code}">
@@ -755,10 +769,10 @@ function save(props) {
 																			</div>
 																			<div class="weather-day-content">
 																			<div class="weather-text">${day_data.condition.text}</div>
-																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Min temperature', 'guten-weather')}</span>${day_data.mintemp_c}°</div>
-																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Max temperature', 'guten-weather')}</span>${day_data.maxtemp_c}°</div>
-																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${day_data.avghumidity}%</div>
-																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Total precipitation', 'guten-weather')}</span>${day_data.totalprecip_mm}mm</div>
+																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Min temperature', 'guten-weather')}</span>${day_data.mintemp_c}°</div>
+																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Max temperature', 'guten-weather')}</span>${day_data.maxtemp_c}°</div>
+																			<div class="weather-mintemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Humidity', 'guten-weather')}</span>${day_data.avghumidity}%</div>
+																			<div class="weather-maxtemp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Total precipitation', 'guten-weather')}</span>${day_data.totalprecip_mm}mm</div>
 																			</div>
 																		</div>
 																		</div>
@@ -781,14 +795,14 @@ function save(props) {
 																				<img loading="lazy" src="${weather_icon_url}" alt="${hour_condition.text}" />
 																			</div>
 																			</div>
-																			<div class="weather-hour-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Humidity', 'guten-weather')}</span>${hour_key.humidity}%</div>
-																			<div class="weather-hour-precip_mm"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Rainfall', 'guten-weather')}</span>${hour_key.precip_mm}mm</div>
-																			<div class="weather-hour-temp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Temperature', 'guten-weather')}</span>${hour_key.temp_c}°</div>
+																			<div class="weather-hour-humidity"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Humidity', 'guten-weather')}</span>${hour_key.humidity}%</div>
+																			<div class="weather-hour-precip_mm"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rainfall', 'guten-weather')}</span>${hour_key.precip_mm}mm</div>
+																			<div class="weather-hour-temp_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Temperature', 'guten-weather')}</span>${hour_key.temp_c}°</div>
 																			<div class="weather-hour-wind-content">
-																			<div class="weather-hour-wind-degree"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind degree', 'guten-weather')}</span>${hour_key.wind_degree}°</div>
-																			<div class="weather-hour-wind-dir"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind direction', 'guten-weather')}</span>${hour_key.wind_dir}</div>
-																			<div class="weather-hour-wind-kph"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind speed', 'guten-weather')}</span>${hour_key.wind_kph}</div>
-																			<div class="weather-hour-windchill_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Wind chill', 'guten-weather')}</span>${hour_key.windchill_c}°</div>
+																			<div class="weather-hour-wind-degree"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind degree', 'guten-weather')}</span>${hour_key.wind_degree}°</div>
+																			<div class="weather-hour-wind-dir"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind direction', 'guten-weather')}</span>${hour_key.wind_dir}</div>
+																			<div class="weather-hour-wind-kph"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind speed', 'guten-weather')}</span>${hour_key.wind_kph}</div>
+																			<div class="weather-hour-windchill_c"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Wind chill', 'guten-weather')}</span>${hour_key.windchill_c}°</div>
 																			</div>
 																		</div>`;
               });
@@ -803,9 +817,8 @@ function save(props) {
             props.attributes.WeatherTpl += '</div>';
           }
 
-          jQuery(document).ready(function ($) {
+          _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
             const swiper = new Swiper('.swiper', {
-              //loop: true,
               slidesPerView: 3,
               navigation: {
                 nextEl: '.swiper-button-next',
@@ -826,7 +839,7 @@ function save(props) {
     };
   }
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save()
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "widget-weather-container",
     style: {
@@ -890,6 +903,16 @@ module.exports = window["wp"]["blocks"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/dom-ready":
+/*!**********************************!*\
+  !*** external ["wp","domReady"] ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["domReady"];
 
 /***/ }),
 

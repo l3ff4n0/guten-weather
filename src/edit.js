@@ -1,3 +1,4 @@
+import domReady from '@wordpress/dom-ready';
 /**
  * Retrieves the translation of text.
  *
@@ -242,16 +243,16 @@ export default function Edit(props) {
 							});
 							props.attributes.WeatherTpl += '</div>';
 						}
-						jQuery(document).ready(function ($) {
+						domReady( function () {
 							const swiper = new Swiper('.swiper', {
-								//loop: true,
 								slidesPerView: 3,
 								navigation: {
 									nextEl: '.swiper-button-next',
 									prevEl: '.swiper-button-prev',
 								},
 							});
-						});
+						} );
+						
 					}
 				}
 				).catch(error => {
