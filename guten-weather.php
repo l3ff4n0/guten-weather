@@ -4,7 +4,7 @@
  * Description:       This is a guten weather block to display weather and forecast
  * Requires at least: 6.2
  * Requires PHP:      7.0
- * Version:           0.1.7
+ * Version:           0.1.8
  * Author:            Stefano Frasson Pianizzola
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -77,6 +77,306 @@ function gutern_weather_api_documentation(){ ?>
             </div>
         </div>
         <div class="weather-api-container">
+            <h2 class="docs-heading">Different plans</h1>
+            <section class="docs-intro plans-section">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-correct">
+                        <thead>
+                        <tr>
+                            <th scope="col">
+                                
+                            </th>                        
+                            <th scope="col">
+                                <div class="plan-header text-center">
+                                    <h3 class="plan-title">Free</h3>
+                                    <div class="plan-cost">
+                                        <div class="plan-cost-monthly">
+                                            <span class="currency">$</span>
+                                            <span class="number">0</span>
+                                            <div class="unit">per month</div>
+                                        </div>
+                                    </div>
+                                    <!--//plan-cost-->
+                                    <div class="plan-cta">
+                                        <a class="btn-primary btn" href="https://www.weatherapi.com/signup.aspx" target="_blank">Get Started</a>
+                                    </div>
+                                </div>
+                                <!--//plan-header-->
+                            </th>
+                            <th scope="col">
+                                <div class="plan-header text-center">
+                                    <h3 class="plan-title">Developer</h3>
+                                    <div class="plan-cost">
+                                        <div class="plan-cost-monthly">
+                                            <span class="currency">$</span>
+                                            <span class="number">4</span>
+                                            <div class="unit">per month</div>
+                                        </div>
+                                    </div>
+                                    <!--//plan-cost-->
+                                    <div class="plan-cta">
+                                        <a class="btn-primary btn" href="https://www.weatherapi.com/signup.aspx" target="_blank">14-Day Trial</a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="plan-header text-center">
+                                    <h3 class="plan-title">Starter</h3>
+                                    <div class="plan-cost">
+                                        <div class="plan-cost-monthly">
+                                            <span class="currency">$</span>
+                                            <span class="number">7</span>
+                                            <div class="unit">per month</div>
+                                        </div>
+                                    </div>
+                                    <!--//plan-cost-->
+                                    <div class="plan-cta">
+                                        <a class="btn-primary btn" href="https://www.weatherapi.com/signup.aspx">14-Day Trial</a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="card-header bg-success text-light text-center rounded">Most Popular</div>
+                                <div class="plan-header text-center">
+                                    <h3 class="plan-title">Pro+</h3>
+                                    <div class="plan-cost">
+                                        <div class="plan-cost-monthly">
+                                            <span class="currency">$</span>
+                                            <span class="number">35</span>
+                                            <div class="unit">per month</div>
+                                        </div>
+                                    </div>
+                                    <!--//plan-cost-->
+                                    <div class="plan-cta">
+                                        <a class="btn-primary btn" href="https://www.weatherapi.com/signup.aspx">14-Day Trial</a>
+                                    </div>
+                                </div>
+                                <!--//plan-header-->
+                            </th>
+                            <th scope="col">
+                                <div class="plan-header text-center">
+                                    <h3 class="plan-title">Business</h3>
+                                    <div class="plan-cost">
+                                        <div class="plan-cost-monthly">
+                                            <span class="currency">$</span>
+                                            <span class="number">65</span>
+                                            <div class="unit">per month</div>
+                                        </div>
+                                    </div>
+                                    <!--//plan-cost-->
+                                    <div class="plan-cta">
+                                        <a class="btn-primary btn" href="https://www.weatherapi.com/signup.aspx">14-Day Trial</a>
+                                    </div>
+                                </div>
+                                <!--//plan-header-->
+                            </th>
+                            <th scope="col">
+                                <div class="plan-header text-center">
+                                    <h3 class="plan-title">Custom</h3>
+                                    <div class="plan-cost"></div>
+                                    <!--//plan-cost-->
+                                    <div class="plan-cta">
+                                        <a class="btn-primary btn" href="https://www.weatherapi.com/signup.aspx">Contact Us</a>
+                                    </div>
+                                </div>
+                                <!--//plan-header-->
+                            </th>
+                        </tr>
+                            </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Calls per month</th>
+                            <td>1 Million</td>
+                            <td>2 Million</td>                        
+                            <td>3 Million</td>                        
+                            <td>5 Million</td>
+                            <td>10 Million</td>
+                            <td>Custom</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Realtime weather</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Forecast Days</th>
+                            <td>3 Day</td>
+                            <td>5 Day</td>
+                            <td>7 Day</td>
+                            <td>14 Day</td>
+                            <td>14 day</td>
+                            <td>14 Day</td>
+                        </tr>                        
+                        <tr>
+                            <th scope="row">Forecast Interval</th>
+                            <td>Daily and Hourly</td>
+                            <td>Daily and Hourly</td>
+                            <td>Daily and Hourly</td>
+                            <td>Daily and Hourly</td>
+                            <td>Daily and Hourly</td>
+                            <td>Daily, Hourly and 15 min <span class="badge badge-pill badge-danger">New</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Marine Weather <span class="badge badge-pill badge-danger">New</span></th>
+                            <td>1 Day. No Tide Data</td>
+                            <td>2 Day. No Tide Data</td>
+                            <td>3 Day. No Tide Data</td>
+                            <td>5 Day + Tide Data</td>
+                            <td>7 Day + Tide Data</td>
+                            <td>7 Day + Tide Data</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Marine Weather Interval</th>
+                            <td>Daily only</td>
+                            <td>Daily only</td>
+                            <td>Daily only</td>
+                            <td>Daily and Hourly</td>
+                            <td>Daily and Hourly</td>
+                            <td>Daily, Hourly and 15 min</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Historical Weather</th>
+                            <td>Last 7 days</td>
+                            <td>Last 7 days</td>
+                            <td>Last 7 days</td>
+                            <td>Last 365 days</td>
+                            <td>1st Jan 2010 onwards</td>
+                            <td>1st Jan 2010 onwards</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Future Weather <span class="badge badge-pill badge-danger">New</span></th>
+                            <td>No</td>
+                            <td>No</td>                        
+                            <td>No</td>
+                            <td>300 days ahead</td>
+                            <td>300 days ahead</td>
+                            <td>365 days ahead</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Weather Alerts</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Air Quality(AQI)</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Search API</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Astronomy API</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">IP Lookup</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sports API</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">SSL</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Uptime</th>
+                            <td>95.5%</td>
+                            <td>97.5%</td>
+                            <td>99%</td>
+                            <td>99%</td>
+                            <td>99.9%</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Bulk Request <span class="badge badge-pill badge-danger">New</span></th>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">IP Blocking</th>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Commercial Use</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Non-Commercial Use</th>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                            <tr>
+                                <th scope="row">Yearly Payment</th>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>                       
+                        </tbody>
+                    </table>
+                </div>
+            </section>
             <h2 class="docs-heading">Introduction</h1>
             <section class="docs-intro">
                 <p>WeatherAPI.com provides access to free weather and geo data via a JSON/XML restful API. It allows developers to create desktop, web and mobile applications using this data very easy.</p>

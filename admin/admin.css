@@ -80,6 +80,18 @@ body.guten-weather_page_guten_weather_api_documentation ul.doc-list{
     margin-left: 40px;
 }
 
+body.guten-weather_page_guten_weather_api_documentation .plans-section .plan-header{
+    padding: 2rem 1rem;
+}
+
+body.guten-weather_page_guten_weather_api_documentation .card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #71B328;
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+    border-radius: .25rem;
+}
+
 body.guten-weather_page_guten_weather_api_documentation .table-striped{
     width: 100%;
 }
