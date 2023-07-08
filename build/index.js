@@ -73,49 +73,41 @@ function Edit(props) {
     },
     setAttributes
   } = props;
-
   const onChangeCity = newCityName => {
     setAttributes({
       city: newCityName
     });
   };
-
   const onChangeWeatherType = newweatherType => {
     setAttributes({
       weatherType: newweatherType
     });
   };
-
   const onChangeNumberDays = newDay => {
     setAttributes({
       numberDays: newDay
     });
   };
-
   const onChangeLanguageData = newLanguageData => {
     setAttributes({
       languageData: newLanguageData
     });
   };
-
   const onChangeLayoutModel = newLayoutModel => {
     setAttributes({
       layoutModel: newLayoutModel
     });
   };
-
   const onChangeSetBgColor = newBgColor => {
     setAttributes({
       WidgetBgColor: newBgColor
     });
   };
-
   const onChangeSetColor = newColor => {
     setAttributes({
       WidgetColor: newColor
     });
   };
-
   const Backgroundcolors = [{
     name: 'White',
     color: '#fff'
@@ -193,21 +185,17 @@ function Edit(props) {
   const weather_api = 'http://api.weatherapi.com/v1/' + weatherType + '.json?';
   const regex = /\/(\w+)\/(\w+)\.(\w+)$/;
   let weather_endpoint,
-      apiKey,
-      cityName = "&q=",
-      days = "&days=" + numberDays,
-      language;
-
+    apiKey,
+    cityName = "&q=",
+    days = "&days=" + numberDays,
+    language;
   if (weather_api_key != '') {
     apiKey = 'key=' + weather_api_key;
   }
-
   if (city !== 'select your city') {
     cityName = "&q=" + city;
   }
-
   language = languageData !== 'select your language' ? "&lang=" + languageData : "";
-
   if (weather_api_key == '') {
     props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please create an API KEY and put it inside the Guten Weather settings plugin', 'guten-weather');
   } else {
@@ -246,15 +234,13 @@ function Edit(props) {
 														<div class="weather-loc-pressure"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pressure', 'guten-weather')}</span>${weather_loc_pressure} mbar</div>
 													</div>
 													`;
-
         if (weatherType === 'forecast') {
           const weather_forecast = data.forecast.forecastday;
-
           if (weather_forecast.length > 0) {
             props.attributes.WeatherTpl += '<div class="weather-forecast-container">';
             weather_forecast.map(function (key, value) {
               const day_data = key.day,
-                    hour_data = key.hour;
+                hour_data = key.hour;
               matches = regex.exec(day_data.condition.icon);
               weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : day_data.condition.icon;
               props.attributes.WeatherTpl += `<div id="weather-forecast-day-${value}" class="weather-forecast-day-container">
@@ -313,7 +299,6 @@ function Edit(props) {
             });
             props.attributes.WeatherTpl += '</div>';
           }
-
           _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
             const swiper = new Swiper('.swiper', {
               slidesPerView: 3,
@@ -329,14 +314,13 @@ function Edit(props) {
       });
     }
   }
-
   function createWeatherContent() {
     return {
       __html: props.attributes.WeatherTpl
     };
   }
-
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
     key: "setting"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
@@ -557,7 +541,8 @@ function Edit(props) {
     value: WidgetColor,
     enableAlpha: "true",
     onChange: onChangeSetColor
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "widget-weather-container",
     style: {
@@ -588,6 +573,7 @@ __webpack_require__.r(__webpack_exports__);
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * All files containing `style` keyword are bundled together. The code used
@@ -608,15 +594,12 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('guten-weather/guten-weather', {
   title: 'Guten Weather',
-
   /**
    * @see ./edit.js
    */
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-
   /**
    * @see ./save.js
    */
@@ -678,7 +661,6 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {WPElement} Element to render.
  */
-
 function save(props) {
   const {
     attributes: {
@@ -696,21 +678,17 @@ function save(props) {
   const weather_api = 'http://api.weatherapi.com/v1/' + weatherType + '.json?';
   const regex = /\/(\w+)\/(\w+)\.(\w+)$/;
   let weather_endpoint,
-      apiKey,
-      cityName = "&q=",
-      days = "&days=" + numberDays,
-      language;
-
+    apiKey,
+    cityName = "&q=",
+    days = "&days=" + numberDays,
+    language;
   if (weather_api_key != '') {
     apiKey = 'key=' + weather_api_key;
   }
-
   if (city !== 'select your city') {
     cityName = "&q=" + city;
   }
-
   language = languageData !== 'select your language' ? "&lang=" + languageData : "";
-
   if (weather_api_key == '') {
     props.attributes.WeatherTpl = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please create an API KEY and put it inside the Guten Weather settings plugin', 'guten-weather');
   } else {
@@ -749,15 +727,13 @@ function save(props) {
 														<div class="weather-loc-pressure"><span class="weather-label">${(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pressure', 'guten-weather')}</span>${weather_loc_pressure} mbar</div>
 													</div>
 													`;
-
         if (weatherType === 'forecast') {
           const weather_forecast = data.forecast.forecastday;
-
           if (weather_forecast.length > 0) {
             props.attributes.WeatherTpl += '<div class="weather-forecast-container">';
             weather_forecast.map(function (key, value) {
               const day_data = key.day,
-                    hour_data = key.hour;
+                hour_data = key.hour;
               matches = regex.exec(day_data.condition.icon);
               weather_icon_url = layoutModel === 'animated_icons' ? plugin_path + 'animated-icons/' + matches[1] + '/' + matches[2] + '.svg' : day_data.condition.icon;
               props.attributes.WeatherTpl += `<div id="weather-forecast-day-${value}" class="weather-forecast-day-container">
@@ -816,7 +792,6 @@ function save(props) {
             });
             props.attributes.WeatherTpl += '</div>';
           }
-
           _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
             const swiper = new Swiper('.swiper', {
               slidesPerView: 3,
@@ -832,14 +807,13 @@ function save(props) {
       });
     }
   }
-
   function createWeatherContent() {
     return {
       __html: props.attributes.WeatherTpl
     };
   }
-
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save()
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "widget-weather-container",
     style: {
@@ -1086,7 +1060,7 @@ module.exports = window["wp"]["i18n"];
 /******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
 /******/ 					installedChunks[chunkId][0]();
 /******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 				installedChunks[chunkId] = 0;
 /******/ 			}
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
