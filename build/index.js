@@ -67,6 +67,7 @@ function Edit(props) {
       numberDays,
       languageData,
       layoutModel,
+      borderRadius,
       WidgetBgColor,
       WidgetColor,
       WeatherTpl
@@ -96,6 +97,11 @@ function Edit(props) {
   const onChangeLayoutModel = newLayoutModel => {
     setAttributes({
       layoutModel: newLayoutModel
+    });
+  };
+  const onChangeBorderRadius = newborderRadius => {
+    setAttributes({
+      borderRadius: newborderRadius
     });
   };
   const onChangeSetBgColor = newBgColor => {
@@ -529,6 +535,16 @@ function Edit(props) {
     onChange: onChangeLayoutModel
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border radius', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: "Choose your border radius",
+    value: borderRadius,
+    onChange: onChangeBorderRadius,
+    initialPosition: 0,
+    min: 0,
+    max: 30,
+    step: 5
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
+    className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background color', 'guten-weather')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPalette, {
     colors: Backgroundcolors,
     value: WidgetBgColor,
@@ -547,7 +563,8 @@ function Edit(props) {
     className: "widget-weather-container",
     style: {
       background: WidgetBgColor,
-      color: WidgetColor
+      color: WidgetColor,
+      borderRadius: borderRadius
     },
     dangerouslySetInnerHTML: createWeatherContent()
   })));
@@ -669,6 +686,7 @@ function save(props) {
       numberDays,
       languageData,
       layoutModel,
+      borderRadius,
       WidgetBgColor,
       WidgetColor,
       WeatherTpl
@@ -818,7 +836,8 @@ function save(props) {
     className: "widget-weather-container",
     style: {
       background: WidgetBgColor,
-      color: WidgetColor
+      color: WidgetColor,
+      borderRadius: borderRadius
     },
     dangerouslySetInnerHTML: createWeatherContent()
   }));

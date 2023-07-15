@@ -24,7 +24,7 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save(props) {
-	const { attributes: {city, weatherType, numberDays, languageData,layoutModel, WidgetBgColor, WidgetColor, WeatherTpl}, setAttributes } = props;
+	const { attributes: {city, weatherType, numberDays, languageData,layoutModel, borderRadius, WidgetBgColor, WidgetColor, WeatherTpl}, setAttributes } = props;
 
 	const weather_api = 'http://api.weatherapi.com/v1/'+ weatherType +'.json?';
 
@@ -197,7 +197,7 @@ export default function save(props) {
 
 	return (
 		<div { ...useBlockProps.save() }>
-			<div className={"widget-weather-container"} style={{ background: WidgetBgColor, color: WidgetColor }} dangerouslySetInnerHTML={createWeatherContent()} />
+			<div className={"widget-weather-container"} style={{ background: WidgetBgColor, color: WidgetColor, borderRadius: borderRadius }} dangerouslySetInnerHTML={createWeatherContent()} />
 		</div>
 	);
 }

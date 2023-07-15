@@ -1,10 +1,11 @@
 {
 	"apiVersion": 3,
 	"name": "guten-weather/guten-weather",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"title": "Guten weather",
 	"category": "widgets",
 	"icon": "cloud",
+	"keywords": ["weather", "forecast", "temperature"],
 	"description": "This is a guten weather block to display weather and forecast",
 	"supports": {
 		"html": false
@@ -37,6 +38,10 @@
 		"layoutModel": {
 			"type": "string",
 			"default": "select your layout"
+		},
+		"borderRadius": {
+			"type": "number",
+			"default": 0
 		},
 		"WidgetBgColor": {
 			"type": "string",

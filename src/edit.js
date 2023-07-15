@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { Panel, PanelBody, SelectControl,TextControl, ColorPalette } from '@wordpress/components';
+import { Panel, PanelBody, SelectControl,TextControl, ColorPalette, RangeControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 /**
@@ -35,7 +35,7 @@ import './editor.scss';
 
 export default function Edit(props) {
 
-	const { attributes: { city, weatherType, numberDays, languageData, layoutModel, WidgetBgColor, WidgetColor, WeatherTpl }, setAttributes } = props;
+	const { attributes: { city, weatherType, numberDays, languageData, layoutModel, borderRadius, WidgetBgColor, WidgetColor, WeatherTpl }, setAttributes } = props;
 
 	const onChangeCity = ( newCityName ) => {
 		setAttributes( { city: newCityName } );
@@ -56,6 +56,10 @@ export default function Edit(props) {
 
 	const onChangeLayoutModel = ( newLayoutModel ) => {
 		setAttributes( { layoutModel: newLayoutModel } );
+	};
+
+	const onChangeBorderRadius = ( newborderRadius ) => {
+		setAttributes( { borderRadius: newborderRadius } );
 	};
 
 	const onChangeSetBgColor = (newBgColor) => {
@@ -394,6 +398,20 @@ export default function Edit(props) {
 			</fieldset>
 			<fieldset>
 				<legend className="blocks-base-control__label">
+						{ __( 'Border radius', 'guten-weather' ) }
+				</legend>
+				<RangeControl
+				label="Choose your border radius"
+				value={ borderRadius }
+				onChange={ onChangeBorderRadius }
+				initialPosition={0}
+				min={ 0 }
+				max={ 30 }
+				step={ 5 }
+				/>
+			</fieldset>
+			<fieldset>
+				<legend className="blocks-base-control__label">
 						{ __( 'Background color', 'guten-weather' ) }
 				</legend>
 				<ColorPalette
@@ -418,7 +436,7 @@ export default function Edit(props) {
 		</InspectorControls>
 
 		<div { ...useBlockProps() }>
-			<div className={"widget-weather-container"}  style={{ background: WidgetBgColor, color: WidgetColor }} dangerouslySetInnerHTML={createWeatherContent()} />
+			<div className={"widget-weather-container"}  style={{ background: WidgetBgColor, color: WidgetColor, borderRadius: borderRadius }} dangerouslySetInnerHTML={createWeatherContent()} />
 		</div>
 		</div>
 	);
