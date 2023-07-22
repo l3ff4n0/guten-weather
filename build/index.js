@@ -72,11 +72,11 @@ function Edit(props) {
       layoutModel,
       borderRadius,
       WidgetBgColor,
-      WidgetColor,
-      WeatherTpl
+      WidgetColor
     },
     setAttributes
   } = props;
+  console.log(props);
   const onChangeCity = newCityName => {
     setAttributes({
       city: newCityName
@@ -425,7 +425,8 @@ function Edit(props) {
     onChange: onChangeSetColor
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default()), {
     block: "guten-weather/guten-weather",
-    attributes: props.attributes
+    attributes: props.attributes,
+    className: "widget-weather-container"
   }));
 }
 
@@ -542,8 +543,7 @@ function save(props) {
       layoutModel,
       borderRadius,
       WidgetBgColor,
-      WidgetColor,
-      WeatherTpl
+      WidgetColor
     },
     setAttributes
   } = props;

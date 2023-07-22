@@ -36,7 +36,8 @@ import './editor.scss';
 
 export default function Edit(props) {
 
-	const { attributes: { city, weatherType, numberDays, languageData, layoutModel, borderRadius, WidgetBgColor, WidgetColor, WeatherTpl }, setAttributes } = props;
+	const { attributes: { city, weatherType, numberDays, languageData, layoutModel, borderRadius, WidgetBgColor, WidgetColor }, setAttributes } = props;
+	console.log(props);
 
 	const onChangeCity = ( newCityName ) => {
 		setAttributes( { city: newCityName } );
@@ -103,167 +104,166 @@ export default function Edit(props) {
 	
 	return (
 		<div{ ...useBlockProps() }>
-		<InspectorControls key="setting">
-			<PanelBody title={ __( 'Guten weather settings', 'guten-weather' ) }>	
-			<fieldset>
-				<legend className="blocks-base-control__label">
-					{ __( 'City', 'guten-weather' ) }
-				</legend>
-				<TextControl
-					label="Write the name of your city"
-					value={ city }
-					onChange={ onChangeCity }
-				/>
-			</fieldset>
-			<fieldset>
-				<legend className="blocks-base-control__label">
-					{ __( 'Weather type', 'guten-weather' ) }
-				</legend>
-				<SelectControl
-					label="Select the weather type"
-					value={ weatherType }
-					options={
-						[
-							{ label: 'Current', value: 'current' },
-							{ label: 'Forecast', value: 'forecast' },
-						] }
-					onChange={ onChangeWeatherType }
-
-				/>
-			</fieldset>
-			<fieldset>
-				<legend className="blocks-base-control__label">
-					{ __( 'Number of days of weather forecast', 'guten-weather' ) }
-				</legend>
-				<SelectControl
-					label=" Select the number of days"
-					value={ numberDays }
-					options={
-						[
-							{ label: '1', value: '1' },
-							{ label: '2', value: '2' },
-							{ label: '3', value: '3' },
-							{ label: '4', value: '4' },
-							{ label: '5', value: '5' },
-							{ label: '6', value: '6' },
-							{ label: '7', value: '7' },
-							{ label: '8', value: '8' },
-							{ label: '9', value: '9' },
-							{ label: '10', value: '10' },
-						] }
-					onChange={ onChangeNumberDays }
-				/>
-			</fieldset>
-			<fieldset>
-				<legend className="blocks-base-control__label">
-					{ __( 'Language data', 'guten-weather' ) }
-				</legend>
-				<SelectControl
-					label="Choose the language"
-					value={ languageData }
-					options={
-						[
-							{ label: 'Select your language', value: 'select your language' },
-							{ label: 'Arabic', value: 'ar' },
-							{ label: 'Bengali', value: 'bn' },
-							{ label: 'Bulgarian', value: 'bg' },
-							{ label: 'Chinese Simplified', value: 'zh' },
-							{ label: 'Chinese Traditional', value: 'zh_tw' },
-							{ label: 'Czech', value: 'cs' },
-							{ label: 'Danish', value: 'da' },
-							{ label: 'Dutch', value: 'nl' },
-							{ label: 'Finnish', value: 'fi' },
-							{ label: 'French', value: 'fr' },
-							{ label: 'German', value: 'de' },
-							{ label: 'Greek', value: 'el' },
-							{ label: 'Hindi', value: 'hi' },
-							{ label: 'Hungarian', value: 'hu' },
-							{ label: 'Italian', value: 'it' },
-							{ label: 'Japanese', value: 'ja' },
-							{ label: 'Javanese', value: 'jv' },
-							{ label: 'Korean', value: 'ko' },
-							{ label: 'Mandarin', value: 'zh_cmn' },
-							{ label: 'Marathi', value: 'mr' },
-							{ label: 'Polish', value: 'pl' },
-							{ label: 'Portuguese', value: 'pt' },
-							{ label: 'Punjabi', value: 'pa' },
-							{ label: 'Romanian', value: 'ro' },
-							{ label: 'Russian', value: 'ru' },
-							{ label: 'Serbian', value: 'sr' },
-							{ label: 'Sinhalese', value: 'si' },
-							{ label: 'Slovak', value: 'sk' },
-							{ label: 'Spanish', value: 'es' },
-							{ label: 'Swedish', value: 'sv' },
-							{ label: 'Tamil', value: 'ta' },
-							{ label: 'Telugu', value: 'te' },
-							{ label: 'Turkish', value: 'tr' },
-							{ label: 'Ukrainian', value: 'uk' },
-							{ label: 'Urdu', value: 'ur' },
-							{ label: 'Vietnamese', value: 'vi' },
-							{ label: 'Wu (Shanghainese)', value: 'zh_wuu' },
-							{ label: 'Xiang', value: 'zh_hsn' },
-							{ label: 'Yue (Cantonese)', value: 'zh_yue' },
-							{ label: 'Zulu', value: 'zu' },
-						] }
-					onChange={ onChangeLanguageData }
-				/>
-			</fieldset>
-			<fieldset>
-				<legend className="blocks-base-control__label">
-						{ __( 'Layout weather', 'guten-weather' ) }
-				</legend>
-				<SelectControl
-					label="Choose your layout"
-					value={layoutModel}
-					options={
-						[
-							{ label: 'Select your layout', value: 'select_your_layout', },
-							{ label: 'Static icons', value: 'static_icons', },
-							{ label: 'Animated icons', value: 'animated_icons', },
-						]
-					}
-					onChange={onChangeLayoutModel}
-					 />
-			</fieldset>
-			<fieldset>
-				<legend className="blocks-base-control__label">
-						{ __( 'Border radius', 'guten-weather' ) }
-				</legend>
-				<RangeControl
-				label="Choose your border radius"
-				value={ borderRadius }
-				onChange={ onChangeBorderRadius }
-				initialPosition={0}
-				min={ 0 }
-				max={ 30 }
-				step={ 5 }
-				/>
-			</fieldset>
-			<fieldset>
-				<legend className="blocks-base-control__label">
-						{ __( 'Background color', 'guten-weather' ) }
-				</legend>
-				<ColorPalette
-					colors={ Backgroundcolors }
-					value={ WidgetBgColor }
-					enableAlpha="true"
-					onChange={onChangeSetBgColor}
-				/>
-			</fieldset>
-			<fieldset>
-				<legend className="blocks-base-control__label">
-						{ __( 'Color', 'guten-weather' ) }
-				</legend>
-				<ColorPalette
-					colors={ colors }
-					value={ WidgetColor }
-					enableAlpha="true"
-					onChange={ onChangeSetColor }
-				/>
-			</fieldset>
-   			</PanelBody>
-		</InspectorControls>
-		<ServerSideRender block="guten-weather/guten-weather" attributes={ props.attributes } />
+			<InspectorControls key="setting">
+				<PanelBody title={ __( 'Guten weather settings', 'guten-weather' ) }>	
+				<fieldset>
+					<legend className="blocks-base-control__label">
+						{ __( 'City', 'guten-weather' ) }
+					</legend>
+					<TextControl
+						label="Write the name of your city"
+						value={ city }
+						onChange={ onChangeCity }
+					/>
+				</fieldset>
+				<fieldset>
+					<legend className="blocks-base-control__label">
+						{ __( 'Weather type', 'guten-weather' ) }
+					</legend>
+					<SelectControl
+						label="Select the weather type"
+						value={ weatherType }
+						options={
+							[
+								{ label: 'Current', value: 'current' },
+								{ label: 'Forecast', value: 'forecast' },
+							] }
+						onChange={ onChangeWeatherType }
+					/>
+				</fieldset>
+				<fieldset>
+					<legend className="blocks-base-control__label">
+						{ __( 'Number of days of weather forecast', 'guten-weather' ) }
+					</legend>
+					<SelectControl
+						label=" Select the number of days"
+						value={ numberDays }
+						options={
+							[
+								{ label: '1', value: '1' },
+								{ label: '2', value: '2' },
+								{ label: '3', value: '3' },
+								{ label: '4', value: '4' },
+								{ label: '5', value: '5' },
+								{ label: '6', value: '6' },
+								{ label: '7', value: '7' },
+								{ label: '8', value: '8' },
+								{ label: '9', value: '9' },
+								{ label: '10', value: '10' },
+							] }
+						onChange={ onChangeNumberDays }
+					/>
+				</fieldset>
+				<fieldset>
+					<legend className="blocks-base-control__label">
+						{ __( 'Language data', 'guten-weather' ) }
+					</legend>
+					<SelectControl
+						label="Choose the language"
+						value={ languageData }
+						options={
+							[
+								{ label: 'Select your language', value: 'select your language' },
+								{ label: 'Arabic', value: 'ar' },
+								{ label: 'Bengali', value: 'bn' },
+								{ label: 'Bulgarian', value: 'bg' },
+								{ label: 'Chinese Simplified', value: 'zh' },
+								{ label: 'Chinese Traditional', value: 'zh_tw' },
+								{ label: 'Czech', value: 'cs' },
+								{ label: 'Danish', value: 'da' },
+								{ label: 'Dutch', value: 'nl' },
+								{ label: 'Finnish', value: 'fi' },
+								{ label: 'French', value: 'fr' },
+								{ label: 'German', value: 'de' },
+								{ label: 'Greek', value: 'el' },
+								{ label: 'Hindi', value: 'hi' },
+								{ label: 'Hungarian', value: 'hu' },
+								{ label: 'Italian', value: 'it' },
+								{ label: 'Japanese', value: 'ja' },
+								{ label: 'Javanese', value: 'jv' },
+								{ label: 'Korean', value: 'ko' },
+								{ label: 'Mandarin', value: 'zh_cmn' },
+								{ label: 'Marathi', value: 'mr' },
+								{ label: 'Polish', value: 'pl' },
+								{ label: 'Portuguese', value: 'pt' },
+								{ label: 'Punjabi', value: 'pa' },
+								{ label: 'Romanian', value: 'ro' },
+								{ label: 'Russian', value: 'ru' },
+								{ label: 'Serbian', value: 'sr' },
+								{ label: 'Sinhalese', value: 'si' },
+								{ label: 'Slovak', value: 'sk' },
+								{ label: 'Spanish', value: 'es' },
+								{ label: 'Swedish', value: 'sv' },
+								{ label: 'Tamil', value: 'ta' },
+								{ label: 'Telugu', value: 'te' },
+								{ label: 'Turkish', value: 'tr' },
+								{ label: 'Ukrainian', value: 'uk' },
+								{ label: 'Urdu', value: 'ur' },
+								{ label: 'Vietnamese', value: 'vi' },
+								{ label: 'Wu (Shanghainese)', value: 'zh_wuu' },
+								{ label: 'Xiang', value: 'zh_hsn' },
+								{ label: 'Yue (Cantonese)', value: 'zh_yue' },
+								{ label: 'Zulu', value: 'zu' },
+							] }
+						onChange={ onChangeLanguageData }
+					/>
+				</fieldset>
+				<fieldset>
+					<legend className="blocks-base-control__label">
+							{ __( 'Layout weather', 'guten-weather' ) }
+					</legend>
+					<SelectControl
+						label="Choose your layout"
+						value={layoutModel}
+						options={
+							[
+								{ label: 'Select your layout', value: 'select_your_layout', },
+								{ label: 'Static icons', value: 'static_icons', },
+								{ label: 'Animated icons', value: 'animated_icons', },
+							]
+						}
+						onChange={onChangeLayoutModel}
+						/>
+				</fieldset>
+				<fieldset>
+					<legend className="blocks-base-control__label">
+							{ __( 'Border radius', 'guten-weather' ) }
+					</legend>
+					<RangeControl
+						label="Choose your border radius"
+						value={ borderRadius }
+						onChange={ onChangeBorderRadius }
+						initialPosition={0}
+						min={ 0 }
+						max={ 30 }
+						step={ 5 }
+					/>
+				</fieldset>
+				<fieldset>
+					<legend className="blocks-base-control__label">
+							{ __( 'Background color', 'guten-weather' ) }
+					</legend>
+					<ColorPalette
+						colors={ Backgroundcolors }
+						value={ WidgetBgColor }
+						enableAlpha="true"
+						onChange={onChangeSetBgColor}
+					/>
+				</fieldset>
+				<fieldset>
+					<legend className="blocks-base-control__label">
+							{ __( 'Color', 'guten-weather' ) }
+					</legend>
+					<ColorPalette
+						colors={ colors }
+						value={ WidgetColor }
+						enableAlpha="true"
+						onChange={ onChangeSetColor }
+					/>
+				</fieldset>
+				</PanelBody>
+			</InspectorControls>
+			<ServerSideRender block="guten-weather/guten-weather" attributes={ props.attributes } className="widget-weather-container" />
 		</div>
 	);
 }

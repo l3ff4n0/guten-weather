@@ -42,16 +42,11 @@
 		"WidgetColor": {
 			"type": "string",
 			"default": "#000"
-		},
-		"WeatherTpl": {
-			"type": "string",
-			"source": "html",
-			"default": "Plase configure Weather block settings",
-			"selector": ".widget-weather-container"
 		}
 	},
 	"textdomain": "guten-weather",
 	"script": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css"
+	"style": "file:./build/style-index.css",
+	"render": "render.php"
 }
