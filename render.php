@@ -88,7 +88,7 @@
 																			<div class="swiper-wrapper">';                                      
                                     foreach( $hour_data as $hour_key => $hour_value){
 										$hour_condition = $hour_value['condition'];
-                                        $hour_date = date('H:i', $hour_value['time_epoch'] * 1000);
+                                        $hour_date = date('H:i', $hour_value['time_epoch']);
 
                                         $weather_icon = $hour_condition['icon'];
                                         $weather_animated_icon = explode('/',$weather_icon);
