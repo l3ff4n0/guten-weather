@@ -23,14 +23,6 @@
 			"type": "string",
 			"default": "1"
 		},
-		"airQuality": {
-			"type": "string",
-			"default": "no"
-		},
-		"weatherAlert": {
-			"type": "string",
-			"default": "no"
-		},
 		"languageData": {
 			"type": "string",
 			"default": "select your language"
