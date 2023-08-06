@@ -95,7 +95,7 @@
                                     $weather_animated_icon = array_slice($weather_animated_icon, -2);
                                     $weather_icon_url  = ($attributes['layoutModel'] === 'animated_icons') ? plugin_dir_url( __FILE__ ) . 'animated-icons/'. $weather_animated_icon[0] . '/'. str_replace('.png','.svg',$weather_animated_icon[1]) : $weather_icon;
                                     $content .= '<div id="weather-forecast-day-'. $key .'" class="weather-forecast-day-container">
-		 											<div class="weather-forecast-day-main-title">'. __( 'Date', 'guten-weather' ) . $forecast['date'] . '</div>
+		 											<div class="weather-forecast-day-main-title">'. __( 'Date', 'guten-weather' ) . ' ' . $forecast['date'] . '</div>
 		 											    <div class="weather-day-container">
 		 													<div class="weather-day-condition">
 		 													    <div class="weather-icon icon-'. $day_data['condition']['code'] . '">
