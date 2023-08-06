@@ -76,7 +76,6 @@ function Edit(props) {
     },
     setAttributes
   } = props;
-  console.log(props);
   const onChangeCity = newCityName => {
     setAttributes({
       city: newCityName
@@ -191,6 +190,15 @@ function Edit(props) {
     name: 'Rich Blue',
     color: '#0A1FF2'
   }];
+  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
+    const swiper = new Swiper('.swiper', {
+      slidesPerView: 3,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
+    });
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
@@ -482,16 +490,6 @@ __webpack_require__.r(__webpack_exports__);
    */
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
-
-// window.addEventListener("load", function () {
-// 	const swiper = new Swiper('.swiper', {
-// 		slidesPerView: 3,
-// 		navigation: {
-// 			nextEl: '.swiper-button-next',
-// 			prevEl: '.swiper-button-prev',
-// 		},
-// 	});
-// });
 
 /***/ }),
 

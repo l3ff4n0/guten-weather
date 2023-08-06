@@ -37,7 +37,6 @@ import './editor.scss';
 export default function Edit(props) {
 
 	const { attributes: { city, weatherType, numberDays, languageData, layoutModel, borderRadius, WidgetBgColor, WidgetColor }, setAttributes } = props;
-	console.log(props);
 
 	const onChangeCity = ( newCityName ) => {
 		setAttributes( { city: newCityName } );
@@ -101,6 +100,16 @@ export default function Edit(props) {
         { name: 'Mike Wazowski Green', color: '#0AF253' },
         { name: 'Rich Blue', color: '#0A1FF2' },
     ];
+
+	domReady( () => {
+		const swiper = new Swiper('.swiper', {
+			slidesPerView: 3,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+	} );
 	
 	return (
 		<div{ ...useBlockProps() }>

@@ -37,13 +37,3 @@ registerBlockType( 'guten-weather/guten-weather', {
 	 */
 	save,
 } );
-
-// window.addEventListener("load", function () {
-// 	const swiper = new Swiper('.swiper', {
-// 		slidesPerView: 3,
-// 		navigation: {
-// 			nextEl: '.swiper-button-next',
-// 			prevEl: '.swiper-button-prev',
-// 		},
-// 	});
-// });
