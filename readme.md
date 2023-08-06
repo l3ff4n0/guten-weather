@@ -2,7 +2,7 @@
 Contributors:      Stefano Frasson Pianizzola
 Tags:              block
 Tested up to:      6.2
-Stable tag:        0.2.5
+Stable tag:        0.2.6
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
