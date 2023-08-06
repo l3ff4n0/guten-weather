@@ -263,7 +263,7 @@ export default function Edit(props) {
 				</fieldset>
 				</PanelBody>
 			</InspectorControls>
-			<ServerSideRender block="guten-weather/guten-weather" attributes={ props.attributes } className="widget-weather-container" />
+			<ServerSideRender block="guten-weather/guten-weather" attributes={ props.attributes } className="widget-weather-wrapper" />
 		</div>
 	);
 }

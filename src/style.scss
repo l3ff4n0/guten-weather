@@ -737,6 +737,7 @@
 	overflow: hidden;
   }
 
+/* Weather block style */  
 
 :root{
 	--defaultFont: 'Poppins', sans-serif;
@@ -749,7 +750,7 @@
   }
   
 
-.wp-block-guten-weather-guten-weather {
+.widget-weather-container {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -758,15 +759,7 @@
 	width: 100%;
 	font-family: var(--defaultFont);
 	font-weight: var(--regularFont);
-	.widget-weather-container{
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: stretch;
-		padding: 10px;
-		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-		width: 100%;
-	}
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 	.weather-icon {
 		display: flex;
 		flex-direction: column;

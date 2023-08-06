@@ -426,7 +426,7 @@ function Edit(props) {
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default()), {
     block: "guten-weather/guten-weather",
     attributes: props.attributes,
-    className: "widget-weather-container"
+    className: "widget-weather-wrapper"
   }));
 }
 
