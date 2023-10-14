@@ -8,7 +8,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 /**
- * Swiper 10.0.4
+ * Swiper 10.3.1
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * https://swiperjs.com
  *
@@ -16,7 +16,7 @@
  *
  * Released under the MIT License
  *
- * Released on: July 8, 2023
+ * Released on: September 28, 2023
  */
 
 /* FONT_START */
@@ -237,7 +237,7 @@
   }
   /* Slide styles end */
   .swiper-virtual .swiper-slide {
-	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 	transform: translateZ(0);
   }
   .swiper-virtual.swiper-css-mode .swiper-wrapper::after {
@@ -538,7 +538,7 @@
   .swiper-scrollbar {
 	border-radius: var(--swiper-scrollbar-border-radius, 10px);
 	position: relative;
-	-ms-touch-action: none;
+	touch-action: none;
 	background: var(--swiper-scrollbar-bg-color, rgba(0, 0, 0, 0.1));
   }
   .swiper-scrollbar-disabled > .swiper-scrollbar,
@@ -580,6 +580,7 @@
   .swiper-scrollbar-lock {
 	display: none;
   }
+  /* Zoom container styles start */
   .swiper-zoom-container {
 	width: 100%;
 	height: 100%;
@@ -595,6 +596,7 @@
 	max-height: 100%;
 	object-fit: contain;
   }
+  /* Zoom container styles end */
   .swiper-slide-zoomed {
 	cursor: move;
 	touch-action: none;
@@ -629,7 +631,9 @@
   .swiper-fade .swiper-slide .swiper-slide {
 	pointer-events: none;
   }
-  .swiper-fade .swiper-slide-active,
+  .swiper-fade .swiper-slide-active {
+	pointer-events: auto;
+  }
   .swiper-fade .swiper-slide-active .swiper-slide-active {
 	pointer-events: auto;
   }
@@ -736,6 +740,7 @@
 			backface-visibility: hidden;
 	overflow: hidden;
   }
+  
 
 /* Weather block style */  
 

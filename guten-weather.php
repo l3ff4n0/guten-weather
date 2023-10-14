@@ -21,7 +21,7 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
 function guten_weather_guten_weather_block_init() {
-    wp_register_script('swiper-js', '//cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.js', array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'), '10.0.4', true);
+    wp_register_script('swiper-js', '//cdnjs.cloudflare.com/ajax/libs/Swiper/10.3.1/swiper-bundle.min.js', array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'), '10.3.1', true);
 
     register_block_type( __DIR__, array(
         'view_script' => 'swiper-js',
