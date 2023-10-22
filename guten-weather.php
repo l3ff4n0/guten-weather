@@ -4,7 +4,7 @@
  * Description:       This is a guten weather block to display weather and forecast
  * Requires at least: 6.2
  * Requires PHP:      7.0
- * Version:           0.2.8
+ * Version:           0.2.9
  * Author:            Stefano Frasson Pianizzola
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -29,6 +29,15 @@ function guten_weather_guten_weather_block_init() {
     ));
 }
 add_action( 'init', 'guten_weather_guten_weather_block_init' );
+
+if(!function_exists('addhttp')){
+    function addhttp($url) {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
+        $url = "http://" . $url;
+        }
+        return $url;
+       }
+}
 
 /**
  * Register Options page for plugins
@@ -921,7 +930,7 @@ add_action( 'admin_menu', 'guten_weather_menu' );
 add_action('admin_enqueue_scripts', 'guten_weather_plugin_admin_assets');
 
 function guten_weather_plugin_admin_assets(){
-    wp_enqueue_style('boot_css', plugins_url('admin/admin.css',__FILE__ ));
+    wp_enqueue_style('guten_weather_admin', plugins_url('admin/admin.css',__FILE__ ));
 }
 
 function guten_weather_print_scripts() { ?>

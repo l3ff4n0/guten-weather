@@ -48,7 +48,7 @@
                         $content = __('Please add a Location to display the weather widget','guten-weather');
                     } else {
                         $weather_code = $weather_data['current']['condition']['code'];
-                        $weather_icon = $weather_data['current']['condition']['icon'];
+                        $weather_icon = addhttp(str_replace('//', '',$weather_data['current']['condition']['icon']));
                         $weather_animated_icon = explode('/',$weather_icon);
                         $weather_animated_icon = array_slice($weather_animated_icon, -2);
                         $weather_icon_url  = ($attributes['layoutModel'] === 'animated_icons') ? plugin_dir_url( __FILE__ ) . 'animated-icons/'. $weather_animated_icon[0] . '/'. str_replace('.png','.svg',$weather_animated_icon[1]) : $weather_icon;
@@ -90,7 +90,7 @@
                                 foreach( $weather_forecast as $key => $forecast){
                                     $day_data = $forecast['day'];
                                     $hour_data = $forecast['hour'];
-                                    $weather_icon = $day_data['condition']['icon'];
+                                    $weather_icon = addhttp(str_replace('//', '',$day_data['condition']['icon']));
                                     $weather_animated_icon = explode('/',$weather_icon);
                                     $weather_animated_icon = array_slice($weather_animated_icon, -2);
                                     $weather_icon_url  = ($attributes['layoutModel'] === 'animated_icons') ? plugin_dir_url( __FILE__ ) . 'animated-icons/'. $weather_animated_icon[0] . '/'. str_replace('.png','.svg',$weather_animated_icon[1]) : $weather_icon;
@@ -117,7 +117,7 @@
                                                             $hour_condition = $hour_value['condition'];
                                                             $hour_date = date('H:i', $hour_value['time_epoch']);
                                                     
-                                                            $weather_icon = $hour_condition['icon'];
+                                                            $weather_icon = addhttp(str_replace('//', '',$hour_condition['icon']));
                                                             $weather_animated_icon = explode('/',$weather_icon);
                                                             $weather_animated_icon = array_slice($weather_animated_icon, -2);
                                                             $weather_icon_url  = ($attributes['layoutModel'] === 'animated_icons') ? plugin_dir_url( __FILE__ ) . 'animated-icons/'. $weather_animated_icon[0] . '/'. str_replace('.png','.svg',$weather_animated_icon[1]) : $weather_icon;
