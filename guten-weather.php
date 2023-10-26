@@ -4,7 +4,7 @@
  * Description:       This is a guten weather block to display weather and forecast
  * Requires at least: 6.2
  * Requires PHP:      7.0
- * Version:           0.2.9
+ * Version:           0.3.0
  * Author:            Stefano Frasson Pianizzola
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,7 +21,7 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
 function guten_weather_guten_weather_block_init() {
-    wp_register_script('swiper-js', '//cdnjs.cloudflare.com/ajax/libs/Swiper/10.3.1/swiper-bundle.min.js', array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'), '10.3.1', true);
+    wp_register_script('swiper-js', '//cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.2/swiper-bundle.min.js', array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'), '11.0.2', true);
 
     register_block_type( __DIR__, array(
         'view_script' => 'swiper-js',

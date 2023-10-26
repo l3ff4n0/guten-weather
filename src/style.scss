@@ -8,7 +8,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 /**
- * Swiper 10.3.1
+ * Swiper 11.0.2
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * https://swiperjs.com
  *
@@ -16,7 +16,7 @@
  *
  * Released under the MIT License
  *
- * Released on: September 28, 2023
+ * Released on: October 25, 2023
  */
 
 /* FONT_START */
@@ -46,7 +46,6 @@
 	margin-right: auto;
 	position: relative;
 	overflow: hidden;
-	overflow: clip;
 	list-style: none;
 	padding: 0;
 	/* Fix of Webkit flickering */
@@ -237,7 +236,7 @@
   }
   /* Slide styles end */
   .swiper-virtual .swiper-slide {
-	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 	transform: translateZ(0);
   }
   .swiper-virtual.swiper-css-mode .swiper-wrapper::after {
@@ -460,7 +459,8 @@
   .swiper-vertical > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
   .swiper-pagination-vertical.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
 	display: inline-block;
-	transition: 200ms transform, 200ms top;
+	transition: 200ms transform,
+		  200ms top;
   }
   .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
   .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
@@ -474,10 +474,12 @@
   }
   .swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
   .swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
-	transition: 200ms transform, 200ms left;
+	transition: 200ms transform,
+		  200ms left;
   }
   .swiper-horizontal.swiper-rtl > .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
-	transition: 200ms transform, 200ms right;
+	transition: 200ms transform,
+	  200ms right;
   }
   /* Fraction */
   .swiper-pagination-fraction {

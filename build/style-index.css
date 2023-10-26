@@ -12,7 +12,7 @@
  * Replace them with your own styles or remove the file completely.
  */
 /**
- * Swiper 10.3.1
+ * Swiper 11.0.2
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * https://swiperjs.com
  *
@@ -20,7 +20,7 @@
  *
  * Released under the MIT License
  *
- * Released on: September 28, 2023
+ * Released on: October 25, 2023
  */
 /* FONT_START */
 @font-face {
@@ -51,7 +51,6 @@
   margin-right: auto;
   position: relative;
   overflow: hidden;
-  overflow: clip;
   list-style: none;
   padding: 0;
   /* Fix of Webkit flickering */
@@ -279,7 +278,7 @@
 }
 /* Slide styles end */
 .swiper-virtual .swiper-slide {
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform: translateZ(0);
 }
 
