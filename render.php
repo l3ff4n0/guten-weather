@@ -4,10 +4,10 @@
     $weatherWidget = '';
 
     if(empty($weather_api_key)){
-        $content = __('Please create an API KEY and put it inside the Guten Weather settings plugin','guten-weather');
+        $content = __('Please create an API KEY and put it inside the Yeti Weather settings plugin','yeti-weather');
     } else {
-        if($attributes['city'] == 'select your city' || empty($attributes['city'])){
-            $content = __('Please add a Location to display the weather widget','guten-weather');
+        if($attributes['city'] == 'city name' || empty($attributes['city'])){
+            $content = __('Please add a Location to display the weather widget','yeti-weather');
         } else{
             $weather_api = 'http://api.weatherapi.com/v1/' . $attributes['weatherType'] . '.json';
             $weather_params = [
@@ -44,8 +44,8 @@
                 $weather_data = json_decode($response, true);
 
                 if(is_array($weather_data)){
-                    if($weather_data['location']['name'] == 'Select'){
-                        $content = __('Please add a Location to display the weather widget','guten-weather');
+                    if(empty($weather_data['location']['name'])){
+                        $content = __('Please add a Location to display the weather widget','yeti-weather');
                     } else {
                         $weather_code = $weather_data['current']['condition']['code'];
                         $weather_icon = addhttp(str_replace('//', '',$weather_data['current']['condition']['icon']));
@@ -75,12 +75,12 @@
                                         </div>
                                         <div class="weather-text-content">
                                             <div class="weather-text">'. $weather_text. '</div>
-                                            <div class="weather-loc-name"><span class="weather-label">'. __( 'Location', 'guten-weather').'</span>'. $weather_loc_name.' - '. $weather_loc_country.'</div>
-                                            <div class="weather-loc-coords"><span class="weather-label">'. __( 'Coordinates', 'guten-weather').'</span>'. $weather_loc_coordinates.'</div>
-                                            <div class="weather-loc-feelslike"><span class="weather-label">'. __( 'Feelslike', 'guten-weather').'</span>'. $weather_loc_feelslike.'°</div>
-                                            <div class="weather-loc-humidity"><span class="weather-label">'. __( 'Humidity', 'guten-weather').'</span>'. $weather_loc_humidity.'%</div>
-                                            <div class="weather-loc-wind"><span class="weather-label">'. __( 'Wind', 'guten-weather').'</span>'. $weather_loc_wind_kph.' km/h - '. $weather_loc_wind_direction.'</div>
-                                            <div class="weather-loc-pressure"><span class="weather-label">'. __( 'Pressure', 'guten-weather').'</span>'. $weather_loc_pressure.' mbar</div>
+                                            <div class="weather-loc-name"><span class="weather-label">'. __( 'Location', 'yeti-weather').'</span>'. $weather_loc_name.' - '. $weather_loc_country.'</div>
+                                            <div class="weather-loc-coords"><span class="weather-label">'. __( 'Coordinates', 'yeti-weather').'</span>'. $weather_loc_coordinates.'</div>
+                                            <div class="weather-loc-feelslike"><span class="weather-label">'. __( 'Feelslike', 'yeti-weather').'</span>'. $weather_loc_feelslike.'°</div>
+                                            <div class="weather-loc-humidity"><span class="weather-label">'. __( 'Humidity', 'yeti-weather').'</span>'. $weather_loc_humidity.'%</div>
+                                            <div class="weather-loc-wind"><span class="weather-label">'. __( 'Wind', 'yeti-weather').'</span>'. $weather_loc_wind_kph.' km/h - '. $weather_loc_wind_direction.'</div>
+                                            <div class="weather-loc-pressure"><span class="weather-label">'. __( 'Pressure', 'yeti-weather').'</span>'. $weather_loc_pressure.' mbar</div>
                                         </div>';
                         // Forecast                
                         if($attributes['weatherType'] == 'forecast'){
@@ -95,7 +95,7 @@
                                     $weather_animated_icon = array_slice($weather_animated_icon, -2);
                                     $weather_icon_url  = ($attributes['layoutModel'] === 'animated_icons') ? plugin_dir_url( __FILE__ ) . 'animated-icons/'. $weather_animated_icon[0] . '/'. str_replace('.png','.svg',$weather_animated_icon[1]) : $weather_icon;
                                     $content .= '<div id="weather-forecast-day-'. $key .'" class="weather-forecast-day-container">
-		 											<div class="weather-forecast-day-main-title">'. __( 'Date', 'guten-weather' ) . ' ' . $forecast['date'] . '</div>
+		 											<div class="weather-forecast-day-main-title">'. __( 'Date', 'yeti-weather' ) . ' ' . $forecast['date'] . '</div>
 		 											    <div class="weather-day-container">
 		 													<div class="weather-day-condition">
 		 													    <div class="weather-icon icon-'. $day_data['condition']['code'] . '">
@@ -103,10 +103,10 @@
 		 														</div>
 		 													<div class="weather-day-content">
 		 													<div class="weather-text">'. $day_data['condition']['text'] .'</div>
-		 													<div class="weather-mintemp_c"><span class="weather-label">' . __( 'Min temperature', 'guten-weather' ) .' </span>' . $day_data['mintemp_c']. '°</div>
-		 													<div class="weather-maxtemp_c"><span class="weather-label">'. __( 'Max temperature', 'guten-weather' ) .'</span>'. $day_data['maxtemp_c'] . '°</div>
-		 													<div class="weather-mintemp_c"><span class="weather-label">' . __( 'Humidity', 'guten-weather' ) .'</span>'. $day_data['avghumidity']. '%</div>
-		 													<div class="weather-maxtemp_c"><span class="weather-label">'. __( 'Total precipitation', 'guten-weather' ) .'</span>'. $day_data['totalprecip_mm'].'mm</div>
+		 													<div class="weather-mintemp_c"><span class="weather-label">' . __( 'Min temperature', 'yeti-weather' ) .' </span>' . $day_data['mintemp_c']. '°</div>
+		 													<div class="weather-maxtemp_c"><span class="weather-label">'. __( 'Max temperature', 'yeti-weather' ) .'</span>'. $day_data['maxtemp_c'] . '°</div>
+		 													<div class="weather-mintemp_c"><span class="weather-label">' . __( 'Humidity', 'yeti-weather' ) .'</span>'. $day_data['avghumidity']. '%</div>
+		 													<div class="weather-maxtemp_c"><span class="weather-label">'. __( 'Total precipitation', 'yeti-weather' ) .'</span>'. $day_data['totalprecip_mm'].'mm</div>
 		 												</div>
 		 											</div>
 		 										</div>
@@ -129,14 +129,14 @@
 		 																		<img loading="lazy" src="'. $weather_icon_url . '" alt="' . $hour_condition['text'] .'" />
 		 																	</div>
 		 																	</div>
-		 																	<div class="weather-hour-humidity"><span class="weather-label">' . __( 'Humidity', 'guten-weather' ) . '</span>'. $hour_value['humidity'] .'%</div>
-		 																	<div class="weather-hour-precip_mm"><span class="weather-label">'. __( 'Rainfall', 'guten-weather' ) . '</span>' . $hour_value['precip_mm'] . 'mm</div>
-		 																	<div class="weather-hour-temp_c"><span class="weather-label">'. __( 'Temperature', 'guten-weather' ) . '</span>'. $hour_value['temp_c'] . '°</div>
+		 																	<div class="weather-hour-humidity"><span class="weather-label">' . __( 'Humidity', 'yeti-weather' ) . '</span>'. $hour_value['humidity'] .'%</div>
+		 																	<div class="weather-hour-precip_mm"><span class="weather-label">'. __( 'Rainfall', 'yeti-weather' ) . '</span>' . $hour_value['precip_mm'] . 'mm</div>
+		 																	<div class="weather-hour-temp_c"><span class="weather-label">'. __( 'Temperature', 'yeti-weather' ) . '</span>'. $hour_value['temp_c'] . '°</div>
 		 																	<div class="weather-hour-wind-content">
-		 																	<div class="weather-hour-wind-degree"><span class="weather-label">' . __( 'Wind degree', 'guten-weather' ) . '</span>' . $hour_value['wind_degree'] .'°</div>
-		 																	<div class="weather-hour-wind-dir"><span class="weather-label">'. __( 'Wind direction', 'guten-weather' ) .'</span>'. $hour_value['wind_dir'] .'</div>
-		 																	<div class="weather-hour-wind-kph"><span class="weather-label">' . __( 'Wind speed', 'guten-weather' ) . '</span>'. $hour_value['wind_kph'] .'</div>
-		 																	<div class="weather-hour-windchill_c"><span class="weather-label">' . __( 'Wind chill', 'guten-weather' ) . '</span>'. $hour_value['windchill_c'] .'°</div>
+		 																	<div class="weather-hour-wind-degree"><span class="weather-label">' . __( 'Wind degree', 'yeti-weather' ) . '</span>' . $hour_value['wind_degree'] .'°</div>
+		 																	<div class="weather-hour-wind-dir"><span class="weather-label">'. __( 'Wind direction', 'yeti-weather' ) .'</span>'. $hour_value['wind_dir'] .'</div>
+		 																	<div class="weather-hour-wind-kph"><span class="weather-label">' . __( 'Wind speed', 'yeti-weather' ) . '</span>'. $hour_value['wind_kph'] .'</div>
+		 																	<div class="weather-hour-windchill_c"><span class="weather-label">' . __( 'Wind chill', 'yeti-weather' ) . '</span>'. $hour_value['windchill_c'] .'°</div>
 		 																	</div>
 		 																</div>';
                                                         }

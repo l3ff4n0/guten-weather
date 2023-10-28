@@ -1,8 +1,8 @@
-=== Guten weather ===
+=== Yeti Weather ===
 Contributors:      Stefano Frasson Pianizzola
 Tags:              block
 Tested up to:      6.2
-Stable tag:        0.2.9
+Tested up to:      6.3.2
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ This is a gutenberg custom block to display the weather and forecast.
 
 - [x] Current layout
 - [ ] Forecast layout
-- [ ] Custom icons animated
+- [x] Custom icons animated
 - [x] Different colors from ColorPalette
 - [x] Manage border radius from settings custom block
-- [x] Compatibility with WordPress 6.3
+- [x] Compatibility with WordPress 6.3.2

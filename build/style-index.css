@@ -12,7 +12,7 @@
  * Replace them with your own styles or remove the file completely.
  */
 /**
- * Swiper 11.0.2
+ * Swiper 11.0.3
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * https://swiperjs.com
  *
@@ -20,7 +20,7 @@
  *
  * Released under the MIT License
  *
- * Released on: October 25, 2023
+ * Released on: October 26, 2023
  */
 /* FONT_START */
 @font-face {
@@ -867,7 +867,7 @@ button.swiper-pagination-bullet {
   overflow: hidden;
 }
 
-/* Weather block style */
+/* Yeti Weather block style */
 :root {
   --defaultFont: "Poppins", sans-serif;
   --regularFont: 400;

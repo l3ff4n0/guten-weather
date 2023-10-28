@@ -114,10 +114,10 @@ export default function Edit(props) {
 	return (
 		<div{ ...useBlockProps() }>
 			<InspectorControls key="setting">
-				<PanelBody title={ __( 'Guten weather settings', 'guten-weather' ) }>	
+				<PanelBody title={ __( 'Yeti weather settings', 'yeti-weather' ) }>	
 				<fieldset>
 					<legend className="blocks-base-control__label">
-						{ __( 'City', 'guten-weather' ) }
+						{ __( 'City', 'yeti-weather' ) }
 					</legend>
 					<TextControl
 						label="Write the name of your city"
@@ -127,7 +127,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-						{ __( 'Weather type', 'guten-weather' ) }
+						{ __( 'Weather type', 'yeti-weather' ) }
 					</legend>
 					<SelectControl
 						label="Select the weather type"
@@ -142,7 +142,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-						{ __( 'Number of days of weather forecast', 'guten-weather' ) }
+						{ __( 'Number of days of weather forecast', 'yeti-weather' ) }
 					</legend>
 					<SelectControl
 						label=" Select the number of days"
@@ -165,7 +165,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-						{ __( 'Language data', 'guten-weather' ) }
+						{ __( 'Language data', 'yeti-weather' ) }
 					</legend>
 					<SelectControl
 						label="Choose the language"
@@ -219,7 +219,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-							{ __( 'Layout weather', 'guten-weather' ) }
+							{ __( 'Layout weather', 'yeti-weather' ) }
 					</legend>
 					<SelectControl
 						label="Choose your layout"
@@ -236,7 +236,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-							{ __( 'Border radius', 'guten-weather' ) }
+							{ __( 'Border radius', 'yeti-weather' ) }
 					</legend>
 					<RangeControl
 						label="Choose your border radius"
@@ -250,7 +250,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-							{ __( 'Background color', 'guten-weather' ) }
+							{ __( 'Background color', 'yeti-weather' ) }
 					</legend>
 					<ColorPalette
 						colors={ Backgroundcolors }
@@ -261,7 +261,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-							{ __( 'Color', 'guten-weather' ) }
+							{ __( 'Color', 'yeti-weather' ) }
 					</legend>
 					<ColorPalette
 						colors={ colors }
@@ -272,7 +272,7 @@ export default function Edit(props) {
 				</fieldset>
 				</PanelBody>
 			</InspectorControls>
-			<ServerSideRender block="guten-weather/guten-weather" attributes={ props.attributes } className="widget-weather-wrapper" />
+			<ServerSideRender block="yeti-weather/yeti-weather" attributes={ props.attributes } className="widget-weather-wrapper" />
 		</div>
 	);
 }

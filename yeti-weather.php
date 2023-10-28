@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name:       Guten weather
- * Description:       This is a guten weather block to display weather and forecast
+ * Plugin Name:       Yeti Weather
+ * Description:       This is a gutenberg weather block to display weather and forecast
  * Requires at least: 6.2
  * Requires PHP:      7.0
- * Version:           0.3.0
+ * Version:           0.3.1
  * Author:            Stefano Frasson Pianizzola
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       guten-weather
+ * Text Domain:       yeti-weather
  *
- * @package           guten-weather
+ * @package           yeti-weather
  */
 
 /**
@@ -20,15 +20,15 @@
  *
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
-function guten_weather_guten_weather_block_init() {
-    wp_register_script('swiper-js', '//cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.2/swiper-bundle.min.js', array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'), '11.0.2', true);
+function yeti_weather_block_init() {
+    wp_register_script('swiper-js', '//cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.3/swiper-bundle.min.js', array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'), '11.0.3', true);
 
     register_block_type( __DIR__, array(
         'view_script' => 'swiper-js',
         'editor_script' => 'swiper-js'
     ));
 }
-add_action( 'init', 'guten_weather_guten_weather_block_init' );
+add_action( 'init', 'yeti_weather_block_init' );
 
 if(!function_exists('addhttp')){
     function addhttp($url) {
@@ -43,28 +43,28 @@ if(!function_exists('addhttp')){
  * Register Options page for plugins
 */
 
-function guten_weather_menu() {
-	add_menu_page( 'Guten Weather Options', 'Guten Weather', 'manage_options', 'guten_weather_options', 'guten_weather_options_page', 'dashicons-cloud' );
-    add_submenu_page( 'guten_weather_options', 'Guten Weather API', 'Guten Weather API', 'manage_options', 'guten_weather_api_documentation', 'gutern_weather_api_documentation');
+function yeti_weather_menu() {
+	add_menu_page( 'Yeti Weather Options', 'Yeti Weather', 'manage_options', 'yeti_weather_options', 'yeti_weather_options_page', 'dashicons-cloud' );
+    add_submenu_page( 'yeti_weather_options', 'Yeti Weather API', 'Yeti Weather API', 'manage_options', 'yeti_weather_api_documentation', 'yeti_weather_api_documentation');
 }
 
-function guten_weather_options_settings() {
+function yeti_weather_options_settings() {
 	//register our settings
-	register_setting( 'guten-weather-settings-group', 'weather_api_key' );
+	register_setting( 'yeti-weather-settings-group', 'weather_api_key' );
 }
 
-add_action( 'admin_init', 'guten_weather_options_settings' );
+add_action( 'admin_init', 'yeti_weather_options_settings' );
 
-function guten_weather_options_page(){ ?>
+function yeti_weather_options_page(){ ?>
 <div class="wrap">
-    <h1><?php _e('Guten Weather','guten-weather'); ?></h1>
+    <h1><?php _e('Yeti Weather','yeti-weather'); ?></h1>
 
     <form method="post" action="options.php">
-        <?php settings_fields( 'guten-weather-settings-group' ); ?>
-        <?php do_settings_sections( 'guten-weather-settings-group' ); ?>
+        <?php settings_fields( 'yeti-weather-settings-group' ); ?>
+        <?php do_settings_sections( 'yeti-weather-settings-group' ); ?>
         <table class="form-table">
             <tr valign="top">
-            <th scope="row"><?php _e('Weather API Key','guten-weather'); ?></th>
+            <th scope="row"><?php _e('Weather API Key','yeti-weather'); ?></th>
             <td><input type="text" name="weather_api_key" value="<?php echo esc_attr( get_option('weather_api_key') ); ?>" size="50" /></td>
             </tr>
         </table>
@@ -73,13 +73,13 @@ function guten_weather_options_page(){ ?>
 </div>
 <?php }
 
-function gutern_weather_api_documentation(){ ?>
+function yeti_weather_api_documentation(){ ?>
     <div class="wrap">
         <div class="weather-logo">
             <img loading="lazy" src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png" />
         </div>
         <h1>
-            <?php _e('Guten Weather API Documentation','guten-weather'); ?>
+            <?php _e('Yeti Weather API Documentation','yeti-weather'); ?>
         </h1>
         <div class="warning-wrap">
             <div class="warning">
@@ -925,19 +925,19 @@ function gutern_weather_api_documentation(){ ?>
     </div>
 <?php }
 
-add_action( 'admin_menu', 'guten_weather_menu' );
+add_action( 'admin_menu', 'yeti_weather_menu' );
 
-add_action('admin_enqueue_scripts', 'guten_weather_plugin_admin_assets');
+add_action('admin_enqueue_scripts', 'yeti_weather_plugin_admin_assets');
 
-function guten_weather_plugin_admin_assets(){
-    wp_enqueue_style('guten_weather_admin', plugins_url('admin/admin.css',__FILE__ ));
+function yeti_weather_plugin_admin_assets(){
+    wp_enqueue_style('yeti_weather_admin', plugins_url('admin/admin.css',__FILE__ ));
 }
 
-function guten_weather_print_scripts() { ?>
+function yeti_weather_print_scripts() { ?>
 	<script type="text/javascript">
 		var weather_api_key = <?php echo json_encode(esc_attr( get_option('weather_api_key') )); ?>;
         var plugin_path = <?php echo json_encode(plugin_dir_url( __FILE__ )); ?>;
 	</script>
 	<?php
 }
-add_action('wp_print_scripts', 'guten_weather_print_scripts');
+add_action('wp_print_scripts', 'yeti_weather_print_scripts');

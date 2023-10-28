@@ -1,12 +1,12 @@
-body.guten-weather_page_guten_weather_api_documentation{
+body.yeti-weather_page_yeti_weather_api_documentation{
     background: #272424;
 }
 
-body.guten-weather_page_guten_weather_api_documentation #wpcontent{
+body.yeti-weather_page_yeti_weather_api_documentation #wpcontent{
     padding-left: 0;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .wrap{
+body.yeti-weather_page_yeti_weather_api_documentation .wrap{
     width: 100%;
     max-width: 1000px;
     color: #fff;
@@ -14,12 +14,12 @@ body.guten-weather_page_guten_weather_api_documentation .wrap{
     margin-left: 0;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .warning-wrap,
-body.guten-weather_page_guten_weather_api_documentation .warning{
+body.yeti-weather_page_yeti_weather_api_documentation .warning-wrap,
+body.yeti-weather_page_yeti_weather_api_documentation .warning{
     padding: 20px;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .warning{
+body.yeti-weather_page_yeti_weather_api_documentation .warning{
     display: flex;
     align-items: center;
     background: rgba(255,0,0,.6);
@@ -27,64 +27,64 @@ body.guten-weather_page_guten_weather_api_documentation .warning{
     border-radius: 10px;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .warning .icon{
+body.yeti-weather_page_yeti_weather_api_documentation .warning .icon{
     font-size: 40px;
     margin-right: 20px;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .weather-logo{
+body.yeti-weather_page_yeti_weather_api_documentation .weather-logo{
     display: block;
     background: #fff;
     padding: 20px;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .weather-api-container{
+body.yeti-weather_page_yeti_weather_api_documentation .weather-api-container{
     padding: 20px;
 }
 
-body.guten-weather_page_guten_weather_api_documentation h1,
-body.guten-weather_page_guten_weather_api_documentation h2,
-body.guten-weather_page_guten_weather_api_documentation h3,
-body.guten-weather_page_guten_weather_api_documentation h4,
-body.guten-weather_page_guten_weather_api_documentation h5,
-body.guten-weather_page_guten_weather_api_documentationh6{
+body.yeti-weather_page_yeti_weather_api_documentation h1,
+body.yeti-weather_page_yeti_weather_api_documentation h2,
+body.yeti-weather_page_yeti_weather_api_documentation h3,
+body.yeti-weather_page_yeti_weather_api_documentation h4,
+body.yeti-weather_page_yeti_weather_api_documentation h5,
+body.yeti-weather_page_yeti_weather_api_documentation h6{
     color: #fff;
 }
 
-body.guten-weather_page_guten_weather_api_documentation h1{
+body.yeti-weather_page_yeti_weather_api_documentation h1{
     padding-left: 20px;
     padding-right: 20px;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .weather-logo img{
+body.yeti-weather_page_yeti_weather_api_documentation .weather-logo img{
     max-width: 100%;
     height: auto;
 }
 
-body.guten-weather_page_guten_weather_api_documentation section.docs-intro{
+body.yeti-weather_page_yeti_weather_api_documentation section.docs-intro{
     margin: 50px 0;
 }
 
-body.guten-weather_page_guten_weather_api_documentation section.docs-intro a,
-body.guten-weather_page_guten_weather_api_documentation section.docs-section a{
+body.yeti-weather_page_yeti_weather_api_documentation section.docs-intro a,
+body.yeti-weather_page_yeti_weather_api_documentation section.docs-section a{
     color: #71B328;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .docs-heading,
-body.guten-weather_page_guten_weather_api_documentation .section-heading{
+body.yeti-weather_page_yeti_weather_api_documentation .docs-heading,
+body.yeti-weather_page_yeti_weather_api_documentation .section-heading{
     text-transform: uppercase;
 }
 
-body.guten-weather_page_guten_weather_api_documentation ul.doc-list{
+body.yeti-weather_page_yeti_weather_api_documentation ul.doc-list{
     list-style-type: disc;
     margin-left: 40px;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .plans-section .plan-header{
+body.yeti-weather_page_yeti_weather_api_documentation .plans-section .plan-header{
     padding: 2rem 1rem;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .card-header {
+body.yeti-weather_page_yeti_weather_api_documentation .card-header {
     padding: .75rem 1.25rem;
     margin-bottom: 0;
     background-color: #71B328;
@@ -92,22 +92,22 @@ body.guten-weather_page_guten_weather_api_documentation .card-header {
     border-radius: .25rem;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .table-striped{
+body.yeti-weather_page_yeti_weather_api_documentation .table-striped{
     width: 100%;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .table-bordered{
+body.yeti-weather_page_yeti_weather_api_documentation .table-bordered{
     border: 1px solid #fff;
     border-spacing: 0;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .table-bordered tbody tr th,
-body.guten-weather_page_guten_weather_api_documentation .table-bordered tbody tr td{
+body.yeti-weather_page_yeti_weather_api_documentation .table-bordered tbody tr th,
+body.yeti-weather_page_yeti_weather_api_documentation .table-bordered tbody tr td{
     padding: 10px;
     border: 1px solid #fff;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .badge{
+body.yeti-weather_page_yeti_weather_api_documentation .badge{
     display: inline-block;
     padding: 0.25em 0.4em;
     font-size: 75%;
@@ -118,21 +118,21 @@ body.guten-weather_page_guten_weather_api_documentation .badge{
     vertical-align: baseline;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .badge-pill {
+body.yeti-weather_page_yeti_weather_api_documentation .badge-pill {
     padding-right: 0.6em;
     padding-left: 0.6em;
     border-radius: 10rem;
 }
 
-body.guten-weather_page_guten_weather_api_documentation .badge-danger {
+body.yeti-weather_page_yeti_weather_api_documentation .badge-danger {
     color: #fff;
     background-color: #71B328;
 }
 
-body.guten-weather_page_guten_weather_api_documentation #footer-thankyou{
+body.yeti-weather_page_yeti_weather_api_documentation #footer-thankyou{
     color: #fff;
 }
 
-body.guten-weather_page_guten_weather_api_documentation #footer-thankyou a{
+body.yeti-weather_page_yeti_weather_api_documentation #footer-thankyou a{
     color: #71B328;
 }

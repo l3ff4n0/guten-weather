@@ -1,19 +1,19 @@
 {
 	"apiVersion": 3,
-	"name": "guten-weather/guten-weather",
-	"version": "0.3.0",
-	"title": "Guten weather",
+	"name": "yeti-weather/yeti-weather",
+	"version": "0.3.1",
+	"title": "Yeti weather",
 	"category": "widgets",
 	"icon": "cloud",
 	"keywords": ["weather", "forecast", "temperature"],
-	"description": "This is a guten weather block to display weather and forecast",
+	"description": "This is a gutenberg weather block to display weather and forecast",
 	"supports": {
 		"html": false
 	},
 	"attributes":{
 		"city": {
 			"type": "string",
-			"default": "select your city"
+			"default": "city name"
 		},
 		"weatherType": {
 			"type": "string",
@@ -44,7 +44,7 @@
 			"default": "#000"
 		}
 	},
-	"textdomain": "guten-weather",
+	"textdomain": "yeti-weather",
 	"script": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css",

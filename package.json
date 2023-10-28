@@ -1,7 +1,7 @@
 {
-	"name": "guten-weather",
+	"name": "yeti-weather",
 	"version": "0.1.0",
-	"description": "This is a guten weather block to display weather and forecast",
+	"description": "This is a gutenberg weather block to display weather and forecast",
 	"author": "Stefano Frasson Pianizzola",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
@@ -11,8 +11,7 @@
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"start": "wp-scripts start",
-		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip"
+		"packages-update": "wp-scripts packages-update"
 	},
 	"dependencies": {
 		"@wordpress/blocks": "^12.21.0",
