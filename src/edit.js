@@ -1,4 +1,3 @@
-import domReady from '@wordpress/dom-ready';
 /**
  * Retrieves the translation of text.
  *
@@ -100,24 +99,14 @@ export default function Edit(props) {
         { name: 'Mike Wazowski Green', color: '#0AF253' },
         { name: 'Rich Blue', color: '#0A1FF2' },
     ];
-
-	domReady( () => {
-		const swiper = new Swiper('.swiper', {
-			slidesPerView: 3,
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-		});
-	} );
 	
 	return (
 		<div{ ...useBlockProps() }>
 			<InspectorControls key="setting">
-				<PanelBody title={ __( 'Yeti weather settings', 'yeti-weather' ) }>	
+				<PanelBody title={ __( 'Yeti weather settings', 'cloud-weather' ) }>	
 				<fieldset>
 					<legend className="blocks-base-control__label">
-						{ __( 'City', 'yeti-weather' ) }
+						{ __( 'City', 'cloud-weather' ) }
 					</legend>
 					<TextControl
 						label="Write the name of your city"
@@ -127,7 +116,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-						{ __( 'Weather type', 'yeti-weather' ) }
+						{ __( 'Weather type', 'cloud-weather' ) }
 					</legend>
 					<SelectControl
 						label="Select the weather type"
@@ -142,7 +131,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-						{ __( 'Number of days of weather forecast', 'yeti-weather' ) }
+						{ __( 'Number of days of weather forecast', 'cloud-weather' ) }
 					</legend>
 					<SelectControl
 						label=" Select the number of days"
@@ -165,7 +154,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-						{ __( 'Language data', 'yeti-weather' ) }
+						{ __( 'Language data', 'cloud-weather' ) }
 					</legend>
 					<SelectControl
 						label="Choose the language"
@@ -219,7 +208,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-							{ __( 'Layout weather', 'yeti-weather' ) }
+							{ __( 'Layout weather', 'cloud-weather' ) }
 					</legend>
 					<SelectControl
 						label="Choose your layout"
@@ -236,7 +225,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-							{ __( 'Border radius', 'yeti-weather' ) }
+							{ __( 'Border radius', 'cloud-weather' ) }
 					</legend>
 					<RangeControl
 						label="Choose your border radius"
@@ -250,7 +239,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-							{ __( 'Background color', 'yeti-weather' ) }
+							{ __( 'Background color', 'cloud-weather' ) }
 					</legend>
 					<ColorPalette
 						colors={ Backgroundcolors }
@@ -261,7 +250,7 @@ export default function Edit(props) {
 				</fieldset>
 				<fieldset>
 					<legend className="blocks-base-control__label">
-							{ __( 'Color', 'yeti-weather' ) }
+							{ __( 'Color', 'cloud-weather' ) }
 					</legend>
 					<ColorPalette
 						colors={ colors }
@@ -272,7 +261,7 @@ export default function Edit(props) {
 				</fieldset>
 				</PanelBody>
 			</InspectorControls>
-			<ServerSideRender block="yeti-weather/yeti-weather" attributes={ props.attributes } className="widget-weather-wrapper" />
+			<ServerSideRender block="cloud-weather/cloud-weather" attributes={ props.attributes } className="widget-weather-wrapper" />
 		</div>
 	);
 }

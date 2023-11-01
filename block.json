@@ -1,8 +1,8 @@
 {
 	"apiVersion": 3,
-	"name": "yeti-weather/yeti-weather",
-	"version": "0.3.1",
-	"title": "Yeti weather",
+	"name": "cloud-weather/cloud-weather",
+	"version": "0.3.2",
+	"title": "Cloud weather",
 	"category": "widgets",
 	"icon": "cloud",
 	"keywords": ["weather", "forecast", "temperature"],
@@ -44,9 +44,8 @@
 			"default": "#000"
 		}
 	},
-	"textdomain": "yeti-weather",
+	"textdomain": "cloud-weather",
 	"script": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css",
-	"render": "render.php"
+	"style": "file:./build/style-index.css"
 }

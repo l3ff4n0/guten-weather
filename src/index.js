@@ -25,8 +25,8 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( 'yeti-weather/yeti-weather', {
-	title: 'Yeti Weather',
+registerBlockType( 'cloud-weather/cloud-weather', {
+	title: 'Cloud Weather',
 	/**
 	 * @see ./edit.js
 	 */

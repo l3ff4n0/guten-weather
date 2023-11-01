@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name:       Yeti Weather
+ * Plugin Name:       Cloud Weather
  * Description:       This is a gutenberg weather block to display weather and forecast
  * Requires at least: 6.2
  * Requires PHP:      7.0
- * Version:           0.3.1
+ * Version:           0.3.2
  * Author:            Stefano Frasson Pianizzola
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       yeti-weather
+ * Text Domain:       cloud-weather
  *
- * @package           yeti-weather
+ * @package           cloud-weather
  */
 
 /**
@@ -20,15 +20,158 @@
  *
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
-function yeti_weather_block_init() {
-    wp_register_script('swiper-js', '//cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.3/swiper-bundle.min.js', array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'), '11.0.3', true);
+function cloud_weather_block_init() {
 
     register_block_type( __DIR__, array(
-        'view_script' => 'swiper-js',
-        'editor_script' => 'swiper-js'
+        'render_callback' => 'cloud_weather_block_render_callback',
     ));
 }
-add_action( 'init', 'yeti_weather_block_init' );
+add_action( 'init', 'cloud_weather_block_init' );
+
+function cloud_weather_block_render_callback($attributes){
+    $api_key = get_option('weather_api_key');
+    $location = $attributes['city'];
+    $weatherType = $attributes['weatherType'];
+
+    if(!empty($api_key)){
+        $url = 'http://api.weatherapi.com/v1/'. $weatherType .'.json?key='.$api_key.'&q='.$location;
+
+        if($weatherType == 'forecast'){
+            $url .= '&days='. $attributes['numberDays'];
+        }
+
+        if($attributes['languageData'] !== 'select your language'){
+            $url .= '&lang='. $attributes['languageData'];
+        }
+
+        $response = wp_remote_get($url);
+
+        if ( is_wp_error( $response ) ) {
+            $error_message = $response->get_error_message();
+            return "Something went wrong: $error_message";
+        } else {
+            if(!empty($location) && $location != 'city name'){
+                $data = json_decode(wp_remote_retrieve_body($response));
+
+                $weather_code = $data->current->condition->code;
+                $weather_icon = addhttp(str_replace('//', '',$data->current->condition->icon));
+                $weather_animated_icon = explode('/',$weather_icon);
+                $weather_animated_icon = array_slice($weather_animated_icon, -2);
+                $weather_icon_url  = $attributes['layoutModel'] === 'animated_icons' ? plugin_dir_url( __FILE__ ) . 'animated-icons/'. $weather_animated_icon[0] . '/'. str_replace('.png','.svg',$weather_animated_icon[1]) : $weather_icon;
+
+                $weather_text = $data->current->condition->text;
+                $weather_loc_temp_c = $data->current->temp_c;
+                $weather_loc_name = $data->location->name;
+                $weather_loc_country = $data->location->country;
+                $weather_loc_coordinates = $data->location->lat .','. $data->location->lon;
+                $weather_loc_localtime = $data->location->localtime;
+                $weather_loc_feelslike = $data->current->feelslike_c;
+                $weather_loc_humidity = $data->current->humidity;
+                $weather_loc_wind_direction = $data->current->wind_dir;
+                $weather_loc_wind_kph = $data->current->wind_kph;
+                $weather_loc_pressure = $data->current->pressure_mb;
+
+                $borderRadius = $attributes['borderRadius'] != 0 ?  $attributes['borderRadius'] .'px' : 0;
+
+                $content = '<div class="widget-weather-container"  style="background:' . $attributes['WidgetBgColor'] . '; color: ' . $attributes['WidgetColor'] .'; border-radius:' . $borderRadius .'">';
+
+                    $content .= '<div class="weather-icon icon-' . $weather_code . '">
+                                    <div class="weather-temperature">'.$weather_loc_temp_c .'°</div>
+                                        <img loading="lazy" src="'. $weather_icon_url .'" alt="'. $weather_text .'" />
+                                    </div>
+                                    <div class="weather-text-content">
+                                        <div class="weather-text">'. $weather_text. '</div>
+                                        <div class="weather-loc-name"><span class="weather-label">'. __( 'Location', 'cloud-weather').'</span>'. $weather_loc_name.' - '. $weather_loc_country.'</div>
+                                        <div class="weather-loc-coords"><span class="weather-label">'. __( 'Coordinates', 'cloud-weather').'</span>'. $weather_loc_coordinates.'</div>
+                                        <div class="weather-loc-feelslike"><span class="weather-label">'. __( 'Feelslike', 'cloud-weather').'</span>'. $weather_loc_feelslike.'°</div>
+                                        <div class="weather-loc-humidity"><span class="weather-label">'. __( 'Humidity', 'cloud-weather').'</span>'. $weather_loc_humidity.'%</div>
+                                        <div class="weather-loc-wind"><span class="weather-label">'. __( 'Wind', 'cloud-weather').'</span>'. $weather_loc_wind_kph.' km/h - '. $weather_loc_wind_direction.'</div>
+                                        <div class="weather-loc-pressure"><span class="weather-label">'. __( 'Pressure', 'cloud-weather').'</span>'. $weather_loc_pressure.' mbar</div>
+                                    </div>';
+
+                // Forecast                
+                if($attributes['weatherType'] == 'forecast'){
+                    $weather_forecast = $data->forecast->forecastday;
+                    
+                    if(is_array($weather_forecast)){
+                        $content .= '<div class="weather-forecast-container">';
+                        foreach( $weather_forecast as $key => $forecast){
+                            $day_data = $forecast->day;
+                            $hour_data = $forecast->hour;
+                            $weather_icon = addhttp(str_replace('//', '',$day_data->condition->icon));
+                            $weather_animated_icon = explode('/',$weather_icon);
+                            $weather_animated_icon = array_slice($weather_animated_icon, -2);
+                            $weather_icon_url  = $attributes['layoutModel'] === 'animated_icons' ? plugin_dir_url( __FILE__ ) . 'animated-icons/'. $weather_animated_icon[0] . '/'. str_replace('.png','.svg',$weather_animated_icon[1]) : $weather_icon;
+                            $content .= '<div id="weather-forecast-day-'. $key .'" class="weather-forecast-day-container">
+                                             <div class="weather-forecast-day-main-title">'. __( 'Date', 'cloud-weather' ) . ' ' . $forecast->date . '</div>
+                                                 <div class="weather-day-container">
+                                                     <div class="weather-day-condition">
+                                                         <div class="weather-icon icon-'. $day_data->condition->code . '">
+                                                             <img loading="lazy" src="' . $weather_icon_url  . '" alt="'. $day_data->condition->text . '" />
+                                                         </div>
+                                                     <div class="weather-day-content">
+                                                     <div class="weather-text">'. $day_data->condition->text .'</div>
+                                                     <div class="weather-mintemp_c"><span class="weather-label">' . __( 'Min temperature', 'cloud-weather' ) .' </span>' . $day_data->mintemp_c. '°</div>
+                                                     <div class="weather-maxtemp_c"><span class="weather-label">'. __( 'Max temperature', 'cloud-weather' ) .'</span>'. $day_data->maxtemp_c . '°</div>
+                                                     <div class="weather-mintemp_c"><span class="weather-label">' . __( 'Humidity', 'cloud-weather' ) .'</span>'. $day_data->avghumidity . '%</div>
+                                                     <div class="weather-maxtemp_c"><span class="weather-label">'. __( 'Total precipitation', 'cloud-weather' ) .'</span>'. $day_data->totalprecip_mm .'mm</div>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="weather-hour-wrapper">
+                                             <div class="weather-hour-container">
+                                                 <div class="weather-carousel-wrapper">'; 
+                                                 foreach( $hour_data as $hour_key => $hour_value){
+                                                    $hour_condition = $hour_value->condition;
+                                                    $hour_date = date('H:i', $hour_value->time_epoch);
+                                            
+                                                    $weather_icon = addhttp(str_replace('//', '',$hour_condition->icon));
+                                                    $weather_animated_icon = explode('/',$weather_icon);
+                                                    $weather_animated_icon = array_slice($weather_animated_icon, -2);
+                                                    $weather_icon_url  = $attributes['layoutModel'] === 'animated_icons' ? plugin_dir_url( __FILE__ ) . 'animated-icons/'. $weather_animated_icon[0] . '/'. str_replace('.png','.svg',$weather_animated_icon[1]) : $weather_icon;
+
+                                                    $content .= '<div id="weather-forecast-hour-'. $hour_key . '" class="weather-carousel-slide weather-hour-content">
+                                                                     <div class="weather-hour-depoint">' . $hour_date . '</div>
+                                                                     <div class="weather-hour-condition">
+                                                                     <div class="weather-icon icon-'. $hour_condition->code .'">
+                                                                         <img loading="lazy" src="'. $weather_icon_url . '" alt="' . $hour_condition->text .'" />
+                                                                     </div>
+                                                                     </div>
+                                                                     <div class="weather-hour-humidity"><span class="weather-label">' . __( 'Humidity', 'cloud-weather' ) . '</span>'. $hour_value->humidity .'%</div>
+                                                                     <div class="weather-hour-precip_mm"><span class="weather-label">'. __( 'Rainfall', 'cloud-weather' ) . '</span>' . $hour_value->precip_mm . 'mm</div>
+                                                                     <div class="weather-hour-temp_c"><span class="weather-label">'. __( 'Temperature', 'cloud-weather' ) . '</span>'. $hour_value->temp_c . '°</div>
+                                                                     <div class="weather-hour-wind-content">
+                                                                     <div class="weather-hour-wind-degree"><span class="weather-label">' . __( 'Wind degree', 'cloud-weather' ) . '</span>' . $hour_value->wind_degree .'°</div>
+                                                                     <div class="weather-hour-wind-dir"><span class="weather-label">'. __( 'Wind direction', 'cloud-weather' ) .'</span>'. $hour_value->wind_dir .'</div>
+                                                                     <div class="weather-hour-wind-kph"><span class="weather-label">' . __( 'Wind speed', 'cloud-weather' ) . '</span>'. $hour_value->wind_kph .'</div>
+                                                                     <div class="weather-hour-windchill_c"><span class="weather-label">' . __( 'Wind chill', 'cloud-weather' ) . '</span>'. $hour_value->windchill_c .'°</div>
+                                                                     </div>
+                                                                 </div>';
+                                                }
+                                                $content .= '</div>
+                                                             </div>
+                                                             </div>
+                                                             </div>';
+                        }
+                        $content .= '</div>';
+                    }
+                }                    
+
+                $content .= '</div>';
+                
+                return $content; ?>
+            <?php } else {
+                $borderRadius = $attributes['borderRadius'] != 0 ?  $attributes['borderRadius'] .'px' : 0;
+                $content = '<div class="widget-weather-container"  style="background:' . $attributes['WidgetBgColor'] . '; color: ' . $attributes['WidgetColor'] .'; border-radius:' . $borderRadius .'">';
+                $content .= __('Please add a Location to display the weather widget','cloud-weather');
+                $content .= '</div>';
+
+                return $content;
+
+            }
+        }
+    }
+}
 
 if(!function_exists('addhttp')){
     function addhttp($url) {
@@ -43,28 +186,28 @@ if(!function_exists('addhttp')){
  * Register Options page for plugins
 */
 
-function yeti_weather_menu() {
-	add_menu_page( 'Yeti Weather Options', 'Yeti Weather', 'manage_options', 'yeti_weather_options', 'yeti_weather_options_page', 'dashicons-cloud' );
-    add_submenu_page( 'yeti_weather_options', 'Yeti Weather API', 'Yeti Weather API', 'manage_options', 'yeti_weather_api_documentation', 'yeti_weather_api_documentation');
+function cloud_weather_menu() {
+	add_menu_page( 'Cloud Weather Options', 'Cloud Weather', 'manage_options', 'cloud_weather_options', 'cloud_weather_options_page', 'dashicons-cloud' );
+    add_submenu_page( 'cloud_weather_options', 'Cloud Weather API', 'Cloud Weather API', 'manage_options', 'cloud_weather_api_documentation', 'cloud_weather_api_documentation');
 }
 
-function yeti_weather_options_settings() {
+function cloud_weather_options_settings() {
 	//register our settings
-	register_setting( 'yeti-weather-settings-group', 'weather_api_key' );
+	register_setting( 'cloud-weather-settings-group', 'weather_api_key' );
 }
 
-add_action( 'admin_init', 'yeti_weather_options_settings' );
+add_action( 'admin_init', 'cloud_weather_options_settings' );
 
-function yeti_weather_options_page(){ ?>
+function cloud_weather_options_page(){ ?>
 <div class="wrap">
-    <h1><?php _e('Yeti Weather','yeti-weather'); ?></h1>
+    <h1><?php _e('Cloud Weather','cloud-weather'); ?></h1>
 
     <form method="post" action="options.php">
-        <?php settings_fields( 'yeti-weather-settings-group' ); ?>
-        <?php do_settings_sections( 'yeti-weather-settings-group' ); ?>
+        <?php settings_fields( 'cloud-weather-settings-group' ); ?>
+        <?php do_settings_sections( 'cloud-weather-settings-group' ); ?>
         <table class="form-table">
             <tr valign="top">
-            <th scope="row"><?php _e('Weather API Key','yeti-weather'); ?></th>
+            <th scope="row"><?php _e('Weather API Key','cloud-weather'); ?></th>
             <td><input type="text" name="weather_api_key" value="<?php echo esc_attr( get_option('weather_api_key') ); ?>" size="50" /></td>
             </tr>
         </table>
@@ -73,13 +216,13 @@ function yeti_weather_options_page(){ ?>
 </div>
 <?php }
 
-function yeti_weather_api_documentation(){ ?>
+function cloud_weather_api_documentation(){ ?>
     <div class="wrap">
         <div class="weather-logo">
             <img loading="lazy" src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png" />
         </div>
         <h1>
-            <?php _e('Yeti Weather API Documentation','yeti-weather'); ?>
+            <?php _e('Cloud Weather API Documentation','cloud-weather'); ?>
         </h1>
         <div class="warning-wrap">
             <div class="warning">
@@ -925,19 +1068,19 @@ function yeti_weather_api_documentation(){ ?>
     </div>
 <?php }
 
-add_action( 'admin_menu', 'yeti_weather_menu' );
+add_action( 'admin_menu', 'cloud_weather_menu' );
 
-add_action('admin_enqueue_scripts', 'yeti_weather_plugin_admin_assets');
+add_action('admin_enqueue_scripts', 'cloud_weather_plugin_admin_assets');
 
-function yeti_weather_plugin_admin_assets(){
-    wp_enqueue_style('yeti_weather_admin', plugins_url('admin/admin.css',__FILE__ ));
+function cloud_weather_plugin_admin_assets(){
+    wp_enqueue_style('cloud_weather_admin', plugins_url('admin/admin.css',__FILE__ ));
 }
 
-function yeti_weather_print_scripts() { ?>
+function cloud_weather_print_scripts() { ?>
 	<script type="text/javascript">
 		var weather_api_key = <?php echo json_encode(esc_attr( get_option('weather_api_key') )); ?>;
         var plugin_path = <?php echo json_encode(plugin_dir_url( __FILE__ )); ?>;
 	</script>
 	<?php
 }
-add_action('wp_print_scripts', 'yeti_weather_print_scripts');
+add_action('wp_print_scripts', 'cloud_weather_print_scripts');
