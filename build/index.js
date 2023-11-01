@@ -194,17 +194,17 @@ function Edit(props) {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
     key: "setting"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Yeti weather settings', 'cloud-weather')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Cloud weather settings', 'cloud-weather')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('City', 'cloud-weather')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
-    label: "Write the name of your city",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Write the name of your city', 'cloud-weather'),
     value: city,
     onChange: onChangeCity
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Weather type', 'cloud-weather')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
-    label: "Select the weather type",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select the weather type', 'cloud-weather'),
     value: weatherType,
     options: [{
       label: 'Current',
@@ -217,7 +217,7 @@ function Edit(props) {
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Number of days of weather forecast', 'cloud-weather')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
-    label: " Select the number of days",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select the number of days', 'cloud-weather'),
     value: numberDays,
     options: [{
       label: '1',
@@ -254,7 +254,7 @@ function Edit(props) {
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Language data', 'cloud-weather')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
-    label: "Choose the language",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Choose the language', 'cloud-weather'),
     value: languageData,
     options: [{
       label: 'Select your language',
@@ -384,7 +384,7 @@ function Edit(props) {
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout weather', 'cloud-weather')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
-    label: "Choose your layout",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Choose your layout', 'cloud-weather'),
     value: layoutModel,
     options: [{
       label: 'Select your layout',
@@ -400,7 +400,7 @@ function Edit(props) {
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
     className: "blocks-base-control__label"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border radius', 'cloud-weather')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
-    label: "Choose your border radius",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Choose your border radius', 'cloud-weather'),
     value: borderRadius,
     onChange: onChangeBorderRadius,
     initialPosition: 0,

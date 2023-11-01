@@ -103,13 +103,13 @@ export default function Edit(props) {
 	return (
 		<div{ ...useBlockProps() }>
 			<InspectorControls key="setting">
-				<PanelBody title={ __( 'Yeti weather settings', 'cloud-weather' ) }>	
+				<PanelBody title={ __( 'Cloud weather settings', 'cloud-weather' ) }>	
 				<fieldset>
 					<legend className="blocks-base-control__label">
 						{ __( 'City', 'cloud-weather' ) }
 					</legend>
 					<TextControl
-						label="Write the name of your city"
+						label={ __( 'Write the name of your city', 'cloud-weather' ) }
 						value={ city }
 						onChange={ onChangeCity }
 					/>
@@ -119,7 +119,7 @@ export default function Edit(props) {
 						{ __( 'Weather type', 'cloud-weather' ) }
 					</legend>
 					<SelectControl
-						label="Select the weather type"
+						label={ __( 'Select the weather type', 'cloud-weather' ) }
 						value={ weatherType }
 						options={
 							[
@@ -134,7 +134,7 @@ export default function Edit(props) {
 						{ __( 'Number of days of weather forecast', 'cloud-weather' ) }
 					</legend>
 					<SelectControl
-						label=" Select the number of days"
+						label={ __( 'Select the number of days', 'cloud-weather' ) }
 						value={ numberDays }
 						options={
 							[
@@ -157,7 +157,7 @@ export default function Edit(props) {
 						{ __( 'Language data', 'cloud-weather' ) }
 					</legend>
 					<SelectControl
-						label="Choose the language"
+						label={ __( 'Choose the language', 'cloud-weather' ) }
 						value={ languageData }
 						options={
 							[
@@ -211,7 +211,7 @@ export default function Edit(props) {
 							{ __( 'Layout weather', 'cloud-weather' ) }
 					</legend>
 					<SelectControl
-						label="Choose your layout"
+						label={ __( 'Choose your layout', 'cloud-weather' ) }
 						value={layoutModel}
 						options={
 							[
@@ -228,7 +228,7 @@ export default function Edit(props) {
 							{ __( 'Border radius', 'cloud-weather' ) }
 					</legend>
 					<RangeControl
-						label="Choose your border radius"
+						label={ __( 'Choose your border radius', 'cloud-weather' ) }
 						value={ borderRadius }
 						onChange={ onChangeBorderRadius }
 						initialPosition={0}

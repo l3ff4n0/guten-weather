@@ -1,7 +1,7 @@
 {
 	"apiVersion": 3,
 	"name": "cloud-weather/cloud-weather",
-	"version": "0.3.2",
+	"version": "0.3.3",
 	"title": "Cloud weather",
 	"category": "widgets",
 	"icon": "cloud",

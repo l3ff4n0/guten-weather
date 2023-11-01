@@ -1,0 +1,166 @@
+# Copyright (C) 2023 Stefano Frasson Pianizzola
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Cloud Weather 0.3.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cloud-weather\n"
+"POT-Creation-Date: 2023-11-01T14:39:20+00:00\n"
+"PO-Revision-Date: 2023-11-01 16:30+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Domain: cloud-weather\n"
+
+#. Plugin Name of the plugin
+#: cloud-weather.php:210
+msgid "Cloud Weather"
+msgstr "Cloud Weather"
+
+#. Description of the plugin
+msgid "This is a gutenberg weather block to display weather and forecast"
+msgstr "Questo è un blocco meteo di gutenberg per visualizzare il tempo e le previsioni"
+
+#. Author of the plugin
+msgid "Stefano Frasson Pianizzola"
+msgstr "Stefano Frasson Pianizzola"
+
+#: cloud-weather.php:85
+msgid "Location"
+msgstr "Luogo"
+
+#: cloud-weather.php:86
+msgid "Coordinates"
+msgstr "Coordinate"
+
+#: cloud-weather.php:87
+msgid "Feelslike"
+msgstr "Temperatura percepita"
+
+#: cloud-weather.php:88 cloud-weather.php:117 cloud-weather.php:141
+msgid "Humidity"
+msgstr "Umidità"
+
+#: cloud-weather.php:89
+msgid "Wind"
+msgstr "Vento"
+
+#: cloud-weather.php:90
+msgid "Pressure"
+msgstr "Pressione"
+
+#: cloud-weather.php:107
+msgid "Date"
+msgstr "Data"
+
+#: cloud-weather.php:115
+msgid "Min temperature"
+msgstr "Temperatura Minima"
+
+#: cloud-weather.php:116
+msgid "Max temperature"
+msgstr "Temperatura Massima"
+
+#: cloud-weather.php:118
+msgid "Total precipitation"
+msgstr "Totale precipitazioni"
+
+#: cloud-weather.php:142
+msgid "Rainfall"
+msgstr "Pioggia"
+
+#: cloud-weather.php:143
+msgid "Temperature"
+msgstr "Temperatura"
+
+#: cloud-weather.php:145
+msgid "Wind degree"
+msgstr "Grado del vento"
+
+#: cloud-weather.php:146
+msgid "Wind direction"
+msgstr "Direzione del vento"
+
+#: cloud-weather.php:147
+msgid "Wind speed"
+msgstr "Velocità del vento"
+
+#: cloud-weather.php:148
+msgid "Wind chill"
+msgstr "Vento gelido"
+
+#: cloud-weather.php:167
+msgid "Please add a Location to display the weather widget"
+msgstr "Perfavore aggiungere una posizione per visualizzare il widget meteo"
+
+#: cloud-weather.php:217
+msgid "Weather API Key"
+msgstr "Weather chiave API"
+
+#: cloud-weather.php:232
+msgid "Cloud Weather API Documentation"
+msgstr "Cloud Weather API documentazione"
+
+#: build/index.js:197 src/edit.js:106 build/index.js:106
+msgid "Cloud weather settings"
+msgstr "Cloud weather impostazioni"
+
+#: build/index.js:200 src/edit.js:109 build/index.js:109
+msgid "City"
+msgstr "Città"
+
+#: build/index.js:206 src/edit.js:119 build/index.js:119
+msgid "Weather type"
+msgstr "Tipo di Meteo"
+
+#: build/index.js:219 src/edit.js:134 build/index.js:134
+msgid "Number of days of weather forecast"
+msgstr "Numero di giorni di previsioni meteo"
+
+#: build/index.js:256 src/edit.js:157 build/index.js:157
+msgid "Language data"
+msgstr "Lingua"
+
+#: build/index.js:386 src/edit.js:211 build/index.js:211
+msgid "Layout weather"
+msgstr "Layout weather"
+
+#: build/index.js:402 src/edit.js:228 build/index.js:228
+msgid "Border radius"
+msgstr "Raggio del bordo"
+
+#: build/index.js:412 src/edit.js:242 build/index.js:242
+msgid "Background color"
+msgstr "Colore di sfondo"
+
+#: build/index.js:419 src/edit.js:253 build/index.js:253
+msgid "Color"
+msgstr "Colore"
+
+#: block.json
+msgctxt "block title"
+msgid "Cloud weather"
+msgstr "Cloud Weather"
+
+#: block.json
+msgctxt "block keyword"
+msgid "weather"
+msgstr ""
+
+#: block.json
+msgctxt "block keyword"
+msgid "forecast"
+msgstr ""
+
+#: block.json
+msgctxt "block keyword"
+msgid "temperature"
+msgstr ""
+
+#: block.json
+msgctxt "block description"
+msgid "This is a gutenberg weather block to display weather and forecast"
+msgstr ""

@@ -4,11 +4,12 @@
  * Description:       This is a gutenberg weather block to display weather and forecast
  * Requires at least: 6.2
  * Requires PHP:      7.0
- * Version:           0.3.2
+ * Version:           0.3.3
  * Author:            Stefano Frasson Pianizzola
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       cloud-weather
+ * Domain Path:       /languages
  *
  * @package           cloud-weather
  */
@@ -180,6 +181,12 @@ if(!function_exists('addhttp')){
         }
         return $url;
        }
+}
+
+add_action( 'init', 'cloud_weather_load_textdomain' );
+
+function cloud_weather_load_textdomain() {
+	load_plugin_textdomain( 'cloud-weather', false, basename( dirname( __FILE__ ) ) . '/languages');
 }
 
 /**
